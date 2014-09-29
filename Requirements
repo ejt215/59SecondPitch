@@ -1,0 +1,40 @@
+59 Second Pitch Project Definition
+
+Team Members: Max Smith, Eric Thornton
+Client: Matthew Harmer (Lehigh ‘07 Alum), Brian Davison
+
+Problem: An optimal platform does not exist for startup entrepreneurs to get connected with the advisors, investors, helping hands, etc. and for the investors, advisors, etc. to quickly review multiple entrepreneurial ideas.
+
+Value: If there were an easier way to connect potential investors/advisors and entrepreneurs, both parties would benefit significantly.  Investors could quickly identify companies or ideas they want to invest in, while entrepreneurs could raise capital or get help for their idea or small business.  A one-sided Tinder-esque interface would bring novelty to the long ongoing process of investors trying to find entrepreneurs to support  
+
+Solution: The objective is to build a platform that is mutually beneficial to entrepreneurs and those interested in helping entrepreneurs in a novel way.  The platform aims to onboard users through LinkedIn with as little manual addition of information as possible.  It’s primary focus is to start a conversation between the entrepreneurs and those interested in helping (investors, advisors, people with ideas).  Should the conversation fail to come to fruition, the platform should benefit entrepreneurs by giving them some sort of guidance as to why their project/idea/startup is not attention worthy and benefit investors, advisors, etc. because they can quickly view multiple profiles and move onto the next idea.
+
+Business Use Cases:
+Entrepreneurs:
+1. Entrepreneurs onboard their ideas/startups/projects to the platform using a combination of LinkedIn profile information and manually entered information about their idea/startup/project.  All of the information gathered will be stored in our application’s database.  
+
+2a. Entrepreneurs will be alerted when an investor pairs with them.  The entrepreneur will receive the contact information of the investor as a result of the pairing and should then contact the investor.
+
+2b. At some interval, the entrepreneur will receive feedback as to why their idea/project/startup isn’t garnering attention.  The feedback will come directly from investors that weren’t interested.
+
+Investors, Advisors, Helping Hands, etc.
+1. Investors, advisors, helping hands, etc. sign in through LinkedIn and browse through entrepreneur profiles in a simple, Tinder like fashion.  Basic profile information will be pulled from LinkedIn and stored in the application database. 
+
+2a. Investors decide whether they are interested in an idea/startup/project or not.  If they are interested they can choose to contact the entrepreneur via their profile information or pair with the entrepreneur profile.  The pairing will send the investor's profile information to the entrepreneur, who will then reach out to the investor.
+
+2b. If the investor is not interested in an entrepeneur's idea, the investor has the option to provide feedback as to why they weren't interested.
+
+Project Requirements
+1. The project will be a full web application with an interface and database.
+2. Profile data for both investors and entrepreneurs will be pulled in from LinkedIn using the LinkedIn API and stored in the application database.
+3. The interface will provide a simple, visually appealing way to browse profiles. 
+4. “Pairing” data will persist via the database so investors are presented with new ideas and companies to view. 
+
+
+Additional Requirements/Enhancements
+1.Provide more targeted entrepreneur profiles to investors using an algorithm that matches qualities such as alma mater, geographic area, industry, etc.
+2. Investors would have a “favorites” tab to keep track of profiles rather than pair right away.
+
+Good Ideas Out of Scope
+1. Build a LinkedIn crawler to pull entrepreneurial idea/startup/project information from a LinkedIn profile to lessen manual entry into the application.
+2. Perform data analysis to improve the pairing algorithm and make the algorithm more specialized for each user.
