@@ -43,6 +43,10 @@ and open the template in the editor.
                 $passwordErr = "Password is required";
             } else {
                 $password = $_POST["password"];
+                $repassword = $_POST["repassword"];
+                if($password !=$repassword){
+                    $passwordErr ="Passwords do not match.";
+                }
             }
 
             if (empty($_POST["lastname"])) {
@@ -56,7 +60,7 @@ and open the template in the editor.
             $age = $_POST["age"];
             $almamater = $_POST["almamater"];
             $city = $_POST["city"];
-            $repassword = $_POST["repassword"];
+            
             $username = $_POST["username"];
         }
         ?>
