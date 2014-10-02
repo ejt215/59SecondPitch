@@ -10,11 +10,22 @@ and open the template in the editor.
         <title></title>
     </head>
     <body>
+        <div>
       <form action="update.php" method="post">
-Enter your name: <input type="text" name="name">
-Enter your username: <input type="text" name="username">
+            Username: <input type="text" name="username"><br>
+            Password: <input type="text" name="password"><br>
+            Re-enter Password: <input type="text" name="rePassword"><br>
+            Email: <input type="text" name="email"><br>
+            First Name: <input type="text" name="firstname"><br>
+            Last Name: <input type="text" name="lastname"><br>
+            Age: <input type="text" name="age"><br>
+            University/Alma Mater: <input type="text" name="almamater"><br>
+            City/Metro Area: <input type="text" name="city"><br>
+            <input type="submit">
+        </form>
+</div>
 
-<input type="submit">
+
 </form>
     </body>
 </html>
