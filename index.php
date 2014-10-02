@@ -13,19 +13,49 @@ and open the template in the editor.
     <body>
         <script src="http://code.jquery.com/jquery.js"></script>
         <script src="JS/bootstrap.min.js"></script>
-        <div>
-            <form action="update.php" method="post">
-                Username:               <input type="text" name="username"><br>
-                Password:               <input type="text" name="password"><br>
-                Re-enter Password:      <input type="text" name="rePassword"><br>
-                Email:                  <input type="text" name="email"><br>
-                First Name:             <input type="text" name="firstname"><br>
-                Last Name:              <input type="text" name="lastname"><br>
-                Age:                    <input type="text" name="age"><br>
-                University/Alma Mater:  <input type="text" name="almamater"><br>
-                City/Metro Area:        <input type="text" name="city"><br>
-                <input type="submit">
-            </form>
-        </div>
+
+        <!--form setup taken from tutorial for twitter bootstrap-->
+        <form class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label" for="username">Username:</label>
+                <div class="controls"><input type="text" id="username" placeholder="Username"></div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="password">Password:</label>
+                <div class="controls"><input type="password" id="inputPassword" placeholder="Password"></div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="rePassword">Re-Enter Password:</label>
+                <div class="controls"><input type="password" id="rePassword" placeholder="Re-Enter Password"></div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="email">Email:</label>
+                <div class="controls"><input type="text" id="email" placeholder="Email"></div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="firstname">First Name:</label>
+                <div class="controls"><input type="text" id="firstname" placeholder="First Name"></div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="lastname">Last Name:</label>
+                <div class="controls"><input type="text" id="lastname" placeholder="Last Name"></div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="age">Age:</label>
+                <div class="controls"><input type="text" id="age" placeholder="Age"></div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="almamater">University/Alma Mater:</label>
+                <div class="controls"><input type="text" id="almamater" placeholder="University/Alma Mater"></div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="city">City/Metro Area:</label>
+                <div class="controls"><input type="text" id="city" placeholder="City/Metro Area"></div>
+            </div>
+            <div class="control-group">
+                <div class="controls"><button type="submit" class="btn">Submit</button></div>
+            </div>
+        </form>
+
     </body>
 </html>
