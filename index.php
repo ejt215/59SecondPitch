@@ -7,25 +7,25 @@ and open the template in the editor.
 <html>
     <head>
         <meta charset="UTF-8">
-        <title></title>
+        <title>59SecondPitch</title>
+        <link href="CSS/bootstrap.min.css" rel="stylesheet" media="screen">
     </head>
     <body>
+        <script src="http://code.jquery.com/jquery.js"></script>
+        <script src="JS/bootstrap.min.js"></script>
         <div>
-      <form action="update.php" method="post">
-            Username: <input type="text" name="username"><br>
-            Password: <input type="text" name="password"><br>
-            Re-enter Password: <input type="text" name="rePassword"><br>
-            Email: <input type="text" name="email"><br>
-            First Name: <input type="text" name="firstname"><br>
-            Last Name: <input type="text" name="lastname"><br>
-            Age: <input type="text" name="age"><br>
-            University/Alma Mater: <input type="text" name="almamater"><br>
-            City/Metro Area: <input type="text" name="city"><br>
-            <input type="submit">
-        </form>
-</div>
-
-
-</form>
+            <form action="update.php" method="post">
+                Username:               <input type="text" name="username"><br>
+                Password:               <input type="text" name="password"><br>
+                Re-enter Password:      <input type="text" name="rePassword"><br>
+                Email:                  <input type="text" name="email"><br>
+                First Name:             <input type="text" name="firstname"><br>
+                Last Name:              <input type="text" name="lastname"><br>
+                Age:                    <input type="text" name="age"><br>
+                University/Alma Mater:  <input type="text" name="almamater"><br>
+                City/Metro Area:        <input type="text" name="city"><br>
+                <input type="submit">
+            </form>
+        </div>
     </body>
 </html>
