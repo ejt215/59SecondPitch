@@ -24,6 +24,15 @@ $almamater = mysqli_real_escape_string($con, $_POST['almamater']);
 $city = mysqli_real_escape_string($con, $_POST['city']);
 $selected = mysqli_select_db($con,"59SecondPitch") 
   or die("Could not select examples");
+$sql1 = "select email from investor where email=".$email;
+
+
+$result1 = mysqli_query($con,$sql1);
+$numRows = $result->num_rows;
+if($numRows >0){
+    
+}
+
 $sql="INSERT INTO investor (username,password,firstname,lastname,email,age,almamater,city)
 VALUES ('$username','$password','$firstname','$lastname','$email','$age','$almamater','$city')";
 
