@@ -14,7 +14,6 @@ and open the template in the editor.
         <script src="http://code.jquery.com/jquery.js"></script>
         <script src="JS/bootstrap.min.js"></script>
 
-
         <?php
         // define variables and set to empty values
         $firstnameErr = $lastnameErr = $emailErr = $passwordErr = $repasswordErr = "";
