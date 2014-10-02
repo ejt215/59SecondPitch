@@ -7,9 +7,12 @@ and open the template in the editor.
 <html>
     <head>
         <meta charset="UTF-8">
-        <title></title>
+        <title>59SecondPitch</title>
+        <link href="CSS/bootstrap.min.css" rel="stylesheet" media="screen">
     </head>
     <body>
+        <script src="http://code.jquery.com/jquery.js"></script>
+        <script src="JS/bootstrap.min.js"></script>
         <div>
             <?php
 // define variables and set to empty values
