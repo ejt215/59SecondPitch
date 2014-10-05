@@ -66,7 +66,7 @@ and open the template in the editor.
         ?>
         <div class="container">
             <!--form setup taken from tutorial for twitter bootstrap-->
-            <form class="form-horizontal" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+            <form id="newProfileForm" class="form-horizontal" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                 <div class="control-group">
                     <label class="control-label" for="username">Username:</label>
                     <div class="controls"><input type="text" id="username" name="username" value = "<?php echo $username; ?>"></div>
