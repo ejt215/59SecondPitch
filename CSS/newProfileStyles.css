@@ -7,6 +7,16 @@ and open the template in the editor.
     Created on : Oct 2, 2014, 5:26:35 PM
     Author     : Smithers
 */
-body  {
-    background-image: url('IMG/59SecondPitchLogo.png');
+body {
+      background-image: url("../IMG/59SecondPitchLogo.png");
+}
+
+#newProfileForm {
+    background: white;
+    border-radius: 25px;
+    padding: 15px
+}
+
+form{
+    width:50%;
 }
