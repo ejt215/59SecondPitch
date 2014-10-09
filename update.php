@@ -33,18 +33,18 @@ $selected = mysqli_select_db($con,"59App")
     
 //}
 
-$sql="INSERT INTO investor (email,password,firstname,lastname,age,almamater,city)
+$sql="INSERT INTO 59Profile (email,password,firstname,lastname,age,almamater,city)
 VALUES ('$email','$password','$firstname','$lastname','$age','$almamater','$city')";
 
 if (!mysqli_query($con,$sql)) {
   die('Error: ' . mysqli_error($con));
 }
-
-$result = mysqli_query($con,"SELECT firstname,almamater FROM investor WHERE email ='".$email."'");
+/*
+$result = mysqli_query($con,"SELECT firstname,almamater FROM /* WHERE email ='".$email."'");
 //fetch tha data from the database
 while ($row = mysqli_fetch_array($result)) {
    echo "Hello ".$row{'firstname'}." your almamater is ".$row{'almamater'}; 
    
-}
+}*/
 
 mysqli_close($con);
