@@ -18,7 +18,7 @@ and open the template in the editor.
         <?php
         // define variables and set to empty values
         $firstnameErr = $lastnameErr = $emailErr = $passwordErr = $repasswordErr = "";
-        $name = $email = $password = $lastname = $firstname = $repassword = $age = $almamater = $city = $username = "";
+        $name = $email = $password = $lastname = $firstname = $repassword = $age = $almamater = $city = $username = $type= "";
 
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if (empty($_POST["firstname"])) {
@@ -57,6 +57,12 @@ and open the template in the editor.
                     $lastnameErr = "Only letters and white space allowed";
                 }
             }
+             if (empty($_POST["type"])) {
+                $typeErr = "Profile type is required.";
+            } else {
+                $type = $_POST["type"];
+                
+            }
             $age = $_POST["age"];
             $almamater = $_POST["almamater"];
             $city = $_POST["city"];
@@ -64,9 +70,10 @@ and open the template in the editor.
             $username = $_POST["username"];
         }
         ?>
+        <!--<?php //echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>-->
         <div class="container">
             <!--form setup taken from tutorial for twitter bootstrap-->
-            <form id="newProfileForm" class="form-horizontal" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+            <form id="newProfileForm" class="form-horizontal" action="update.php" method="post">
                 <div class="control-group">
                     <label class="control-label" for="username">Username:</label>
                     <div class="controls"><input type="text" id="username" name="username" value = "<?php echo $username; ?>"></div>
