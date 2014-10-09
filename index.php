@@ -106,6 +106,9 @@ and open the template in the editor.
                 <div class="control-group">
                     <div class="controls"><button type="submit" class="btn">Submit</button></div>
                 </div>
+                <div class="control-group">
+                    <div class="controls"><input type="radio" name="type" value="Entrepreneur">Entrepreneur<input type="radio" name = "type" value="Investor">Investor</div>
+                </div>
             </form>
         </div>
     </body>
