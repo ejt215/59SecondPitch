@@ -6,7 +6,7 @@
  * and open the template in the editor.
  */
 
-$con=mysqli_connect("128.180.177.4:3307","guest","pitch");
+$con=mysqli_connect("128.180.177.4:3307","guest","pitch","59secondpitch");
 
 if (mysqli_connect_errno()) {
   echo "Failed to connect to MySQL: " . mysqli_connect_error();
@@ -14,17 +14,17 @@ if (mysqli_connect_errno()) {
 
 
 
-//$username = mysqli_real_escape_string($con, $_POST['username']);
-/*$password = mysqli_real_escape_string($con, trim($_POST['password']));
+$username = mysqli_real_escape_string($con, $_POST['username']);
+$password = mysqli_real_escape_string($con, trim($_POST['password']));
+$email = mysqli_real_escape_string($con, trim($_POST['email']));
 $firstname = mysqli_real_escape_string($con, trim($_POST['firstname']));
 $lastname = mysqli_real_escape_string($con, trim($_POST['lastname']));
-$email = mysqli_real_escape_string($con, trim($_POST['email']));
 $age = mysqli_real_escape_string($con, trim($_POST['age']));
 $almamater = mysqli_real_escape_string($con, trim($_POST['almamater']));
 $city = mysqli_real_escape_string($con, trim($_POST['city']));
-$type = mysqli_real_escape_string($con, trim($_POST['type']));
-$selected = mysqli_select_db($con,"59App") 
-  or die("Could not select examples");
+//$type = mysqli_real_escape_string($con, trim($_POST['type']));
+//$selected = mysqli_select_db($con,"59App") 
+  //or die("Could not select examples");
 //$sql1 = "select email from investor where email=".$email;
 
 
@@ -34,12 +34,13 @@ $selected = mysqli_select_db($con,"59App")
     
 //}
 
-$sql="INSERT INTO 59Profile (email,password,firstname,lastname,age,almamater,city)
-VALUES ('$email','$password','$firstname','$lastname','$age','$almamater','$city')";
+$sql="INSERT INTO 59Profile (username,password,email,firstname,lastname,age,almamater,city)
+VALUES ('$username','$password','$email','$firstname','$lastname','$age','$almamater','$city')";
 
 if (!mysqli_query($con,$sql)) {
   die('Error: ' . mysqli_error($con));
 }
+echo "Yeah Buddy";
 /*
 if($type=="Investor"){
     header("Location: http://localhost/59SecondPitch/Investor.php"); 
