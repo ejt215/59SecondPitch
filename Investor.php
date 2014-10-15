@@ -40,6 +40,9 @@ and open the template in the editor.
                     <label class="control-label">What are your contact preferences?(days,times,etc.)</label>
                     <div class="controls"><textarea rows="4" cols="50"></textarea></div>
                 </div>
+                <div class="control-group">
+                    <div class="controls"><button type="submit" class="btn">Submit</button></div>
+                </div>
             </form>
         </div>
     </body>
