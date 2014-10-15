@@ -11,7 +11,7 @@ body {
       background-image: url("../IMG/59SecondPitchLogo.png");
 }
 
-#newProfileForm {
+#newProfileForm, #investorForm {
     background: white;
     border-radius: 25px;
     padding: 15px
