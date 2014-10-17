@@ -4,6 +4,9 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
+<?php    
+session_start();
+?>
 <html>
     <head>
         <meta charset="UTF-8">
@@ -17,48 +20,57 @@ and open the template in the editor.
 
         <?php
         // define variables and set to empty values
-        $firstnameErr = $lastnameErr = $emailErr = $passwordErr = $repasswordErr = "";
+        $firstnameErr = $lastnameErr = $emailErr = $passwordErr = $repasswordErr =$typeErr =  "";
         $name = $email = $password = $lastname = $firstname = $repassword = $age = $almamater = $city = $username = $type= "";
-
+        $valid = true;
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if (empty($_POST["firstname"])) {
                 $firstnameErr = "First name is required";
+                $valid = false;
             } else {
                 $firstname = $_POST["firstname"];
                 if (!preg_match("/^[a-zA-Z ]*$/", $firstname)) {
                     $firstnameErr = "Only letters and white space allowed";
+                    $valid = false;
                 }
             }
 
             if (empty($_POST["email"])) {
                 $emailErr = "Email is required";
+                $valid = false;
             } else {
                 $email = $_POST["email"];
                 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
                     $emailErr = "Invalid email format";
+                    $valid = false;
                 }
             }
 
             if (empty($_POST["password"])) {
                 $passwordErr = "Password is required";
+                $valid = false;
             } else {
                 $password = $_POST["password"];
                 $repassword = $_POST["repassword"];
                 if($password !=$repassword){
                     $passwordErr ="Passwords do not match.";
+                    $valid = false;
                 }
             }
 
             if (empty($_POST["lastname"])) {
                 $lastnameErr = "Last name is required";
+                $valid = false;
             } else {
                 $lastname = $_POST["lastname"];
                 if (!preg_match("/^[a-zA-Z ]*$/", $lastname)) {
                     $lastnameErr = "Only letters and white space allowed";
+                    $valid = false;
                 }
             }
              if (empty($_POST["type"])) {
                 $typeErr = "Profile type is required.";
+                $valid = false;
             } else {
                 $type = $_POST["type"];
                 
@@ -68,12 +80,26 @@ and open the template in the editor.
             $city = $_POST["city"];
             
             $username = $_POST["username"];
+            
+            if($valid){
+                $_SESSION['firstname'] =$firstname; 
+                $_SESSION['lastname'] =$lastname;
+                $_SESSION['type'] =$type;
+                $_SESSION['email'] =$email;
+                $_SESSION['age'] =$age;
+                $_SESSION['username'] =$username;
+                $_SESSION['password'] =$password;
+                $_SESSION['almamater'] =$almamater;
+                $_SESSION['city'] =$city;
+                header('Location: http://localhost/59SecondPitch/update.php');
+            exit();
+            }
         }
         ?>
         <!--<?php //echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>-->
         <div class="container">
             <!--form setup taken from tutorial for twitter bootstrap-->
-            <form id="newProfileForm" class="form-horizontal" action="update.php" method="post">
+            <form id="newProfileForm" class="form-horizontal" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
                 <div class="control-group">
                     <label class="control-label" for="username">Username:</label>
                     <div class="controls"><input type="text" id="username" name="username" value = "<?php echo $username; ?>"></div>
@@ -92,7 +118,7 @@ and open the template in the editor.
                 </div>
                 <div class="control-group">
                     <label class="control-label" for="firstname">First Name:</label>
-                    <div class="controls"><input type="text" id="firstname" name="firstname" value = "<?php echo $firstname; ?>"><span class="error">* <?php echo $firstnameErr; ?></span></div>
+                    <div class="controls"><input type="text" id="firstname" name="firstname" method ="post" value = "<?php echo $firstname; ?>"><span class="error">* <?php echo $firstnameErr; ?></span></div>
                 </div>
                 <div class="control-group">
                     <label class="control-label" for="lastname">Last Name:</label>
@@ -111,11 +137,13 @@ and open the template in the editor.
                     <div class="controls"><input type="text" id="city" name="city" value = "<?php echo $city; ?>"></div>
                 </div>
                 <div class="control-group">
-                    <div class="controls"><button type="submit" class="btn">Submit</button></div>
+                    <div class="controls"><input type="radio" name="type" <?php if (isset($type) && $type=="Entrepreneur"){ echo "Entrepreneur";}?>value="Entrepreneur">Entrepreneur<span class="error">* <?php echo $typeErr; ?><br>
+                        <input type="radio" name = "type" <?php if (isset($type) && $type=="Investor"){ echo "Investor";}?>value="Investor">Investor</div>
                 </div>
                 <div class="control-group">
-                    <div class="controls"><input type="radio" name="type" value="Entrepreneur">Entrepreneur<input type="radio" name = "type" value="Investor">Investor</div>
+                    <div class="controls"><button type="submit" class="btn">Submit</button></div>
                 </div>
+                
             </form>
         </div>
     </body>
