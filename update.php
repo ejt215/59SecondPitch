@@ -7,6 +7,7 @@ session_start();
  */
 
 $con=mysqli_connect("128.180.177.4:3307","guest","pitch","59secondpitch");
+//$con=mysqli_connect("162.242.219.56","59App","AppAppDevDev?","59App");
 
 if (mysqli_connect_errno()) {
   echo "Failed to connect to MySQL: " . mysqli_connect_error();
@@ -36,9 +37,16 @@ $type = $_SESSION['type'];
 //if($numRows >0){
     
 //}
+if($age ==""){
+
+    $age =0;
+
+}
 
 $sql="INSERT INTO 59Profile (username,password,email,firstname,lastname,age,almamater,city)
 VALUES ('$username','$password','$email','$firstname','$lastname','$age','$almamater','$city')";
+
+
 
 if (!mysqli_query($con,$sql)) {
   die('Error: ' . mysqli_error($con));
