@@ -21,7 +21,6 @@ class fiftynineProfile {
         $this->age = $age;
         $this->almamater = $almamater;
         $this->city = $city; 
-    }
-    
+    }  
 }
 ?>
