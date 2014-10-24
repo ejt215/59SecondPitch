@@ -40,7 +40,7 @@ class fiftynineDAO {
         }
 
         $row = mysqli_fetch_array($result);
-        $fiftynineprofileid = $row['fiftynineprofileid'];
+        $fiftynineprofileid = $row['59profileid'];
         return $fiftynineprofileid;
     }
 
