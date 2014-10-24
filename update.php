@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 /* 
  * To change this license header, choose License Headers in Project Properties.
@@ -55,7 +56,7 @@ if (!mysqli_query($con,$sql)) {
   
   
 }
-$sql1 = "select 59profileid from 59Profile where email = '".email."'";
+$sql1 = "select 59profileid from 59Profile where email = '".$email."'";
 $result = mysqli_query($con,$sql1);
 //fetch tha data from the database
 while ($row = mysqli_fetch_array($result)) {

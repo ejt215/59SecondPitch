@@ -18,10 +18,10 @@ if (mysqli_connect_errno()) {
 $contactType = $_SESSION['contactType'] ;
             $userType =     $_SESSION['userType'];
                $contactPref = $_SESSION['contactPref'];
+$id = $_SESSION['59profileid'];
 
-
-$sql="INSERT INTO investor (class,contact_type,contact_preferences)
-VALUES ('$userType','$contactType','$contactPref')";
+$sql="INSERT INTO investor (59profileid,class,contact_type,contact_preferences)
+VALUES ('$id','$userType','$contactType','$contactPref')";
 
 
 
@@ -32,7 +32,7 @@ if (!mysqli_query($con,$sql)) {
 mysqli_close($con);
 
 
-    header("Location: http://localhost/59SecondPitch/Investor.php"); 
+    header("Location: http://localhost/59SecondPitch/Browse.php"); 
     exit();
 
 

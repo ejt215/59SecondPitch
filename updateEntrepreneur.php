@@ -34,8 +34,8 @@ if (!mysqli_query($con,$sql)) {
 mysqli_close($con);
 
 
-    header("Location: http://localhost/59SecondPitch/Investor.php"); 
-    exit();
+    //header("Location: http://localhost/59SecondPitch/Investor.php"); 
+    //exit();
 
 
 
@@ -46,7 +46,7 @@ mysqli_close($con);
 
 
 
-$dao = new fiftynineDAO();
+/*$dao = new fiftynineDAO();
 $email = $_SESSION['email'];
 $profileID = $dao->get59ProfileIDFromEmail($email);
 
@@ -58,4 +58,4 @@ $sql="INSERT INTO entrepreneur (59profileid,business_type,business_name,business
 "VALUES ('$profileID','$workType','$workName','$workType')";
 
 $dao->executeSQL($sql);
-?>
+?>*/
