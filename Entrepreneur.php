@@ -4,6 +4,9 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
+<?php
+session_start();
+?>
 <html>
     <head>
         <meta charset="UTF-8">
@@ -53,7 +56,7 @@ and open the template in the editor.
                 $_SESSION['workType'] =$workType; 
                 $_SESSION['workName'] =$workName;
                 $_SESSION['workDesc'] =$workDesc;
-                
+                $_SESSION['59profileid'] = $_SESSION['59profileid'];
                 header('Location: http://localhost/59SecondPitch/updateEntrepreneur.php');
             exit();
             }

@@ -50,10 +50,21 @@ VALUES ('$username','$password','$email','$firstname','$lastname','$age','$almam
 
 if (!mysqli_query($con,$sql)) {
   die('Error: ' . mysqli_error($con));
+  
+  
+  
+  
+}
+$sql1 = "select 59profileid from 59Profile where email = '".email."'";
+$result = mysqli_query($con,$sql1);
+//fetch tha data from the database
+while ($row = mysqli_fetch_array($result)) {
+   $_SESSION['59profileid'] = $row{'59profileid'}; 
+   
 }
 //echo "Yeah Buddy";
 
-
+mysqli_close($con);
 
 
 if($type=="Investor"){
@@ -75,4 +86,4 @@ while ($row = mysqli_fetch_array($result)) {
    
 }*/
 
-mysqli_close($con);
+
