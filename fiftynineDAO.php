@@ -25,6 +25,25 @@ class fiftynineDAO {
         return $_mysqli;
     }
 
+    public function executeSQL($sql) {
+        $con = $this->getDBConnection();
+        if (!mysqli_query($con, $sql)) {
+            die('Error: ' . mysqli_error($con) . "      " . $sql);
+        }
+    }
+
+    public function get59ProfileIDFromEmail($email) {
+        $con = $this->getDBConnection();
+        $sql = "SELECT 59profileid FROM 59profile WHERE email='" . $email . "'";
+        if (!($result = mysqli_query($con, $sql))) {
+            die('Error: ' . mysqli_error($con) . "      " . $sql);
+        }
+
+        $row = mysqli_fetch_array($result);
+        $fiftynineprofileid = $row['fiftynineprofileid'];
+        return $fiftynineprofileid;
+    }
+
     public function get59Profile($email) {
         $con = $this->getDBConnection();
         $sql = "SELECT * FROM 59profile WHERE email='" . $email . "'";

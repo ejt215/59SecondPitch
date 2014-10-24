@@ -50,9 +50,9 @@ and open the template in the editor.
             }
         
          if($valid){
-                $_SESSION['workType'] =$contactType; 
-                $_SESSION['workName'] =$userType;
-                $_SESSION['workDesc'] =$contactPref;
+                $_SESSION['workType'] =$workType; 
+                $_SESSION['workName'] =$workName;
+                $_SESSION['workDesc'] =$workDesc;
                 
                 header('Location: http://localhost/59SecondPitch/updateEntrepreneur.php');
             exit();
@@ -66,7 +66,7 @@ and open the template in the editor.
 
         <div class="container">
             <!--form setup taken from tutorial for twitter bootstrap-->
-            <form id="investorForm" class="form-horizontal" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+            <form id="entrepreneurForm" class="form-horizontal" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                 <div class="control-group">
                     <label class="control-label">How would you classify your work?</label>
                     <div class="controls">
