@@ -55,7 +55,7 @@ where business_id = '" . $random . "'";
                 $return['almamater'] = $row{'almamater'};
                 $return['city'] = $row{'city'};
                 $return['business_description'] = $row{'business_description'};
-                $return["json"] = json_encode($return);
+                //$return["json"] = json_encode($return);
                 echo json_encode($return);
             }
             mysqli_close($con);
@@ -90,7 +90,7 @@ where business_id = '" . $random . "'";
                                     "Almamater: "+data['almamater']+"<br />Location: "+data['city']+"<br />"+"Description :<br /><br /><br />"+data['business_description']
                                     );
 
-                            alert("Form submitted successfully.\nReturned json: " + data["json"]);
+                            //alert("Form submitted successfully.\nReturned json: " + data["json"]);
                         }
                     });
                 });
