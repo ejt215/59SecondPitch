@@ -137,8 +137,10 @@ session_start();
                     <div class="controls"><input type="text" id="city" name="city" value = "<?php echo $city; ?>"></div>
                 </div>
                 <div class="control-group">
-                    <div class="controls"><input type="radio" name="type" <?php if (isset($type) && $type=="Entrepreneur"){ echo "Entrepreneur";}?>value="Entrepreneur">Entrepreneur<span class="error">* <?php echo $typeErr; ?><br>
-                        <input type="radio" name = "type" <?php if (isset($type) && $type=="Investor"){ echo "Investor";}?>value="Investor">Investor</div>
+                    <div class="controls">
+                        <input type="radio" name="type" <?php if (isset($type) && $type=="Entrepreneur"){ echo "Entrepreneur";}?>value="Entrepreneur">Entrepreneur<span class="error">* <?php echo $typeErr; ?><br>
+                        <input type="radio" name = "type" <?php if (isset($type) && $type=="Investor"){ echo "Investor";}?>value="Investor">Investor
+                    </div>
                 </div>
                 <div class="control-group">
                     <div class="controls"><button type="submit" class="btn">Submit</button></div>

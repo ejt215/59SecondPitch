@@ -21,4 +21,5 @@ $sql = "INSERT INTO investor (59profileid,class,contact_type,contact_preferences
         "VALUES ('$profileID','$class','$contact_type','$contact_preferences')";
 
 $dao->executeSQL($sql);
+header("Location: Browse.php");
 ?>
