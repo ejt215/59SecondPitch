@@ -114,9 +114,9 @@
                                     </div>    
                                     <div class="control-group">
                                         <!-- Username -->
-                                        <label class="control-label"  for="username">Username</label>
+                                        <label class="control-label"  for="email">Email</label>
                                         <div class="controls">
-                                            <input type="text" id="username" name="username" placeholder="" class="input-xlarge">
+                                            <input type="text" id="email" name="email" placeholder="" class="input-xlarge">
                                         </div>
                                     </div>
 
@@ -132,7 +132,7 @@
                                     <div class="control-group">
                                         <!-- Button -->
                                         <div class="controls">
-                                            <button class="btn btn-success">Login</button>
+                                            <button class="btn btn-success" id="loginButton">Login</button>
                                         </div>
                                     </div>
                                 </fieldset>
