@@ -17,6 +17,7 @@ session_start();
 
 
         <?php
+        //
         // define variables and set to empty values
         $firstnameErr = $lastnameErr = $emailErr = $passwordErr = $repasswordErr = $typeErr = "";
         $name = $email = $password = $lastname = $firstname = $repassword = $age = $almamater = $city = $username = $type = "";
