@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <?php
-    session_start();
+session_start();
 ?>
 <html>
     <head>
@@ -15,89 +15,94 @@
         <link class="cssdeck" rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/css/bootstrap.min.css">
         <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/css/bootstrap-responsive.min.css" class="cssdeck">
 
-        
-         <?php
+
+        <?php
         // define variables and set to empty values
-        $firstnameErr = $lastnameErr = $emailErr = $passwordErr = $repasswordErr =$typeErr =  "";
-        $name = $email = $password = $lastname = $firstname = $repassword = $age = $almamater = $city = $username = $type= "";
+        $firstnameErr = $lastnameErr = $emailErr = $passwordErr = $repasswordErr = $typeErr = "";
+        $name = $email = $password = $lastname = $firstname = $repassword = $age = $almamater = $city = $username = $type = "";
         $valid = true;
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            if (empty($_POST["firstname"])) {
-                $firstnameErr = "First name is required";
-                $valid = false;
-            } else {
-                $firstname = $_POST["firstname"];
-                if (!preg_match("/^[a-zA-Z ]*$/", $firstname)) {
-                    $firstnameErr = "Only letters and white space allowed";
-                    $valid = false;
-                }
-            }
+            switch ($_POST['submit']) {
+                case 'login':
+                    break;
+                case 'create':
+                    if (empty($_POST["firstname"])) {
+                        $firstnameErr = "First name is required";
+                        $valid = false;
+                    } else {
+                        $firstname = $_POST["firstname"];
+                        if (!preg_match("/^[a-zA-Z ]*$/", $firstname)) {
+                            $firstnameErr = "Only letters and white space allowed";
+                            $valid = false;
+                        }
+                    }
 
-            if (empty($_POST["email"])) {
-                $emailErr = "Email is required";
-                $valid = false;
-            } else {
-                $email = $_POST["email"];
-                if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                    $emailErr = "Invalid email format";
-                    $valid = false;
-                }
-            }
+                    if (empty($_POST["email"])) {
+                        $emailErr = "Email is required";
+                        $valid = false;
+                    } else {
+                        $email = $_POST["email"];
+                        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                            $emailErr = "Invalid email format";
+                            $valid = false;
+                        }
+                    }
 
-            if (empty($_POST["password"])) {
-                $passwordErr = "Password is required";
-                $valid = false;
-            } else {
-                $password = $_POST["password"];
-                $repassword = $_POST["repassword"];
-                if($password !=$repassword){
-                    $passwordErr ="Passwords do not match.";
-                    $valid = false;
-                }
-            }
+                    if (empty($_POST["password"])) {
+                        $passwordErr = "Password is required";
+                        $valid = false;
+                    } else {
+                        $password = $_POST["password"];
+                        $repassword = $_POST["repassword"];
+                        if ($password != $repassword) {
+                            $passwordErr = "Passwords do not match.";
+                            $valid = false;
+                        }
+                    }
 
-            if (empty($_POST["lastname"])) {
-                $lastnameErr = "Last name is required";
-                $valid = false;
-            } else {
-                $lastname = $_POST["lastname"];
-                if (!preg_match("/^[a-zA-Z ]*$/", $lastname)) {
-                    $lastnameErr = "Only letters and white space allowed";
-                    $valid = false;
-                }
-            }
-             if (empty($_POST["type"])) {
-                $typeErr = "Profile type is required.";
-                $valid = false;
-            } else {
-                $type = $_POST["type"];
-                
-            }
-            $age = $_POST["age"];
-            $almamater = $_POST["almamater"];
-            $city = $_POST["city"];
-            
-            $username = $_POST["username"];
-            
-            if($valid){
-                $_SESSION['firstname'] =$firstname; 
-                $_SESSION['lastname'] =$lastname;
-                $_SESSION['type'] =$type;
-                $_SESSION['email'] =$email;
-                $_SESSION['age'] =$age;
-                $_SESSION['username'] =$username;
-                $_SESSION['password'] =$password;
-                $_SESSION['almamater'] =$almamater;
-                $_SESSION['city'] =$city;
-                header('Location: http://localhost/59SecondPitch/update.php');
-            exit();
+                    if (empty($_POST["lastname"])) {
+                        $lastnameErr = "Last name is required";
+                        $valid = false;
+                    } else {
+                        $lastname = $_POST["lastname"];
+                        if (!preg_match("/^[a-zA-Z ]*$/", $lastname)) {
+                            $lastnameErr = "Only letters and white space allowed";
+                            $valid = false;
+                        }
+                    }
+                    if (empty($_POST["type"])) {
+                        $typeErr = "Profile type is required.";
+                        $valid = false;
+                    } else {
+                        $type = $_POST["type"];
+                    }
+                    $age = $_POST["age"];
+                    $almamater = $_POST["almamater"];
+                    $city = $_POST["city"];
+
+                    $username = $_POST["username"];
+
+                    if ($valid) {
+                        $_SESSION['firstname'] = $firstname;
+                        $_SESSION['lastname'] = $lastname;
+                        $_SESSION['type'] = $type;
+                        $_SESSION['email'] = $email;
+                        $_SESSION['age'] = $age;
+                        $_SESSION['username'] = $username;
+                        $_SESSION['password'] = $password;
+                        $_SESSION['almamater'] = $almamater;
+                        $_SESSION['city'] = $city;
+                        header('Location: http://localhost/59SecondPitch/update.php');
+                        exit();
+                    }
+                    break;
             }
         }
         ?>
         <div class="" id="loginModal">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h3>Have an Account?</h3>
+                <h3 id="banner">Have an Account?</h3>
             </div>
             <div class="modal-body">
                 <div class="well">
@@ -107,7 +112,7 @@
                     </ul>
                     <div id="myTabContent" class="tab-content">
                         <div class="tab-pane active in" id="login">
-                            <form class="form-horizontal" action='' method="POST">
+                            <form class="form-horizontal" action='verifyAccount.php' method="POST">
                                 <fieldset>
                                     <div id="legend">
                                         <legend class="">Login</legend>
@@ -132,14 +137,14 @@
                                     <div class="control-group">
                                         <!-- Button -->
                                         <div class="controls">
-                                            <button class="btn btn-success" id="loginButton">Login</button>
+                                            <button type="submit" class="btn btn-success" name="submit" value="login">Login</button>
                                         </div>
                                     </div>
                                 </fieldset>
                             </form>  
                         </div>
                         <div class="tab-pane fade" id="create">
-                            <form class="form-horizontal" id="newProfileForm" action="update.php"<?php //echo htmlspecialchars($_SERVER["PHP_SELF"]); ?> method="POST">
+                            <form class="form-horizontal" id="newProfileForm" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
 
                                 <div class="control-group">
                                     <label class="control-label" for="username">Username:</label>
@@ -181,21 +186,29 @@
                                 </div>
                                 <div class="control-group">
                                     <div class="controls">
-                                        <input type="radio" name="type" <?php if (isset($type) && $type=="Entrepreneur"){ echo "Entrepreneur";}?>value="Entrepreneur">Entrepreneur<span class="error">* <?php echo $typeErr; ?><br>
-                                        <input type="radio" name = "type" <?php if (isset($type) && $type=="Investor"){ echo "Investor";}?>value="Investor">Investor
-                                    </div>
+                                        <input type="radio" name="type" <?php
+                                        if (isset($type) && $type == "Entrepreneur") {
+                                            echo "Entrepreneur";
+                                        }
+                                        ?>value="Entrepreneur">Entrepreneur<span class="error">* <?php echo $typeErr; ?><br>
+                                            <input type="radio" name = "type" <?php
+                                            if (isset($type) && $type == "Investor") {
+                                                echo "Investor";
+                                            }
+                                            ?>value="Investor">Investor
+                                            </div>
+                                            </div>
+                                            <div class="control-group">
+                                                <div class="controls"><button type="submit" class="btn" name="submit" value="create">Submit</button></div>
+                                            </div>
+                                            </form>
+                                    </div>   
                                 </div>
-                                <div class="control-group">
-                                    <div class="controls"><button type="submit" class="btn">Submit</button></div>
-                                </div>
-                            </form>
-                        </div>   
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
 
 
 
-        <script class="cssdeck" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-        <script class="cssdeck" src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
+                <script class="cssdeck" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+                <script class="cssdeck" src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>

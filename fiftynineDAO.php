@@ -132,6 +132,30 @@ class fiftynineDAO {
         return $investorProfile;
     }
 
+    public function verify($email,$pass){
+        $con = $this->getDBConnection();
+        $sql = "SELECT * 
+                FROM 59profile
+                WHERE email = '" . $email . "' 
+                AND password = '" . $pass . "'";
+        
+        $result = mysqli_query($con, $sql);
+        if (!$result) {
+            die('Error: ' . mysqli_error($con) . "      " . $sql);
+        } 
+        else {
+             $rowcount=mysqli_num_rows($result);
+             if ($rowcount == 0){
+                 return false;
+             }
+             elseif ($rowcount == 1){
+                 return true;
+             }
+             else {
+                 die("Verify-Rowcount returned more than one record.  Check for primary key conflicts");
+             } 
+        }
+    }
 }
 
 ?>
