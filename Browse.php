@@ -22,6 +22,7 @@ include_once 'fiftynineDAO.php';
         <script>
             $(document).ready(function () {
                 $("#next").click(function () {
+                   
                     
                     var clickBtnValue = $(this).val();
                     
