@@ -85,6 +85,7 @@ class fiftynineDAO {
 
     public function getRandomBrowseProfile() {
         $con = $this->getDBConnection();
+
         $sql = "SELECT * FROM entrepreneur ORDER BY RAND() LIMIT 1";
         if (!($result = mysqli_query($con, $sql))) {
             die('Error: ' . mysqli_error($con) . "      " . $sql);
@@ -127,6 +128,44 @@ class fiftynineDAO {
           
          
          }
+
+        $sql = "SELECT business_id FROM entrepreneur ORDER BY RAND() LIMIT 1";
+        if (!($result = mysqli_query($con, $sql))) {
+            die('Error: ' . mysqli_error($con) . "      " . $sql);
+        }
+        $row = mysqli_fetch_array($result);
+        $business_id = $row['business_id'];
+
+
+        $sql = "SELECT firstname,lastname,almamater,city,business_type,business_name,business_description " .
+                "FROM entrepreneur, 59profile " .
+                "WHERE entrepreneur.59profileid = 59profile.59profileid " .
+                "AND business_id = " . $business_id;
+
+        if (!($result = mysqli_query($con, $sql))) {
+            die('Error: ' . mysqli_error($con) . "      " . $sql);
+        }
+        $row = mysqli_fetch_array($result);
+
+
+        echo "<h1> " . $row{'business_name'} . " </h1><br>";
+        echo $row{'business_type'} . "<br>";
+        echo "Creator: " . $row{'firstname'} . " " . $row{'lastname'} . "<br>";
+        echo "Almamater: " . $row{'almamater'} . "<br>";
+        echo "Location: " . $row{'city'} . "<br><br><br>";
+        echo "Description: <br><br>";
+        echo $row{'business_description'};
+        /* $return['business_name'] = $row{'business_name'};
+          $return['business_type'] = $row{'business_type'};
+          $return['firstname'] = $row{'firstname'};
+          $return['lastname'] = $row{'lastname'};
+          $return['almamater'] = $row{'almamater'};
+          $return['city'] = $row{'city'};
+          $return['business_description'] = $row{'business_description'
+          };
+          $return["json"] = json_encode($return);
+          echo json_encode($return); */
+
     }
 
     public function getInvestorProfile($fiftynineprofileid) {
