@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.
@@ -56,7 +57,7 @@ session_start();
                 $_SESSION['workType'] =$workType; 
                 $_SESSION['workName'] =$workName;
                 $_SESSION['workDesc'] =$workDesc;
-                $_SESSION['59profileid'] = $_SESSION['59profileid'];
+                
                 header('Location: http://localhost/59SecondPitch/updateEntrepreneur.php');
             exit();
             }
