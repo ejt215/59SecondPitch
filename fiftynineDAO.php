@@ -168,7 +168,7 @@ class fiftynineDAO {
 
     }
 
-    public function getInvestorProfile($fiftynineprofileid) {
+   public function getInvestorProfile($fiftynineprofileid) {
         $con = $this->getDBConnection();
         $sql = "SELECT * FROM investor WHERE 59profileid=" . $fiftynineprofileid;
         if (!($result = mysqli_query($con, $sql))) {
