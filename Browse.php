@@ -14,6 +14,7 @@ include_once 'fiftynineDAO.php';
     <head>
         <meta charset="UTF-8">
         <title></title>
+        <link href="CSS/bootstrap.min.css" rel="stylesheet" media="screen">
     </head>
     <body>
         <script src="http://code.jquery.com/jquery.js"></script>
@@ -49,13 +50,25 @@ include_once 'fiftynineDAO.php';
 
 
 </script>
-        <div id = "profile">
+<div class="container-fluid " >
+        <div  class="row-fluid ">
+            <div id ="profile" class ="centering text-center">
+                
+            </div>
             
         </div>
 
-        <div>   
-            <button type="button" id="next">Next</button>
+        <div class="row-fluid">   
+         <!--   <button type="button" id="next">Next</button>-->
+         <div class ="centering text-center" >
+         <button type="button" class="btn btn-danger">No Thanks</button>
+         <button type="button" class="btn btn-info">Feedback</button>
+            <button type="button"  class="btn btn-success">Match</button>
+            <button type="button" id ="next" class="btn btn-info">Next</button>
+         </div>
         </div> 
+    
+</div>
 
         
 
