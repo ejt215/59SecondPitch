@@ -4,7 +4,6 @@ session_start();
 include_once 'fiftynineDAO.php';
 
 
-
 $username = $_SESSION['username'];
 $password = $_SESSION['password'];
 $email = $_SESSION['email'];

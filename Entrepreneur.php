@@ -19,53 +19,60 @@ session_start();
         <script src="http://code.jquery.com/jquery.js"></script>
         <script src="JS/bootstrap.min.js"></script>
         <script src="JS/myScript.js"></script>
-        
+
         <?php
-        $workType= $workName= $workDesc= "";
-        $workTypeerr= $workNameerr= $workDescerr= "";
+        $workType = $workName = $workDesc = "";
+        $workTypeerr = $workNameerr = $workDescerr = "";
         $valid = true;
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        if (empty($_POST["workType"])) {
+            if (empty($_POST["workType"])) {
                 $workTypeerr = "Work Type is required.";
                 $valid = false;
             } else {
                 $workType = $_POST["workType"];
-                
-                
             }
-        
-        
-       
-        if (empty($_POST["workName"])) {
+
+
+
+            if (empty($_POST["workName"])) {
                 $workNameerr = "Work Name is required.";
                 $valid = false;
             } else {
                 $workName = $_POST["workName"];
-                
             }
-        
-        
-        if (empty($_POST["workDesc"])) {
+
+
+            if (empty($_POST["workDesc"])) {
                 $workDescerr = "Please provide a description.";
-               $valid = false;
+                $valid = false;
             } else {
                 $workDesc = $_POST["workDesc"];
-               
             }
-        
-         if($valid){
-                $_SESSION['workType'] =$workType; 
-                $_SESSION['workName'] =$workName;
-                $_SESSION['workDesc'] =$workDesc;
-                
+            /*if (!isset($_FILES['userfile']) || !($_FILES['userfile']['error'] == 0)) {
+                echo "Please upload a file";
+                $valid = false;
+            }*/
+
+            if ($valid) {
+                $_SESSION['workType'] = $workType;
+                $_SESSION['workName'] = $workName;
+                $_SESSION['workDesc'] = $workDesc;
+                /*try {
+                    $target_dir = "entImages/";
+                    $target_dir = $target_dir . basename($_FILES["userfile"]["name"]);
+                    
+                    if (move_uploaded_file($_FILES["userfile"]["tmp_name"], $target_dir)) {
+                        echo "The file " . basename($_FILES["userfile"]["name"]) . " has been uploaded.";
+                    } else {
+                        echo "Sorry, there was an error uploading your file.";
+                    }
+                } catch (Exception $e) {
+                    echo '<h4>' . $e->getMessage() . '</h4>';
+                }*/
                 header('Location: http://localhost/59SecondPitch/updateEntrepreneur.php');
-            exit();
+                exit();
             }
-            
         }
-        
-        
-        
         ?>
 
         <div class="container">
@@ -90,6 +97,14 @@ session_start();
                     <label class="control-label">Description of your work:</label>
                     <div class="controls"><textarea rows="4" cols="50" name ="workDesc"><?php echo $workDesc; ?></textarea><span class="error">* <?php echo $workDescerr; ?></span></div>
                 </div>
+                 <!--<div class="control-group">
+                    <div class="controls">
+                        <label class="control-label">Upload an image.</label>
+                        <input type="hidden" name="MAX_FILE_SIZE" value="99999999" />
+                        <input name="userfile" type="file" accept="image/jpeg,image/gif,image/png,image/jpg"  />
+                    </div>
+
+                </div>-->
                 <div class="control-group">
                     <div class="controls"><button type="submit" class="btn">Submit</button></div>
                 </div>
