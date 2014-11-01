@@ -95,11 +95,11 @@ include_once 'fiftynineDAO.php';
     <div  class="row-fluid">
                 <div id ="profile" class ="coverflow  text-center"   >
                     
-                        <div class ="cover " id ="1" ></div>
-                        <div class ="cover " id ="2" ></div>
-                        <div class ="cover " id ="3" ></div>
-                        <div class ="cover " id ="4" ></div>
-                        <div class ="cover " id ="5" ></div>
+                        <div class ="cover " id ="1" style ="border: 2px solid;" ></div>
+                        <div class ="cover " id ="2" style ="border: 2px solid;"></div>
+                        <div class ="cover " id ="3" style ="border: 2px solid;"></div>
+                        <div class ="cover " id ="4" style ="border: 2px solid;"></div>
+                        <div class ="cover " id ="5" style ="border: 2px solid;"></div>
 
                    
                     
