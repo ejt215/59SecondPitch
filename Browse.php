@@ -91,24 +91,25 @@ include_once 'fiftynineDAO.php';
                 <li><a href="/about/" >Logout</a></li>
 
             </ul>
-
-        <div class="container-fluid " >
-            
-
-            <div  class="row-fluid ">
-                <div id ="profile" class ="coverflow  centered text-center"   >
+        <div class="container-fluid1">
+    <div  class="row-fluid">
+                <div id ="profile" class ="coverflow  text-center"   >
                     
-                        <div class ="cover centered text-center" id ="1" ></div>
-                        <div class ="cover centered text-center" id ="2" ></div>
-                        <div class ="cover centered text-center" id ="3" ></div>
-                        <div class ="cover centered text-center" id ="4" ></div>
-                        <div class ="cover centered text-center" id ="5" ></div>
+                        <div class ="cover " id ="1" ></div>
+                        <div class ="cover " id ="2" ></div>
+                        <div class ="cover " id ="3" ></div>
+                        <div class ="cover " id ="4" ></div>
+                        <div class ="cover " id ="5" ></div>
 
                    
                     
                 </div>
-                 
-                
+            </div>
+  </div>
+
+        <div class="container-fluid" >
+            
+            <div  class="row-fluid">
                 <div  class ="centered text-center" >
                     <button type="button" class="btn btn-danger">No Thanks</button>
                     <button type="button" class="btn btn-info">Feedback</button>
@@ -116,8 +117,7 @@ include_once 'fiftynineDAO.php';
                     <button type="button" id ="next" class="btn btn-info">Next</button>
                 </div>
                 </div>
-
-           
+            
             
             </div>
         
