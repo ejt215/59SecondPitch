@@ -96,7 +96,7 @@ include_once 'fiftynineDAO.php';
             
 
             <div  class="row-fluid ">
-                <div id ="profile" class ="coverflow  centered text-center"  >
+                <div id ="profile" class ="coverflow  centered text-center"   >
                     
                         <div class ="cover centered text-center" id ="1" ></div>
                         <div class ="cover centered text-center" id ="2" ></div>
