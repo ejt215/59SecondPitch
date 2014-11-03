@@ -16,7 +16,7 @@ include_once 'fiftynineDAO.php';
     $business_id = $row['business_id'];
 
 
-    $sql = "SELECT firstname,lastname,almamater,city,business_type,business_name,business_description " .
+    $sql = "SELECT firstname,lastname,almamater,city,business_type,business_name,left(business_description,50) as business_description " .
             "FROM entrepreneur,59profile " .
             "WHERE 59profile.59profileid = " . $profileid .
             " AND business_id = " . $business_id;

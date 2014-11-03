@@ -39,12 +39,14 @@ include_once 'fiftynineDAO.php';
             $(document).ready(function () {
                 $("ul#demo_menu1").sidebar({
                 });
+                
                 $('.coverflow').coverflow({
                     index: 6,
                     density: 2,
                     innerOffset: 50,
                     innerScale: .7
                 });
+                
                 $("#next").click(function () {
 
 
@@ -52,24 +54,25 @@ include_once 'fiftynineDAO.php';
 
                     data = {'action': clickBtnValue};
 
-                    //data = $(this).serialize() + "&" + $.param(data);
+
                     $.ajax({
                         type: "POST",
                         dataType: "json",
                         url: "fetchProfile.php",
                         data: data,
                         success: function (data) {
-                           
+
                             var profile;
                             for (i = 1; i < 6; i++) {
-                                profile = data[""+i];
-                                 
-                                $("#"+i).html(
+                                profile = data["" + i];
+
+                                $("#" + i).html(
                                         "<h1> " + profile["business_name"] + "</h1><br />Business type: " + profile["business_type"] + "<br />Creator: " + profile["firstname"] + " " + profile["lastname"] + "<br /> " +
                                         "Almamater: " + profile['almamater'] + "<br />Location: " + profile['city'] + "<br />" + "Description :<br /><br /><br />" + profile['business_description']
                                         );
 
                             }
+                            
                         }
                     });
                 });
@@ -84,31 +87,31 @@ include_once 'fiftynineDAO.php';
             </div>
 
         </div>
-<ul id="demo_menu1" >
-                <li><a href="/" >Manage profile</a></li>
-                <li><a href="/plugins/" >Favorites</a></li>
-                <li><a href="/works/" >Tracking</a></li>
-                <li><a href="/about/" >Logout</a></li>
+        <ul id="demo_menu1" >
+            <li><a href="/" >Manage profile</a></li>
+            <li><a href="/plugins/" >Favorites</a></li>
+            <li><a href="/works/" >Tracking</a></li>
+            <li><a href="/about/" >Logout</a></li>
 
-            </ul>
+        </ul>
         <div class="container-fluid1">
-    <div  class="row-fluid">
+            <div  class="row-fluid">
                 <div id ="profile" class ="coverflow  text-center"   >
-                    
-                        <div class ="cover " id ="1" style ="border: 2px solid;" ></div>
-                        <div class ="cover " id ="2" style ="border: 2px solid;"></div>
-                        <div class ="cover " id ="3" style ="border: 2px solid;"></div>
-                        <div class ="cover " id ="4" style ="border: 2px solid;"></div>
-                        <div class ="cover " id ="5" style ="border: 2px solid;"></div>
 
-                   
-                    
+                    <div class ="cover " id ="1" style ="border: 2px solid;" ></div>
+                    <div class ="cover " id ="2" style ="border: 2px solid;"></div>
+                    <div class ="cover " id ="3" style ="border: 2px solid;"></div>
+                    <div class ="cover " id ="4" style ="border: 2px solid;"></div>
+                    <div class ="cover " id ="5" style ="border: 2px solid;"></div>
+
+
+
                 </div>
             </div>
-  </div>
+        </div>
 
         <div class="container-fluid" >
-            
+
             <div  class="row-fluid">
                 <div  class ="centered text-center" >
                     <button type="button" class="btn btn-danger">No Thanks</button>
@@ -116,11 +119,11 @@ include_once 'fiftynineDAO.php';
                     <button type="button"  class="btn btn-success">Match</button>
                     <button type="button" id ="next" class="btn btn-info">Next</button>
                 </div>
-                </div>
-            
-            
             </div>
-        
+
+
+        </div>
+
 
 
 
