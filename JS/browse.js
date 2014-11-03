@@ -15,6 +15,10 @@ $(document).ready(function() {
         innerOffset: 50,
         innerScale: .7
     });
+    
+    $('.viewProfile').click(function(){
+        $('#profileContainer').hide();
+    });
 
     //Next fetches 5 random profiles to display 
     $("#next").click(function() {
@@ -39,7 +43,9 @@ $(document).ready(function() {
 
                     $("#" + i).html(
                             "<h1> " + profile["business_name"] + "</h1><br />Business type: " + profile["business_type"] + "<br />Creator: " + profile["firstname"] + " " + profile["lastname"] + "<br /> " +
-                            "Almamater: " + profile['almamater'] + "<br />Location: " + profile['city'] + "<br />" + "Description :<br /><br /><br />" + profile['business_description']
+                            "Almamater: " + profile['almamater'] + "<br />Location: " + profile['city'] + "<br />" + "Description :" + profile['business_description']+"<br />"+
+                            "<button type='button' class='viewProfile' id=b"+i+">View Full Profile</button>"
+                            
                             );
 
                 }
