@@ -26,10 +26,18 @@ $(document).ready(function() {
 
     //initialize coverflow
     $('.coverflow').coverflow({
-        index: 6,
+        index: 3,
         density: 2,
         innerOffset: 50,
-        innerScale: .7
+        innerScale: .7,
+        /*animateStep: function(event, cover, offset, isVisible, isMiddle, sin, cos) {
+            if (isVisible && isMiddle) {
+                alert($(cover).index());
+            }
+        },*/
+        /*change: function(cover, index){
+            alert($(cover).html());
+        }*/
     });
 
     $('.viewProfile').click(function() {
@@ -53,7 +61,18 @@ $(document).ready(function() {
             type: "POST",
             dataType: "json",
             url: "fetchProfile.php",
-            
+            //Set cover content to the 5 fetched profiles
+            success: function(data) {
+                displayNewProfiles(data);
+            }
+        });
+    });
+
+    $("#match").click(function() {
+        $.ajax({
+            type: "POST",
+            dataType: "json",
+            url: "fetchProfile.php",
             //Set cover content to the 5 fetched profiles
             success: function(data) {
                 displayNewProfiles(data);

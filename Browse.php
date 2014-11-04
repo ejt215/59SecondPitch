@@ -68,9 +68,9 @@ include_once 'fiftynineDAO.php';
         <div class="container-fluid" >
             <div  class="row-fluid">
                 <div  class ="centered text-center" >
-                    <button type="button" class="btn btn-danger">No Thanks</button>
-                    <button type="button" class="btn btn-info">Feedback</button>
-                    <button type="button"  class="btn btn-success">Match</button>
+                    <button type="button" id ="nothanks" class="btn btn-danger">No Thanks</button>
+                    <button type="button" id ="feedback" class="btn btn-info">Feedback</button>
+                    <button type="button" id ="match" class="btn btn-success">Match</button>
                     <button type="button" id ="next" class="btn btn-info">Next</button>
                 </div>
             </div>
