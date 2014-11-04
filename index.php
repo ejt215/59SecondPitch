@@ -21,7 +21,7 @@ session_start();
         <?php
         // define variables and set to empty values
         $firstnameErr = $lastnameErr = $emailErr = $passwordErr = $repasswordErr =$typeErr =  "";
-        $name = $email = $password = $lastname = $firstname = $repassword = $age = $almamater = $city = $username = $type= "";
+        $name = $email = $password = $lastname = $firstname = $repassword = $age = $almamater = $city = $type= "";
         $valid = true;
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if (empty($_POST["firstname"])) {
@@ -79,15 +79,12 @@ session_start();
             $almamater = $_POST["almamater"];
             $city = $_POST["city"];
             
-            $username = $_POST["username"];
-            
             if($valid){
                 $_SESSION['firstname'] =$firstname; 
                 $_SESSION['lastname'] =$lastname;
                 $_SESSION['type'] =$type;
                 $_SESSION['email'] =$email;
                 $_SESSION['age'] =$age;
-                $_SESSION['username'] =$username;
                 $_SESSION['password'] =$password;
                 $_SESSION['almamater'] =$almamater;
                 $_SESSION['city'] =$city;
@@ -100,10 +97,6 @@ session_start();
         <div class="container">
             <!--form setup taken from tutorial for twitter bootstrap-->
             <form id="newProfileForm" class="form-horizontal" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
-                <div class="control-group">
-                    <label class="control-label" for="username">Username:</label>
-                    <div class="controls"><input type="text" id="username" name="username" value = "<?php echo $username; ?>"></div>
-                </div>
                 <div class="control-group">
                     <label class="control-label" for="password">Password:</label>
                     <div class="controls"><input type="password" id="password" name="password" value = "<?php echo $password; ?>"><span class="error">* <?php echo $passwordErr; ?></span><br></div>

@@ -67,7 +67,8 @@ class fiftynineDAO {
         }
 
         $row = mysqli_fetch_array($result);
-        $fiftynineprofile = new fiftynineProfile($row['fiftynineprofileid'], $row['username'], $row['password'], $row['email'], $row['firstname'], $row['lastname'], $row['age'], $row['almamater'], $row['city']);
+        die($row['city']);
+        $fiftynineprofile = new fiftynineProfile($row['fiftynineprofileid'], $row['password'], $row['email'], $row['firstname'], $row['lastname'], $row['age'], $row['almamater'], $row['city']);
         return $fiftynineprofile;
     }
 

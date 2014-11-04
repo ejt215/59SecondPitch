@@ -17,11 +17,10 @@ session_start();
 
 
         <?php
-       
         //
         // define variables and set to empty values
         $firstnameErr = $lastnameErr = $emailErr = $passwordErr = $repasswordErr = $typeErr = "";
-        $name = $email = $password = $lastname = $firstname = $repassword = $age = $almamater = $city = $username = $type = "";
+        $name = $email = $password = $lastname = $firstname = $repassword = $age = $almamater = $city = $type = "";
         $valid = true;
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             switch ($_POST['submit']) {
@@ -82,15 +81,12 @@ session_start();
                     $almamater = $_POST["almamater"];
                     $city = $_POST["city"];
 
-                    $username = $_POST["username"];
-
                     if ($valid) {
                         $_SESSION['firstname'] = $firstname;
                         $_SESSION['lastname'] = $lastname;
                         $_SESSION['type'] = $type;
                         $_SESSION['email'] = $email;
                         $_SESSION['age'] = $age;
-                        $_SESSION['username'] = $username;
                         $_SESSION['password'] = $password;
                         $_SESSION['almamater'] = $almamater;
                         $_SESSION['city'] = $city;
@@ -120,7 +116,7 @@ session_start();
                                         <legend class="">Login</legend>
                                     </div>    
                                     <div class="control-group">
-                                        <!-- Username -->
+                                        <!-- Email -->
                                         <label class="control-label"  for="email">Email</label>
                                         <div class="controls">
                                             <input type="text" id="email" name="email" placeholder="" class="input-xlarge">
@@ -147,10 +143,9 @@ session_start();
                         </div>
                         <div class="tab-pane fade" id="create">
                             <form class="form-horizontal" id="newProfileForm" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
-
                                 <div class="control-group">
-                                    <label class="control-label" for="username">Username:</label>
-                                    <div class="controls"><input type="text" id="username" name="username" value = "<?php echo $username; ?>"></div>
+                                    <label class="control-label" for="email">Email:</label>
+                                    <div class="controls"><input type="text" id="email" name="email" value = "<?php echo $email; ?>"> <span class="error">* <?php echo $emailErr; ?></span></div>
                                 </div>
                                 <div class="control-group">
                                     <label class="control-label" for="password">Password:</label>
@@ -159,10 +154,6 @@ session_start();
                                 <div class="control-group">
                                     <label class="control-label" for="repassword">Re-Enter Password:</label>
                                     <div class="controls"><input type="password" id="repassword" name="repassword" value = "<?php echo $repassword; ?>"></div>
-                                </div>
-                                <div class="control-group">
-                                    <label class="control-label" for="email">Email:</label>
-                                    <div class="controls"><input type="text" id="email" name="email" value = "<?php echo $email; ?>"> <span class="error">* <?php echo $emailErr; ?></span></div>
                                 </div>
                                 <div class="control-group">
                                     <label class="control-label" for="firstname">First Name:</label>
@@ -189,15 +180,15 @@ session_start();
                                 <div class="control-group">
                                     <div class="controls">
                                         <input type="radio" name="type" <?php
-                                        if (isset($type) && $type == "Entrepreneur") {
-                                            echo "Entrepreneur";
-                                        }
-                                        ?>value="Entrepreneur">Entrepreneur<span class="error">* <?php echo $typeErr; ?><br>
+        if (isset($type) && $type == "Entrepreneur") {
+            echo "Entrepreneur";
+        }
+        ?>value="Entrepreneur">Entrepreneur<span class="error">* <?php echo $typeErr; ?><br>
                                             <input type="radio" name = "type" <?php
-                                            if (isset($type) && $type == "Investor") {
-                                                echo "Investor";
-                                            }
-                                            ?>value="Investor">Investor
+                                        if (isset($type) && $type == "Investor") {
+                                            echo "Investor";
+                                        }
+        ?>value="Investor">Investor
                                             </div>
                                             </div>
                                             <div class="control-group">

@@ -3,8 +3,6 @@
 session_start();
 include_once 'fiftynineDAO.php';
 
-
-$username = $_SESSION['username'];
 $password = $_SESSION['password'];
 $email = $_SESSION['email'];
 $firstname = $_SESSION['firstname'];
@@ -20,8 +18,8 @@ if($age ==""){
 
 $dao = new fiftynineDAO();
 
-$sql="INSERT INTO 59Profile (username,password,email,firstname,lastname,age,almamater,city)
-VALUES ('$username','$password','$email','$firstname','$lastname','$age','$almamater','$city')";
+$sql="INSERT INTO 59Profile (password,email,firstname,lastname,age,almamater,city)
+VALUES ('$password','$email','$firstname','$lastname','$age','$almamater','$city')";
 
 $dao->executeSQL($sql);
 

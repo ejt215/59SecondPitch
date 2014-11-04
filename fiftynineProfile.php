@@ -2,7 +2,6 @@
 
 class fiftynineProfile {
     public $fiftynineprofileid;
-    public $username;
     public $password;
     public $email;
     public $firstname;
@@ -11,9 +10,8 @@ class fiftynineProfile {
     public $almamater;
     public $city;
 
-    function __construct($fiftynineprofileid,$username,$password,$email,$age,$almamater,$city) {        
+    function __construct($fiftynineprofileid,$password,$email,$age,$almamater,$city) {        
         $this->fiftynineprofileid = $fiftynineprofileid;
-        $this->username = $username;
         $this->password = $password;
         $this->email = $email;
         $this->firstname = $firstname;
