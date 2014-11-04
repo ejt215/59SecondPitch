@@ -47,6 +47,9 @@ include_once 'fiftynineDAO.php';
             <li><a href="/works/" >Tracking</a></li>
             <li><a href="/about/" >Logout</a></li>
         </ul>
+        
+        
+     
 
         <!--Profile Container-->
         <div id="profileContainer" class="container-fluid1">
