@@ -50,7 +50,6 @@ $(document).ready(function() {
         url: "fetchProfile.php",
         //Set cover content to the 5 fetched profiles
         success: function(data) {
-            alert(data);
             displayNewProfiles(data);
         }
     });
