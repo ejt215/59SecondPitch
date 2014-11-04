@@ -7,13 +7,12 @@ function displayNewProfiles(data) {
     var profile;
     for (i = 1; i < 6; i++) {
         profile = data["" + i];
-
         $("#" + i).html(
                 "<h1> " + profile["business_name"] + "</h1><br />" +
                 "Business type: " + profile["business_type"] + "<br />" +
                 "Creator: " + profile["firstname"] + " " + profile["lastname"] + "<br />" +
                 "Almamater: " + profile['almamater'] + "<br />" +
-                "Location: " + +profile['city'] + "<br />" +
+                "Location: " + profile['city'] + "<br />" +
                 "Description :" + profile['business_description'] + "<br />" +
                 "<button type='button' class='viewProfile' id='b" + i + "'>View Full Profile</button>"
                 );
@@ -51,6 +50,7 @@ $(document).ready(function() {
         url: "fetchProfile.php",
         //Set cover content to the 5 fetched profiles
         success: function(data) {
+            alert(data);
             displayNewProfiles(data);
         }
     });
