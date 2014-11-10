@@ -24,7 +24,7 @@ include_once 'fiftynineDAO.php';
     $result2 = $dao->executeSQL($sql);
     $row2 = mysqli_fetch_array($result2);
     //echo json_encode($row2{'business_name'} . " " . $row2{'business_type'} . " " . $row2{'firstname'} . " " . $row2{'lastname'} . " " . $row2{'almamater'} . " " . $row2{'city'} . " " . $row2{'business_description'});
-    $list[''.$count] = array('business_name' => $row2{'business_name'}, 'business_type' => $row2{'business_type'}, 'firstname' => $row2{'firstname'}, 'lastname' => $row2{'lastname'}, 'almamater' => $row2{'almamater'}, 'city' => $row2{'city'}, 'business_description' => $row2{'business_description'});
+    $list[''.$count] = array('business_id' =>$business_id,'business_name' => $row2{'business_name'}, 'business_type' => $row2{'business_type'}, 'firstname' => $row2{'firstname'}, 'lastname' => $row2{'lastname'}, 'almamater' => $row2{'almamater'}, 'city' => $row2{'city'}, 'business_description' => $row2{'business_description'});
     
     $count ++;
     }

@@ -11,11 +11,13 @@ function displayNewProfiles(data) {
                 "<h1> " + profile["business_name"] + "</h1><br />" +
                 "Business type: " + profile["business_type"] + "<br />" +
                 "Creator: " + profile["firstname"] + " " + profile["lastname"] + "<br />" +
-                "Almamater: " + profile['almamater'] + "<br />" +
+                "Alma mater: " + profile['almamater'] + "<br />" +
                 "Location: " + profile['city'] + "<br />" +
                 "Description :" + profile['business_description'] + "<br />" +
                 "<button type='button' class='viewProfile' id='b" + i + "'>View Full Profile</button>"
                 );
+        $("#" + i).attr("name",profile['business_id']);
+        
     }
 }
 
@@ -37,7 +39,12 @@ $(document).ready(function() {
         /*change: function(cover, index){
             alert($(cover).html());
         }*/
+        
+                
     });
+   /* $('#match').click(function(){
+       alert($('.coverflow').coverflow("cover").attr('id')); 
+    });*/
 
     $('.viewProfile').click(function() {
         $('#profileContainer').hide();
@@ -68,15 +75,30 @@ $(document).ready(function() {
     });
 
     $("#match").click(function() {
-        $.ajax({
+        var id = $('.coverflow').coverflow("cover").attr('name');
+        //var arr = {"businessid":};
+        $.post('matching.php', { businessid: id }, function(data){
+             
+            // show the response
+            //$('#response').html(data);
+            alert("Matched!");
+             
+        }).fail(function() {
+         
+            // just in case posting your form failed
+            alert( "Posting failed." );
+             
+        });
+        /*$.ajax({
             type: "POST",
             dataType: "json",
-            url: "fetchProfile.php",
+            url: "matching.php",
+            data:{'id': JSON.stringify(arr)},
             //Set cover content to the 5 fetched profiles
             success: function(data) {
-                displayNewProfiles(data);
+                alert('Matched!');
             }
-        });
+        });*/
     });
 });
 

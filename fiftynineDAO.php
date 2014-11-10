@@ -96,6 +96,16 @@ class fiftynineDAO {
         $investorProfile = new investorProfile($row['59profileid'], $row['class'], $row['contact_type'], $row['contact_preferences']);
         return $investorProfile;
     }
+    public function match($profileid,$businessid){
+        $con = $this->getDBConnection();
+        $var =1;
+        $sql = "INSERT into matching(59profileid,business_id,matched) values('".$profileid."','".$businessid."',".$var.")";
+    
+        $result = mysqli_query($con, $sql);
+        if (!$result) {
+            die('Error: ' . mysqli_error($con) . "      " . $sql);
+        } 
+    }
 
     public function verify($email,$pass){
         $con = $this->getDBConnection();

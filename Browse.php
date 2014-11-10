@@ -55,11 +55,11 @@ include_once 'fiftynineDAO.php';
         <div id="profileContainer" class="container-fluid1">
             <div  class="row-fluid">
                 <div id ="profile" class ="coverflow  text-center"   >
-                    <div class ="cover " id ="1" style ="border: 2px solid;" ></div>
-                    <div class ="cover " id ="2" style ="border: 2px solid;"></div>
-                    <div class ="cover " id ="3" style ="border: 2px solid;"></div>
-                    <div class ="cover " id ="4" style ="border: 2px solid;"></div>
-                    <div class ="cover " id ="5" style ="border: 2px solid;"></div>
+                    <div class ="cover " name ="" id ="1" style ="border: 2px solid;" ></div>
+                    <div class ="cover " name ="" id ="2" style ="border: 2px solid;"></div>
+                    <div class ="cover " name ="" id ="3" style ="border: 2px solid;"></div>
+                    <div class ="cover " name ="" id ="4" style ="border: 2px solid;"></div>
+                    <div class ="cover " name ="" id ="5" style ="border: 2px solid;"></div>
                 </div>
             </div>
         </div>

@@ -23,6 +23,7 @@ VALUES ('$password','$email','$firstname','$lastname','$age','$almamater','$city
 
 $dao->executeSQL($sql);
 
+
 if($type=="Investor"){
     header("Location: http://localhost/59SecondPitch/Investor.php"); 
     exit();

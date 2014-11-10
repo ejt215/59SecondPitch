@@ -12,7 +12,7 @@ require_once 'fiftynineDAO.php';
 $dao = new fiftynineDAO();
 $email = $_SESSION['email'];
 $profileID = $dao->get59ProfileIDFromEmail($email);
-
+$_SESSION['profileid'] = $profileID;
 $class = $_SESSION['userType'];
 $contact_type = $_SESSION['contactType'];
 $contact_preferences = $_SESSION['contactPref'];
