@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-include_once 'fiftynineDAO.php';
+include_once 'FiftyNineDAO.php';
 
 $password = $_SESSION['password'];
 $email = $_SESSION['email'];
@@ -16,7 +16,7 @@ if($age ==""){
     $age =0;
 }
 
-$dao = new fiftynineDAO();
+$dao = new FiftyNineDAO();
 
 $sql="INSERT INTO 59Profile (password,email,firstname,lastname,age,almamater,city)
 VALUES ('$password','$email','$firstname','$lastname','$age','$almamater','$city')";
@@ -25,10 +25,10 @@ $dao->executeSQL($sql);
 
 
 if($type=="Investor"){
-    header("Location: http://localhost/59SecondPitch/Investor.php"); 
+    header("Location: http://localhost/59SecondPitch/investorSignup.php"); 
     exit();
 }
 else if ($type =="Entrepreneur"){
-    header("Location: http://localhost/59SecondPitch/Entrepreneur.php"); 
+    header("Location: http://localhost/59SecondPitch/entrepreneurSignup.php"); 
     exit();
 }

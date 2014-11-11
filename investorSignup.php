@@ -59,7 +59,7 @@ session_start();
                 $_SESSION['userType'] =$userType;
                 $_SESSION['contactPref'] =$contactPref;
                 
-                header('Location: http://localhost/59SecondPitch/updateInvestor.php');
+                header('Location: http://localhost/59SecondPitch/addUpdateInvestorProfile.php');
             exit();
             }
             

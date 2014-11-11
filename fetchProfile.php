@@ -1,10 +1,10 @@
 <?php
 
-include_once 'fiftynineDAO.php';
+include_once 'FiftyNineDAO.php';
 
 
 
-    $dao = new fiftynineDAO();
+    $dao = new FiftyNineDAO();
 
     $sql = "SELECT * FROM entrepreneur ORDER BY RAND() LIMIT 5";
     $result = $dao->executeSQL($sql);

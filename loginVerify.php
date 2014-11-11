@@ -1,7 +1,7 @@
 <?php
-require_once 'fiftynineDAO.php';
+require_once 'FiftyNineDAO.php';
 
-$dao = new fiftynineDAO();
+$dao = new FiftyNineDAO();
 $email = $_POST['email'];
 $pass = $_POST['password'];
 
@@ -11,7 +11,7 @@ if ($dao->verify($email, $pass)){
     session_start();
     $_SESSION['email'] = $_POST['email'];
     $_SESSION['profileid'] = $dao->get59ProfileIDFromEmail($email);
-    header("Location:  Browse.php");
+    header("Location:  browse.php");
 }
 else{
     header("Location: login.php");

@@ -90,7 +90,7 @@ session_start();
                         $_SESSION['password'] = $password;
                         $_SESSION['almamater'] = $almamater;
                         $_SESSION['city'] = $city;
-                        header('Location: http://localhost/59SecondPitch/update.php');
+                        header('Location: http://localhost/59SecondPitch/addUpdate59Profile.php');
                         exit();
                     }
                     break;

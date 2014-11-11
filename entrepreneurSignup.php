@@ -69,7 +69,7 @@ session_start();
                 } catch (Exception $e) {
                     echo '<h4>' . $e->getMessage() . '</h4>';
                 }*/
-                header('Location: http://localhost/59SecondPitch/updateEntrepreneur.php');
+                header('Location: http://localhost/59SecondPitch/addUpdateEntrepreneurProfile.php');
                 exit();
             }
         }
