@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.
@@ -82,4 +81,3 @@ include_once 'FiftyNineDAO.php';
 
     </body>
 </html>
-

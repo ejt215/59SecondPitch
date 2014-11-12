@@ -110,7 +110,7 @@ session_start();
                     </ul>
                     <div id="myTabContent" class="tab-content">
                         <div class="tab-pane active in" id="login">
-                            <form class="form-horizontal" action='verifyAccount.php' method="POST">
+                            <form class="form-horizontal" action='loginVerify.php' method="POST">
                                 <fieldset>
                                     <div id="legend">
                                         <legend class="">Login</legend>
