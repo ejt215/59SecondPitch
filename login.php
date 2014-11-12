@@ -180,15 +180,15 @@ session_start();
                                 <div class="control-group">
                                     <div class="controls">
                                         <input type="radio" name="type" <?php
-        if (isset($type) && $type == "Entrepreneur") {
-            echo "Entrepreneur";
-        }
-        ?>value="Entrepreneur">Entrepreneur<span class="error">* <?php echo $typeErr; ?><br>
-                                            <input type="radio" name = "type" <?php
-                                        if (isset($type) && $type == "Investor") {
-                                            echo "Investor";
+                                        if (isset($type) && $type == "Entrepreneur") {
+                                            echo "Entrepreneur";
                                         }
-        ?>value="Investor">Investor
+                                        ?>value="Entrepreneur">Entrepreneur<span class="error">* <?php echo $typeErr; ?><br>
+                                            <input type="radio" name = "type" <?php
+                                            if (isset($type) && $type == "Investor") {
+                                                echo "Investor";
+                                            }
+                                            ?>value="Investor">Investor
                                             </div>
                                             </div>
                                             <div class="control-group">

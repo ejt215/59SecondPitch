@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 require_once 'FiftyNineDAO.php';
 
@@ -9,16 +10,8 @@ $profileID = $_SESSION['profileid'];
 $dao = new FiftyNineDAO();
 $dao->match($profileID, $business_id);
 //small change
+//die($email . "        " . $pass . "               " . $dao->verify($email, $pass));
 
-    //die($email . "        " . $pass . "               " . $dao->verify($email, $pass));
-    
 header("Location:  browse.php");
-
-
-
-
-
-
-
 ?>
 
