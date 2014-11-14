@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    $("ul#demo_menu1").sidebar({});
+    $("ul#sidebar").sidebar({});
     
     $("#matchesBtn").click(function() {
         $(this).closest("form").attr("action", "browse.php");
