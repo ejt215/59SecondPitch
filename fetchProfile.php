@@ -1,13 +1,16 @@
 <?php
 
 include_once 'FiftyNineDAO.php';
-
-
+session_start();
+$profileID = $_SESSION['profileid'];
 
 $dao = new FiftyNineDAO();
 
-$sql = "SELECT * FROM entrepreneur ORDER BY RAND() LIMIT 5";
-$result = $dao->executeSQL($sql);
+$sql1 = "SELECT  59profileid,business_id from entrepreneur where business_id not in(select business_id from matching where 59profileid=".$profileID.")limit 5";
+
+
+
+$result = $dao->executeSQL($sql1);
 $list = array();
 //'1' =>"",'2' =>"",'3'=>"",'4' =>"",'5'=>""
 $count = 1;
