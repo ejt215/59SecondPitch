@@ -95,9 +95,9 @@ class FiftyNineDAO {
         return $investorProfile;
     }
 
-    public function match($profileid, $businessid) {
+    public function match($profileid, $businessid,$match) {
         $con = $this->getDBConnection();
-        $var = 1;
+        $var = $match;
         $sql = "INSERT into matching(59profileid,business_id,matched) values('" . $profileid . "','" . $businessid . "'," . $var . ")";
 
         $result = mysqli_query($con, $sql);

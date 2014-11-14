@@ -77,15 +77,14 @@ $(document).ready(function() {
     $("#match").click(function() {
         var id = $('.coverflow').coverflow("cover").attr('name');
         //var arr = {"businessid":};
-        $.post('matching.php', { businessid: id }, function(data){
+        $.post('browseMatching.php', { businessid: id,match: 1}, function(data){
              
-            // show the response
-            //$('#response').html(data);
+           
             alert("Matched!");
              
         }).fail(function() {
          
-            // just in case posting your form failed
+            
             alert( "Posting failed." );
              
         });
@@ -99,6 +98,21 @@ $(document).ready(function() {
                 alert('Matched!');
             }
         });*/
+    });
+    $("#nothanks").click(function (){
+        var id = $('.coverflow').coverflow("cover").attr('name');
+        //var arr = {"businessid":};
+        $.post('browseMatching.php', { businessid: id,match: 0}, function(data){
+             
+           
+            alert("Why not? Provide feedback if you have a minute.");
+             
+        }).fail(function() {
+         
+            
+            alert( "Posting failed." );
+             
+        });
     });
 });
 
