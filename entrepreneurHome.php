@@ -33,56 +33,42 @@ include_once 'fiftynineDAO.php';
 
     </head>
     <body>
-        <div id="legend" class="row">
-            <legend class="">Entrepreneur Home</legend>
-        </div> 
-        
-        <ul id="demo_menu1" >
-            <li><a href="/59SecondPitch/entrepreneurHome.php">Home</a></li>
-            <li><a href="/59SecondPitch/manageProfile.php">Manage Profile</a></li>
-        </ul>
-        
-        <div id="optionsSection" class="container marketing">
-
-            <!-- Three columns of text below the carousel -->
-            <div class="row">
-                <div class="span4 col-lg-4">
-                    <img class="img-circle" src="IMG/Matches.GIF" alt="Generic placeholder image" style="width: 140px; height: 140px;">
-                    <h2>Matches</h2>
-                    <p>Find out who wants to start a conversation.</p>
-                    <p><a class="btn btn-default" href="/59SecondPitch/entrepreneurMatches.php" role="button">View Matches »</a></p>
-                </div><!-- /.col-lg-4 -->
-                <div class="span4 col-lg-4">
-                    <img class="img-circle" src="IMG/Brain.gif" alt="Generic placeholder image" style="width: 140px; height: 140px;">
-                    <h2>Ideas</h2>
-                    <p>You're a genius and we both know it.  Let's show the world what you're made of.</p>
-                    <p><a class="btn btn-default" href="/59SecondPitch/entrepreneurIdeas.php" role="button">View Ideas »</a></p>
-                </div><!-- /.col-lg-4 -->
-                <div class="span4 col-lg-4">
-                    <img class="img-circle" src="IMG/Statistics.jpg" alt="Generic placeholder image" style="width: 140px; height: 140px;">
-                    <h2>Statistics</h2>
-                    <p>Numbers speak louder than words</p>
-                    <p><a class="btn btn-default" href="/59SecondPitch/entrepreneurStatistics.php" role="button">View Statistics »</a></p>
-                </div><!-- /.col-lg-4 -->
-            </div><!-- /.row -->
-        </div>
-
-        <form class="form-horizontal" action='entrepreneurMatches.php' method="POST">
-            <div id="legend">
-                <legend class="">Entrepreneur Options</legend>
+        <div class="container">
+            <div id="legendDiv" class="row">
+                <legend id="legend">Entrepreneur Home</legend>
             </div> 
-            <div class="controls">
-                <button id="matchesBtn" type="submit" class="btn btn-success">Matches</button>
+
+            <div id="sidebarDiv">
+                <ul id="sidebar" >
+                    <li><a href="/59SecondPitch/entrepreneurHome.php">Home</a></li>
+                    <li><a href="/59SecondPitch/manageProfile.php">Manage Profile</a></li>
+                </ul>
             </div>
-            <div class="controls">
-                <button id="ideasBtn" type="submit" class="btn btn-success">My Ideas</button>
+
+            <div id="optionsDiv" class="container marketing">
+
+                <!-- Three columns of text below the carousel -->
+                <div class="row">
+                    <div class="span4 col-lg-4">
+                        <img class="img-circle" src="IMG/Matches.GIF" alt="Generic placeholder image" style="width: 140px; height: 140px;">
+                        <h2>Matches</h2>
+                        <p>Find out who wants to start a conversation.</p>
+                        <p><a class="btn btn-default" href="/59SecondPitch/entrepreneurMatches.php" role="button">View Matches »</a></p>
+                    </div><!-- /.col-lg-4 -->
+                    <div class="span4 col-lg-4">
+                        <img class="img-circle" src="IMG/Brain.gif" alt="Generic placeholder image" style="width: 140px; height: 140px;">
+                        <h2>Ideas</h2>
+                        <p>You're a genius and we both know it.  Let's show the world what you're made of.</p>
+                        <p><a class="btn btn-default" href="/59SecondPitch/entrepreneurIdeas.php" role="button">View Ideas »</a></p>
+                    </div><!-- /.col-lg-4 -->
+                    <div class="span4 col-lg-4">
+                        <img class="img-circle" src="IMG/Statistics.jpg" alt="Generic placeholder image" style="width: 140px; height: 140px;">
+                        <h2>Statistics</h2>
+                        <p>Numbers speak louder than words</p>
+                        <p><a class="btn btn-default" href="/59SecondPitch/entrepreneurStatistics.php" role="button">View Statistics »</a></p>
+                    </div><!-- /.col-lg-4 -->
+                </div><!-- /.row -->
             </div>
-            <div class="controls">
-                <button id="statisticsBtn" type="submit" class="btn btn-success">Statistics</button>
-            </div>
-            <div class="controls">
-                <button id="manageBtn" type="submit" class="btn btn-success">Manage Profile</button>
-            </div>
-        </form>
+        </div>
     </body>
 </html>

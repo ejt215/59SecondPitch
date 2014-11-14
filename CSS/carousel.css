@@ -4,16 +4,21 @@
 
 body {
   padding-bottom: 40px;
-  color: black;
   background-color: black;
 }
-#legend{
+#legendDiv{
+    background-color: white;
+    color: white;
 }
-#navBar{
+#legend{
+    color:white;
+    background-color: black;
+}
+#sidebarDiv{
     color: red;
 }
 
-#optionsSection{
+#optionsDiv{
     background-color: red;
 }
 /* CUSTOMIZE THE NAVBAR
