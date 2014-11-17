@@ -69,6 +69,9 @@ include_once 'fiftynineDAO.php';
                     </div><!-- /.col-lg-4 -->
                 </div><!-- /.row -->
             </div>
+            <div>
+                <p id="quote">"A man may die, nations may rise and fall, but an idea lives on." -JFK</p>
+            </div>
         </div>
     </body>
 </html>

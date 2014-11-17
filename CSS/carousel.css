@@ -7,7 +7,7 @@ body {
   background-color: black;
 }
 #legendDiv{
-    background-color: white;
+    background-color: black;
     color: white;
 }
 #legend{
@@ -20,6 +20,19 @@ body {
 
 #optionsDiv{
     background-color: red;
+}
+
+#quote{
+    word-wrap: normal;
+    padding-top: 50px;
+    color:white;
+    font-size: 28px;
+    line-height: 28px;
+    text-align: center;
+}
+
+.col-lg-4{
+    color:white;
 }
 /* CUSTOMIZE THE NAVBAR
 -------------------------------------------------- */
