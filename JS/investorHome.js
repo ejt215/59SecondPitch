@@ -1,4 +1,5 @@
 $(document).ready(function() {
+    $("ul#sidebar").sidebar({});
     $("#browseBtn").click(function() {
         $(this).closest("form").attr("action", "browse.php");
     });

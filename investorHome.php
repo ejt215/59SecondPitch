@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.
@@ -16,7 +17,7 @@ include_once 'fiftynineDAO.php';
         <link rel="stylesheet" type="text/css" href="CSS/browseStyles.css" />
         <link href="CSS/bootstrap.min.css" rel="stylesheet" media="screen">
         <link href="CSS/jquery-ui.min.css" rel="stylesheet" type="text/css"/>
-
+        <link href="CSS/carousel.css" rel="stylesheet">
 
         <script src="http://code.jquery.com/jquery.js"></script>
         <script src="JS/bootstrap.min.js"></script>
@@ -29,26 +30,48 @@ include_once 'fiftynineDAO.php';
         <script src="JS/jquery.touchSwipe.min.js"></script>
         <script src="JS/reflection.js"></script>
         <script src="JS/investorHome.js"></script>
+
     </head>
     <body>
         <div class="container">
-            <form class="form-horizontal" action='investorFavorites.php' method="POST">
-                <div id="legend">
-                    <legend class="">Investor Options</legend>
-                </div> 
-                <div class="controls">
-                    <button id="browseBtn" type="submit" class="btn btn-success">Browse</button>
-                </div>
-                <div class="controls">
-                    <button id="trackingBtn" type="submit" class="btn btn-success">Tracking</button>
-                </div>
-                <div class="controls">
-                    <button id="favoritesBtn" type="submit" class="btn btn-success">Favorites</button>
-                </div>
-                <div class="controls">
-                    <button id="manageBtn" type="submit" class="btn btn-success">Manage Profile</button>
-                </div>
-            </form>
+            <div id="legendDiv" class="row">
+                <legend id="legend">Investor Home</legend>
+            </div> 
+
+            <div id="sidebarDiv">
+                <ul id="sidebar" >
+                    <li><a href="/59SecondPitch/entrepreneurHome.php">Home</a></li>
+                    <li><a href="/59SecondPitch/manageProfile.php">Manage Profile</a></li>
+                </ul>
+            </div>
+
+            <div id="optionsDiv" class="container marketing">
+
+                <!-- Three columns of text below the carousel -->
+                <div class="row">
+                    <div class="span4 col-lg-4">
+                        <img class="img-circle" src="IMG/magnifyingGlass.jpeg" alt="Generic placeholder image" style="width: 140px; height: 140px;">
+                        <h2>Browse</h2>
+                        <p>Find out who wants to start a conversation.</p>
+                        <p><a id="browseBtn" class="btn btn-default" href="/59SecondPitch/investorTracking.php" role="button">Go Browsing »</a></p>
+                    </div><!-- /.col-lg-4 -->
+                    <div class="span4 col-lg-4">
+                        <img class="img-circle" src="IMG/tracking.png" alt="Generic placeholder image" style="width: 140px; height: 140px;">
+                        <h2>Tracked Profiles</h2>
+                        <p>Review profiles that you have matched with while browsing.</p>
+                        <p><a id="trackingBtn" class="btn btn-default" href="/59SecondPitch/investorBrowsing.php" role="button">View Tracked Profiles »</a></p>
+                    </div><!-- /.col-lg-4 -->
+                    <div class="span4 col-lg-4">
+                        <img class="img-circle" src="IMG/star.jpg" alt="Generic placeholder image" style="width: 140px; height: 140px;">
+                        <h2>Favorites</h2>
+                        <p>Review the profiles that you like the best</p>
+                        <p><a id="favoritesButton" class="btn btn-default" href="/59SecondPitch/investorFavorites.php" role="button">View Favorite Profiles »</a></p>
+                    </div><!-- /.col-lg-4 -->
+                </div><!-- /.row -->
+            </div>
+            <div>
+                <p id="quote">"How many millionaires do you know who have become wealthy by investing in savings accounts? I rest my case." -Robert G. Allen</p>
+            </div>
         </div>
     </body>
 </html>
