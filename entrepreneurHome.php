@@ -33,6 +33,7 @@ include_once 'fiftynineDAO.php';
 
     </head>
     <body>
+        <?php $_SESSION['type'] = "Entrepreneur"; ?>
         <div class="container">
             <div id="legendDiv" class="row">
                 <legend id="legend">Entrepreneur Home</legend>

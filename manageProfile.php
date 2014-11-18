@@ -67,7 +67,9 @@ session_start();
                     $valid = false;
                 }
             }
-
+            $age = $_POST["age"];
+            $almamater = $_POST["almamater"];
+            $city = $_POST["city"];
 
             if ($valid) {
                 $_SESSION['firstname'] = $firstname;
@@ -78,6 +80,7 @@ session_start();
                 $_SESSION['almamater'] = $almamater;
                 $_SESSION['city'] = $city;
                 $_SESSION['manage'] = true;
+                //die($firstname . $lastname . $email . $age . $password . $almamater . $city);
                 header('Location: http://localhost/59SecondPitch/addUpdate59Profile.php');
                 exit();
             }
