@@ -3,6 +3,7 @@
 session_start();
 include_once 'FiftyNineDAO.php';
 
+$fiftynineprofileid = $_SESSION['profileid'];
 $password = $_SESSION['password'];
 $email = $_SESSION['email'];
 $firstname = $_SESSION['firstname'];
@@ -18,10 +19,26 @@ if ($age == "") {
 
 $dao = new FiftyNineDAO();
 
-$sql = "INSERT INTO 59Profile (password,email,firstname,lastname,age,almamater,city)
-VALUES ('$password','$email','$firstname','$lastname','$age','$almamater','$city')";
+if (isset($_SESSION['manage']) && $_SESSION['manage']) {
+    $sql = "UPDATE 59profile " .
+    "SET password = '" . $password . "'," .
+    "email = '" . $email . "'," .
+    "firstname = '" . $firstname . "'," .
+    "lastname = '" . $lastname . "'," .
+    "age = " . $age . "," .
+    "almamater = '" . $almamater . "'," .
+    "city = '" . $city . "' " .
+    "WHERE 59profileid = '" . $fiftynineprofileid . "'";
+    die($sql);
+    $dao->executeSQL($sql);
+}
+else{
+   $sql = "INSERT INTO 59Profile (password, email, firstname, lastname, age, almamater, city)
+    VALUES ('$password', '$email', '$firstname', '$lastname', '$age', '$almamater', '$city')";
 
-$dao->executeSQL($sql);
+    $dao->executeSQL($sql); 
+}
+die($type);
 
 
 if ($type == "Investor") {

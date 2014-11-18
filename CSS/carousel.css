@@ -15,12 +15,14 @@ body {
     background-color: black;
 }
 #sidebarDiv{
-    color: red;
+    background-color: white;
 }
 
 #optionsDiv{
     background-color: red;
 }
+
+
 
 #quote{
     word-wrap: normal;

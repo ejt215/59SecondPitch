@@ -12,7 +12,7 @@ if ($dao->verify($email, $pass)) {
     $_SESSION['email'] = $_POST['email'];
     $_SESSION['profileid'] = $dao->get59ProfileIDFromEmail($email);
 
-    $fiftyNineProfile = $dao->get59Profile($email);
+    
     $entrepreneurSQL = "SELECT * FROM entrepreneur WHERE 59profileid = " . $dao->get59ProfileIDFromEmail($email);
     $entrepreneurResult = $dao->executeSQL($entrepreneurSQL);
     $isEntrepreneur = $entrepreneurResult->num_rows;
@@ -21,14 +21,16 @@ if ($dao->verify($email, $pass)) {
     $investorResult = $dao->executeSQL($investorSQL);
     $isInvestor = $investorResult->num_rows;
 
-    $_SESSION['firstname'] = $fiftyNineProfile->$firstname;
-    $_SESSION['lastname'] = $fiftyNineProfile->$lastname;
-    $_SESSION['type'] = $fiftyNineProfile->$type;
-    $_SESSION['email'] = $fiftyNineProfile->$email;
-    $_SESSION['age'] = $fiftyNineProfile->$age;
-    $_SESSION['password'] = $fiftyNineProfile->$password;
-    $_SESSION['almamater'] = $fiftyNineProfile->$almamater;
-    $_SESSION['city'] = $fiftyNineProfile->$city;
+    $fiftyNineProfile = $dao->get59Profile($email);
+    //die($fiftyNineProfile->&firstname);
+    $_SESSION['firstname'] = $fiftyNineProfile->firstname;
+    $_SESSION['lastname'] = $fiftyNineProfile->lastname;
+    $_SESSION['email'] = $fiftyNineProfile->email;
+    $_SESSION['age'] = $fiftyNineProfile->age;
+    $_SESSION['password'] = $fiftyNineProfile->password;
+    $_SESSION['almamater'] = $fiftyNineProfile->almamater;
+    $_SESSION['city'] = $fiftyNineProfile->city;
+    
     if ($isEntrepreneur && $isInvestor) {
         die("This should gracefully let them choose to access their investor or entrepreneur profile");
     } elseif ($isEntrepreneur) {

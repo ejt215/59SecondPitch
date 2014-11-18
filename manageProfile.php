@@ -23,77 +23,63 @@ session_start();
         $name = $email = $password = $lastname = $firstname = $repassword = $age = $almamater = $city = $type = "";
         $valid = true;
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            switch ($_POST['submit']) {
-                case 'login':
-                    break;
-                case 'create':
-                    if (empty($_POST["firstname"])) {
-                        $firstnameErr = "First name is required";
-                        $valid = false;
-                    } else {
-                        $firstname = $_POST["firstname"];
-                        if (!preg_match("/^[a-zA-Z ]*$/", $firstname)) {
-                            $firstnameErr = "Only letters and white space allowed";
-                            $valid = false;
-                        }
-                    }
+            if (empty($_POST["firstname"])) {
+                $firstnameErr = "First name is required";
+                $valid = false;
+            } else {
+                $firstname = $_POST["firstname"];
+                if (!preg_match("/^[a-zA-Z ]*$/", $firstname)) {
+                    $firstnameErr = "Only letters and white space allowed";
+                    $valid = false;
+                }
+            }
 
-                    if (empty($_POST["email"])) {
-                        $emailErr = "Email is required";
-                        $valid = false;
-                    } else {
-                        $email = $_POST["email"];
-                        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                            $emailErr = "Invalid email format";
-                            $valid = false;
-                        }
-                    }
+            if (empty($_POST["email"])) {
+                $emailErr = "Email is required";
+                $valid = false;
+            } else {
+                $email = $_POST["email"];
+                if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                    $emailErr = "Invalid email format";
+                    $valid = false;
+                }
+            }
 
-                    if (empty($_POST["password"])) {
-                        $passwordErr = "Password is required";
-                        $valid = false;
-                    } else {
-                        $password = $_POST["password"];
-                        $repassword = $_POST["repassword"];
-                        if ($password != $repassword) {
-                            $passwordErr = "Passwords do not match.";
-                            $valid = false;
-                        }
-                    }
+            if (empty($_POST["password"])) {
+                $passwordErr = "Password is required";
+                $valid = false;
+            } else {
+                $password = $_POST["password"];
+                $repassword = $_POST["repassword"];
+                if ($password != $repassword) {
+                    $passwordErr = "Passwords do not match.";
+                    $valid = false;
+                }
+            }
 
-                    if (empty($_POST["lastname"])) {
-                        $lastnameErr = "Last name is required";
-                        $valid = false;
-                    } else {
-                        $lastname = $_POST["lastname"];
-                        if (!preg_match("/^[a-zA-Z ]*$/", $lastname)) {
-                            $lastnameErr = "Only letters and white space allowed";
-                            $valid = false;
-                        }
-                    }
-                    if (empty($_POST["type"])) {
-                        $typeErr = "Profile type is required.";
-                        $valid = false;
-                    } else {
-                        $type = $_POST["type"];
-                    }
-                    $age = $_POST["age"];
-                    $almamater = $_POST["almamater"];
-                    $city = $_POST["city"];
+            if (empty($_POST["lastname"])) {
+                $lastnameErr = "Last name is required";
+                $valid = false;
+            } else {
+                $lastname = $_POST["lastname"];
+                if (!preg_match("/^[a-zA-Z ]*$/", $lastname)) {
+                    $lastnameErr = "Only letters and white space allowed";
+                    $valid = false;
+                }
+            }
 
-                    if ($valid) {
-                        $_SESSION['firstname'] = $firstname;
-                        $_SESSION['lastname'] = $lastname;
-                        $_SESSION['type'] = $type;
-                        $_SESSION['email'] = $email;
-                        $_SESSION['age'] = $age;
-                        $_SESSION['password'] = $password;
-                        $_SESSION['almamater'] = $almamater;
-                        $_SESSION['city'] = $city;
-                        header('Location: http://localhost/59SecondPitch/addUpdate59Profile.php');
-                        exit();
-                    }
-                    break;
+
+            if ($valid) {
+                $_SESSION['firstname'] = $firstname;
+                $_SESSION['lastname'] = $lastname;
+                $_SESSION['email'] = $email;
+                $_SESSION['age'] = $age;
+                $_SESSION['password'] = $password;
+                $_SESSION['almamater'] = $almamater;
+                $_SESSION['city'] = $city;
+                $_SESSION['manage'] = true;
+                header('Location: http://localhost/59SecondPitch/addUpdate59Profile.php');
+                exit();
             }
         }
         ?>
