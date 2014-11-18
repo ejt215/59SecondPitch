@@ -25,23 +25,6 @@ session_start();
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             switch ($_POST['submit']) {
                 case 'login':
-                    if (empty($_POST["email"])) {
-                        $emailErr = "Email is required";
-                        $valid = false;
-                    } else {
-                        $email = $_POST["email"];
-                        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                            $emailErr = "Invalid email format";
-                            $valid = false;
-                        }
-                    }
-
-                    if (empty($_POST["password"])) {
-                        $passwordErr = "Password is required";
-                        $valid = false;
-                    } else {
-                        $password = $_POST["password"];
-                    }
                     break;
                 case 'create':
                     if (empty($_POST["firstname"])) {

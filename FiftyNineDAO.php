@@ -1,6 +1,6 @@
 <?php
 
-//include 'S59Profile.php';
+include_once "FiftyNineProfile.php";
 
 class FiftyNineDAO {
 
@@ -67,7 +67,8 @@ class FiftyNineDAO {
         }
 
         $row = mysqli_fetch_array($result);
-        $fiftynineprofile = new fiftynineProfile($row['fiftynineprofileid'], $row['password'], $row['email'], $row['firstname'], $row['lastname'], $row['age'], $row['almamater'], $row['city']);
+        //die($row['59profileid'] . $row['password'] . $row['email'] . $row['firstname'] . $row['lastname'] . $row['age'] . $row['almamater'] . $row['city']);
+        $fiftynineprofile = new FiftyNineProfile($row['59profileid'], $row['password'], $row['email'], $row['firstname'], $row['lastname'], $row['age'], $row['almamater'], $row['city']);
         return $fiftynineprofile;
     }
 
