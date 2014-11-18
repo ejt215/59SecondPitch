@@ -22,8 +22,8 @@ if ($dao->verify($email, $pass)) {
     $isInvestor = $investorResult->num_rows;
 
     $fiftyNineProfile = $dao->get59Profile($email);
-    //die($fiftyNineProfile->&firstname);
-    $_SESSION['firstname'] = $fiftyNineProfile->firstname;
+    //die($fiftyNineProfile->firstname . $fiftyNineProfile->lastname . $fiftyNineProfile->email . $fiftyNineProfile->age . $fiftyNineProfile->password . $fiftyNineProfile->almamater . $fiftyNineProfile->city);
+    $_SESSION['firstname'] = $fiftyNineProfile->firstname; 
     $_SESSION['lastname'] = $fiftyNineProfile->lastname;
     $_SESSION['email'] = $fiftyNineProfile->email;
     $_SESSION['age'] = $fiftyNineProfile->age;

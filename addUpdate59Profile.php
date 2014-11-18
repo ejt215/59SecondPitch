@@ -11,7 +11,6 @@ $lastname = $_SESSION['lastname'];
 $age = $_SESSION['age'];
 $almamater = $_SESSION['almamater'];
 $city = $_SESSION['city'];
-$type = $_SESSION['type'];
 
 if ($age == "") {
     $age = 0;
