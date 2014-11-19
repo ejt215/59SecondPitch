@@ -1,6 +1,7 @@
 <?php
 
 include_once "FiftyNineProfile.php";
+include_once "EntrepreneurProfile.php";
 
 class FiftyNineDAO {
 
@@ -72,7 +73,7 @@ class FiftyNineDAO {
         return $fiftynineprofile;
     }
 
-    public function getEntrepreneurProfile($business_id) {
+    public function getEntrepreneurProfileFromBusinessID($business_id) {
         $con = $this->getDBConnection();
         $sql = "SELECT * FROM entrepreneur WHERE business_id=" . $business_id;
         if (!($result = mysqli_query($con, $sql))) {
@@ -96,7 +97,24 @@ class FiftyNineDAO {
         return $investorProfile;
     }
 
-    public function match($profileid, $businessid,$match) {
+    public function getEntrepreneurProfiles($fiftynineprofileid) {
+        $con = $this->getDBConnection();
+        $sql = "SELECT * FROM entrepreneur WHERE 59profileid=" . $fiftynineprofileid;
+        if (!($result = mysqli_query($con, $sql))) {
+            die('Error: ' . mysqli_error($con) . "      " . $sql);
+        }
+        
+        $profiles = array();
+        $index = 1;
+        while ($row = mysqli_fetch_array($result)) {
+            $profile = new EntrepreneurProfile($row['business_id'], $row['59profileid'], $row['business_type'], $row['business_name'], $row['business_description']);
+            $profiles[$index] = $profile;
+            $index++;
+        }
+        return $profiles;
+    }
+
+    public function match($profileid, $businessid, $match) {
         $con = $this->getDBConnection();
         $var = $match;
         $sql = "INSERT into matching(59profileid,business_id,matched) values('" . $profileid . "','" . $businessid . "'," . $var . ")";

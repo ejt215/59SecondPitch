@@ -6,9 +6,8 @@ $profileID = $_SESSION['profileid'];
 
 $dao = new FiftyNineDAO();
 
+
 $sql1 = "SELECT  59profileid,business_id from entrepreneur where business_id not in(select business_id from matching where 59profileid=".$profileID.")limit 5";
-
-
 
 $result = $dao->executeSQL($sql1);
 $list = array();

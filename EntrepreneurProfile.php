@@ -12,5 +12,9 @@ class EntrepreneurProfile {
         $this->business_name = $business_name;
         $this->business_description = $business_description;
     }
+    function toString()
+    {
+        return $this->business_id . " " . $this->fiftynineprofileid . " " . $this->business_type . " " . $this->business_name . " " . $this->business_description;
+    }
 }
 ?>
