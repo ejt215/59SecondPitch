@@ -124,6 +124,16 @@ class FiftyNineDAO {
             die('Error: ' . mysqli_error($con) . "      " . $sql);
         }
     }
+    public function track($profileid,$businessid){
+    $con = $this->getDBConnection();
+        
+        $sql = "INSERT into tracking(59profileid,business_id) values('" . $profileid . "'," . $businessid . ")";
+
+        $result = mysqli_query($con, $sql);
+        if (!$result) {
+            die('Error: ' . mysqli_error($con) . "      " . $sql);
+        }
+    }
 
     public function verify($email, $pass) {
         $con = $this->getDBConnection();

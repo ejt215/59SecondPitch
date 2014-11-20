@@ -13,10 +13,17 @@ function displayNewProfiles(data) {
                 "Creator: " + profile["firstname"] + " " + profile["lastname"] + "<br />" +
                 "Alma mater: " + profile['almamater'] + "<br />" +
                 "Location: " + profile['city'] + "<br />" +
-                "Description :" + profile['business_description'] + "<br />" +
+                "Description :" + profile['shortDesc'] + "<br />" +
                 "<button type='button' class='viewProfile' id='b" + i + "'>View Full Profile</button>"
                 );
         $("#" + i).attr("name",profile['business_id']);
+        $("#f"+i).html("<h1> " + profile["business_name"] + "</h1><br />" +
+                "Business type: " + profile["business_type"] + "<br />" +
+                "Creator: " + profile["firstname"] + " " + profile["lastname"] + "<br />" +
+                "Alma mater: " + profile['almamater'] + "<br />" +
+                "Location: " + profile['city'] + "<br />" +
+                "Description :" + profile['business_description'] + "<br />" +
+                "<button type='button' class='return'>Return to Browse</button>");
         
     }
 }
@@ -30,7 +37,7 @@ $(document).ready(function() {
         index: 3,
         density: 2,
         innerOffset: 50,
-        innerScale: .7,
+        innerScale: .7
         /*animateStep: function(event, cover, offset, isVisible, isMiddle, sin, cos) {
             if (isVisible && isMiddle) {
                 alert($(cover).index());
@@ -42,13 +49,9 @@ $(document).ready(function() {
         
                 
     });
-   /* $('#match').click(function(){
-       alert($('.coverflow').coverflow("cover").attr('id')); 
-    });*/
+   
 
-    $('.viewProfile').click(function() {
-        $('#profileContainer').hide();
-    });
+    
 
     //Grab 5 profiles to start
     $.ajax({
@@ -73,7 +76,20 @@ $(document).ready(function() {
             }
         });
     });
-
+$(document).on('click','.viewProfile',function() {
+        var id = $('.coverflow').coverflow("cover").attr('id');
+        $('#profiles').hide();
+        $('#fullProfile').css("display","block");
+        $('#f'+id).css("display","block");
+        
+        
+    });
+    $(document).on('click','.return',function(event){
+        var id = $('.coverflow').coverflow("cover").attr('id');
+        $('#f'+id).css("display","none");
+        $('#fullProfile').css("display","none");
+        $('#profiles').show();
+    });
     $("#match").click(function() {
         var id = $('.coverflow').coverflow("cover").attr('name');
         //var arr = {"businessid":};
@@ -88,16 +104,7 @@ $(document).ready(function() {
             alert( "Posting failed." );
              
         });
-        /*$.ajax({
-            type: "POST",
-            dataType: "json",
-            url: "matching.php",
-            data:{'id': JSON.stringify(arr)},
-            //Set cover content to the 5 fetched profiles
-            success: function(data) {
-                alert('Matched!');
-            }
-        });*/
+       
     });
     $("#nothanks").click(function (){
         var id = $('.coverflow').coverflow("cover").attr('name');
@@ -114,6 +121,22 @@ $(document).ready(function() {
              
         });
     });
+    $("#track").click(function (){
+        var id = $('.coverflow').coverflow("cover").attr('name');
+        //var arr = {"businessid":};
+        $.post('browseTracking.php', { businessid: id}, function(data){
+             
+           
+            alert("You have begun tracking this profile!");
+             
+        }).fail(function() {
+         
+            
+            alert( "Posting failed." );
+             
+        });
+    });
+    
 });
 
 
