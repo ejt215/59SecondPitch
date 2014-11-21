@@ -52,13 +52,22 @@ include_once 'FiftyNineDAO.php';
 
         <!--Profile Container-->
         <div id="profileContainer" class="container-fluid1">
-            <div  class="row-fluid">
+            <div  id = "profiles"class="row-fluid">
                 <div id ="profile" class ="coverflow  text-center"   >
-                    <div class ="cover " name ="" id ="1" style ="border: 2px solid;" ></div>
-                    <div class ="cover " name ="" id ="2" style ="border: 2px solid;"></div>
-                    <div class ="cover " name ="" id ="3" style ="border: 2px solid;"></div>
-                    <div class ="cover " name ="" id ="4" style ="border: 2px solid;"></div>
-                    <div class ="cover " name ="" id ="5" style ="border: 2px solid;"></div>
+                    <div class ="cover " name ="" id ="1" style ="border: 2px solid;text-overflow: ellipsis;" ></div>
+                    <div class ="cover " name ="" id ="2" style ="border: 2px solid;text-overflow: ellipsis;"></div>
+                    <div class ="cover " name ="" id ="3" style ="border: 2px solid;text-overflow: ellipsis;"></div>
+                    <div class ="cover " name ="" id ="4" style ="border: 2px solid;text-overflow: ellipsis;"></div>
+                    <div class ="cover " name ="" id ="5" style ="border: 2px solid;text-overflow: ellipsis;"></div>
+                </div>
+            </div>
+            <div id ="fullProfile" class ="row-fluid" style="display: none;">
+                <div id ="fullProfileDisplay" class ="text-center">
+                    <div id ="f1" style ="display: none;" ></div>
+                    <div id ="f2" style ="display: none;"></div>
+                    <div id ="f3" style ="display: none;"></div>
+                    <div id ="f4" style ="display: none;"></div>
+                    <div id ="f5" style ="display: none;"></div>
                 </div>
             </div>
         </div>
@@ -69,6 +78,8 @@ include_once 'FiftyNineDAO.php';
                 <div  class ="centered text-center" >
                     <button type="button" id ="nothanks" class="btn btn-danger">No Thanks</button>
                     <button type="button" id ="feedback" class="btn btn-info">Feedback</button>
+                    <button type="button" id ="track" class="btn btn-info">Track</button>
+
                     <button type="button" id ="match" class="btn btn-success">Match</button>
                     <button type="button" id ="next" class="btn btn-info">Next</button>
                 </div>
