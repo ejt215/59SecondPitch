@@ -7,6 +7,7 @@ function displayIdeas(data) {
     var profile;
     for (i = 1; i < 6; i++) {
         profile = data["" + i];
+        alert(profile);
         $("#" + i).html(
                 "<form action='entrepreneurEditProfile.php' method='POST'> " +
                 "<h1>" + profile["business_name"] + "</h1><br />" +
@@ -15,6 +16,7 @@ function displayIdeas(data) {
                 "<button type='submit' class='editProfile' id='b" + i + "'>Edit</button>" +
                 "<input type='hidden' name='business_name' value='" + profile["business_name"] + "'>" +
                 "<input type='hidden' name='business_type' value='" + profile["business_type"] + "'>" +
+                "<input type='hidden' name='business_id' value='" + profile["business_id"] + "'>" +
                 "<input type='hidden' name='business_description' value='" + profile["business_description"] + "'>" +
                 "</form>"
                 );
@@ -54,22 +56,11 @@ $(document).ready(function() {
         }
     });
 
-    //Next fetches 5 random profiles to display 
-   /* $(".editProfile").click(function() {
-   
-        $.ajax({
-            type: "POST",
-            dataType: "json",
-            data:{
-              business_name:"",
-              business_type:"",
-              business_description:""
-            },
-            url: "entrepreneurEditProfile.php",
-            //Set cover content to the 5 fetched profiles
-            success: function(data) {
-                displayNewProfiles(data);
-            }
-        });
-    });*/
+    $("#newIdea").click(function() {
+        window.location="entrepreneurSignup.php";
+    });
+    $("#deleteIdea").click(function() {
+        var id = $('.coverflow').coverflow("cover").attr('name');
+        $(id).remove();
+    });
 });

@@ -6,6 +6,9 @@ and open the template in the editor.
 -->
 <?php
 session_start();
+if (isset($_POST['business_id'])) {
+    $_SESSION['business_id'] = $_POST['business_id'];
+}
 ?>
 <html>
     <head>
@@ -23,7 +26,7 @@ session_start();
         $workType = $workName = $workDesc = "";
         $workTypeerr = $workNameerr = $workDescerr = "";
         $valid = true;
-        
+
         //Make sure to only do the validation if the page is coming from itself
         if ($_SERVER["REQUEST_METHOD"] == "POST" && $_SERVER["HTTP_REFERER"] == "http://" . $_SERVER["HTTP_HOST"] . $_SERVER["PHP_SELF"]) {
             if (empty($_POST["workType"])) {
@@ -51,7 +54,7 @@ session_start();
                 $_SESSION['workType'] = $workType;
                 $_SESSION['workName'] = $workName;
                 $_SESSION['workDesc'] = $workDesc;
-                $_SESSION['editEntrepreneurProfile'];
+                $_SESSION['editEntrepreneurProfile'] = true;
                 header('Location: http://localhost/59SecondPitch/addUpdateEntrepreneurProfile.php');
                 exit();
             }
@@ -64,7 +67,7 @@ session_start();
                 <div class="control-group">
                     <label class="control-label">How would you classify your work?</label>
                     <div class="controls">
-                        
+
                         <input id="ideaRadio" type="radio" name="workType" value="idea">Idea<span class="error">* <?php echo $workTypeerr; ?></span><br>
                         <input id="projectRadio" type="radio" name = "workType" value="project">Project<br>
                         <input id="startupRadio" type="radio" name="workType" value="startup">Startup<br>
@@ -74,12 +77,20 @@ session_start();
                 <div class="control-group">
                     <label class="control-label">What is the name of your work?</label>
                     <div class="controls">
-                        <input type="text" id="workName" name="workName" value = "<?php if (isset($_POST['business_name'])){echo $_POST['business_name'];} else if (isset($_POST['workName'])){echo $_POST['workName'];}  ?>"> <span class="error">* <?php echo $workNameerr; ?></span>
+                        <input type="text" id="workName" name="workName" value = "<?php if (isset($_POST['business_name'])) {
+            echo $_POST['business_name'];
+        } else if (isset($_POST['workName'])) {
+            echo $_POST['workName'];
+        } ?>"> <span class="error">* <?php echo $workNameerr; ?></span>
                     </div>
                 </div>
                 <div class="control-group">
                     <label class="control-label">Description of your work:</label>
-                    <div class="controls"><textarea rows="4" cols="50" name ="workDesc"><?php if (isset($_POST['business_description'])){echo $_POST['business_description'];} else if (isset($_POST['workDesc'])){echo $_POST['workDesc'];}  ?></textarea><span class="error">* <?php echo $workDescerr; ?></span></div>
+                    <div class="controls"><textarea rows="4" cols="50" name ="workDesc"><?php if (isset($_POST['business_description'])) {
+            echo $_POST['business_description'];
+        } else if (isset($_POST['workDesc'])) {
+            echo $_POST['workDesc'];
+        } ?></textarea><span class="error">* <?php echo $workDescerr; ?></span></div>
                 </div>
                 <!--<div class="control-group">
                    <div class="controls">
