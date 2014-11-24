@@ -27,6 +27,9 @@ function displayIdeas(data) {
 
 $(document).ready(function() {
 
+//initialize sidebar
+    $("ul#demo_menu1").sidebar({});
+
     //Grab 5 profiles to start
     $.ajax({
         type: "POST",
@@ -41,8 +44,7 @@ $(document).ready(function() {
         }
     });
 
-    //initialize sidebar
-    $("ul#demo_menu1").sidebar({});
+
 
     //initialize coverflow
     $('.coverflow').coverflow({
@@ -56,8 +58,6 @@ $(document).ready(function() {
         $('#profileContainer').hide();
     });
 
-
-
     $("#newIdea").click(function() {
         window.location = "entrepreneurSignup.php";
     });
@@ -65,24 +65,25 @@ $(document).ready(function() {
         var id = $('.coverflow').coverflow("cover").attr('id');
         var businessID = $('.coverflow').coverflow("cover").find("[id^=bi]").attr("id");
         alert(id + "    " + businessID);
-        
+
         //Remove should be changed so that the cover can be added again
         $("#" + id).remove();
         $.ajax({
             type: "POST",
-            dataType: "json",
+            processData: true,
+            async: false,
             data: {
-              delete: "delete",
-              business_id: businessID 
+                delete: "delete",
+                business_id: businessID
             },
             url: "addUpdateDeleteEntrepreneurProfile.php",
-            //Set cover content to the 5 fetched profiles
             success: function(data) {
                 alert("You have succesfully deleted your idea!");
             },
             error: function(jqXHR, textStatus, errorThrown) {
-                alert("deleting profile failed");
                 alert("Error: " + jqXHR.responseText);
+                alert("Error: " + jqXHR.textStatus);
+                alert("Error: " + jqXHR.errorThrown);
             }
         });
     });
