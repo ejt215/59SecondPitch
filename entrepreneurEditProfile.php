@@ -55,7 +55,7 @@ if (isset($_POST['business_id'])) {
                 $_SESSION['workName'] = $workName;
                 $_SESSION['workDesc'] = $workDesc;
                 $_SESSION['editEntrepreneurProfile'] = true;
-                header('Location: http://localhost/59SecondPitch/addUpdateEntrepreneurProfile.php');
+                header('Location: http://localhost/59SecondPitch/addUpdateDeleteEntrepreneurProfile.php');
                 exit();
             }
         }

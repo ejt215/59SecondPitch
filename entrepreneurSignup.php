@@ -57,6 +57,7 @@ session_start();
                 $_SESSION['workType'] = $workType;
                 $_SESSION['workName'] = $workName;
                 $_SESSION['workDesc'] = $workDesc;
+                $_SESSION['last_visited'] = "entrepreneurSignup";
                 /* try {
                   $target_dir = "entImages/";
                   $target_dir = $target_dir . basename($_FILES["userfile"]["name"]);
@@ -69,7 +70,7 @@ session_start();
                   } catch (Exception $e) {
                   echo '<h4>' . $e->getMessage() . '</h4>';
                   } */
-                header('Location: http://localhost/59SecondPitch/addUpdateEntrepreneurProfile.php');
+                header('Location: http://localhost/59SecondPitch/addUpdateDeleteEntrepreneurProfile.php');
                 exit();
             }
         }

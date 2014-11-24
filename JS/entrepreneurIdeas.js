@@ -16,7 +16,7 @@ function displayIdeas(data) {
                 "<button type='submit' class='editProfile' id='b" + i + "'>Edit</button>" +
                 "<input type='hidden' name='business_name' value='" + profile["business_name"] + "'>" +
                 "<input type='hidden' name='business_type' value='" + profile["business_type"] + "'>" +
-                "<input type='hidden' name='business_id' value='" + profile["business_id"] + "'>" +
+                "<input type='hidden' id='bi" + profile["business_id"] + "' name='business_id' value='" + profile["business_id"] + "'>" +
                 "<input type='hidden' name='business_description' value='" + profile["business_description"] + "'>" +
                 "</form>"
                 );
@@ -63,16 +63,25 @@ $(document).ready(function() {
     });
     $("#deleteIdea").click(function() {
         var id = $('.coverflow').coverflow("cover").attr('id');
+        var businessID = $('.coverflow').coverflow("cover").find("[id^=bi]").attr("id");
+        alert(id + "    " + businessID);
+        
+        //Remove should be changed so that the cover can be added again
         $("#" + id).remove();
         $.ajax({
             type: "POST",
             dataType: "json",
-            url: "fetchEntrepreneurProfiles.php",
+            data: {
+              delete: "delete",
+              business_id: businessID 
+            },
+            url: "addUpdateDeleteEntrepreneurProfile.php",
             //Set cover content to the 5 fetched profiles
             success: function(data) {
-                displayIdeas(data);
+                alert("You have succesfully deleted your idea!");
             },
             error: function(jqXHR, textStatus, errorThrown) {
+                alert("deleting profile failed");
                 alert("Error: " + jqXHR.responseText);
             }
         });
