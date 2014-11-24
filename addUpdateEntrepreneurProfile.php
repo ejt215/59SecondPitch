@@ -27,7 +27,7 @@ if (isset($_SESSION['editEntrepreneurProfile']) && $_SESSION['editEntrepreneurPr
             "AND business_id = " . $business_id;
     $dao->executeSQL($sql);
     header("Location: entrepreneurIdeas.php");
-} else {
+} else if (isset($_SESSION['entrepreneurSignup']) && $_SESSION['entrepreneurSignup']){
 
     $sql = "INSERT INTO entrepreneur (59profileid,business_type,business_name,business_description)" .
             "VALUES ('$profileID','$workType','$workName','$workDesc')";

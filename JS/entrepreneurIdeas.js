@@ -5,9 +5,9 @@
  */
 function displayIdeas(data) {
     var profile;
-    for (i = 1; i < 6; i++) {
+    for (i = 1; i < Object.keys(data).length + 1; i++) {
+        $("#" + i).css("visibility", "visible");
         profile = data["" + i];
-        alert(profile);
         $("#" + i).html(
                 "<form action='entrepreneurEditProfile.php' method='POST'> " +
                 "<h1>" + profile["business_name"] + "</h1><br />" +
@@ -26,21 +26,6 @@ function displayIdeas(data) {
 }
 
 $(document).ready(function() {
-    
-    //initialize sidebar
-    $("ul#demo_menu1").sidebar({});
-
-    //initialize coverflow
-    $('.coverflow').coverflow({
-        index: 3,
-        density: 2,
-        innerOffset: 50,
-        innerScale: .7
-    });
-
-    $('.viewProfile').click(function() {
-        $('#profileContainer').hide();
-    });
 
     //Grab 5 profiles to start
     $.ajax({
@@ -56,11 +41,40 @@ $(document).ready(function() {
         }
     });
 
+    //initialize sidebar
+    $("ul#demo_menu1").sidebar({});
+
+    //initialize coverflow
+    $('.coverflow').coverflow({
+        index: 3,
+        density: 2,
+        innerOffset: 50,
+        innerScale: .7
+    });
+
+    $('.viewProfile').click(function() {
+        $('#profileContainer').hide();
+    });
+
+
+
     $("#newIdea").click(function() {
-        window.location="entrepreneurSignup.php";
+        window.location = "entrepreneurSignup.php";
     });
     $("#deleteIdea").click(function() {
-        var id = $('.coverflow').coverflow("cover").attr('name');
-        $(id).remove();
+        var id = $('.coverflow').coverflow("cover").attr('id');
+        $("#" + id).remove();
+        $.ajax({
+            type: "POST",
+            dataType: "json",
+            url: "fetchEntrepreneurProfiles.php",
+            //Set cover content to the 5 fetched profiles
+            success: function(data) {
+                displayIdeas(data);
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                alert("Error: " + jqXHR.responseText);
+            }
+        });
     });
 });

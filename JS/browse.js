@@ -5,7 +5,8 @@
  */
 function displayNewProfiles(data) {
     var profile;
-    for (i = 1; i < 6; i++) {
+    for (i = 1; i < Object.keys(data).length + 1; i++) {
+        $("#" + i).css("visibility", "visible");
         profile = data["" + i];
         $("#" + i).html(
                 "<h1> " + profile["business_name"] + "</h1><br />" +
