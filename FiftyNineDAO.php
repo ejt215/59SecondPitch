@@ -96,6 +96,37 @@ class FiftyNineDAO {
         return $investorProfile;
     }
 
+    public function getInvestorContactInfo($fiftynineprofileid) {
+        $con = $this->getDBConnection();
+        $sql = "SELECT contact_type " .
+                "FROM investor " .
+                "WHERE 59profileid = " . $fiftynineprofileid;
+        $result = $this->executeSQL($sql);
+        $row = mysqli_fetch_array($result);
+        if ($row['contact_type'] == "either") {
+            $sql = "SELECT firstname,lastname,contact_type,email, " .
+                    "FROM investor " .
+                    "WHERE 59profileid = " . $fiftynineprofileid;
+            $result = $this->executeSQL($sql);
+            $row = mysqli_fetch_array($result);
+        } elseif ($row['contact_type'] == "email") {
+            
+        } 
+        elseif ($row['contact_type'] == "phone") {
+            
+        } else {
+            die("59DAO::getInvestorContactInfo");
+        }
+        $sql = "SELECT firstname,lastname,contact_type, FROM investor WHERE 59profileid=" . $fiftynineprofileid;
+        if (!($result = mysqli_query($con, $sql))) {
+            die('Error: ' . mysqli_error($con) . "      " . $sql);
+        }
+
+        $row = mysqli_fetch_array($result);
+        $investorProfile = new InvestorProfile($row['59profileid'], $row['class'], $row['contact_type'], $row['contact_preferences']);
+        return $investorProfile;
+    }
+
     public function getEntrepreneurProfiles($fiftynineprofileid) {
         $con = $this->getDBConnection();
         $sql = "SELECT * FROM entrepreneur WHERE 59profileid=" . $fiftynineprofileid;

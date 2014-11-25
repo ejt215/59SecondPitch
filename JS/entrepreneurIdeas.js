@@ -28,7 +28,7 @@ function displayIdeas(data) {
 $(document).ready(function() {
 
 //initialize sidebar
-    $("ul#demo_menu1").sidebar({});
+    $("ul#sidebar").sidebar({});
 
     //Grab 5 profiles to start
     $.ajax({
