@@ -19,7 +19,7 @@ session_start();
     <body>
         <script src="http://code.jquery.com/jquery.js"></script>
         <script src="JS/bootstrap.min.js"></script>
-        <script src="JS/investorSignup.js"></script>
+        <script src="JS/myScript.js"></script>
 
         <?php
         $userTypeerr = $contactTypeerr = $contactPreferr = "";
@@ -68,47 +68,29 @@ session_start();
                 <div class="control-group">
                     <label class="control-label">How would you classify yourself?</label>
                     <div class="controls">
-                        <input id="investorRadio" type="radio" name="usertype" <?php
-                        if (isset($userType) && $userType == "Investor") {
-                            echo "Investor";
-                        }
-                        ?>value="Investor">Investor<span class="error">* <?php echo $userTypeerr; ?></span><br>
-                        <input id="advisorRadio" type="radio" name = "usertype" <?php
-                        if (isset($userType) && $userType == "Advisor") {
-                            echo "Advisor";
-                        }
-                        ?>value="Advisor">Advisor<br>
-                        <input id="helpingHandRadio" type="radio" name="usertype" <?php
-                               if (isset($userType) && $userType == "helpingHand") {
-                                   echo "helpingHand";
-                               }
-                        ?>value="helpingHand">Helping Hand
+                        <input id="investorRadio" type="radio" name="usertype" <?php if (isset($userType) && $userType == "Investor") {
+            echo "Investor";
+        } ?>value="Investor">Investor<span class="error">* <?php echo $userTypeerr; ?></span><br>
+                        <input id="advisorRadio" type="radio" name = "usertype" <?php if (isset($userType) && $userType == "Advisor") {
+            echo "Advisor";
+        } ?>value="Advisor">Advisor<br>
+                        <input id="helpingHandRadio" type="radio" name="usertype" <?php if (isset($userType) && $userType == "helpingHand") {
+            echo "helpingHand";
+        } ?>value="helpingHand">Helping Hand
                     </div>
                 </div>
                 <div class="control-group">
                     <label class="control-label">How would you like to be contacted?</label>
                     <div class="controls">
-                        <input id="phoneRadio" type="radio" name="contacttype" <?php
-                        if (isset($contactType) && $contactType == "Phone") {
-                            echo "Phone";
-                        }
-                        ?>value="Phone">Phone<span class="error">* <?php echo $contactTypeerr; ?></span><br>
-                        <input id="emailRadio" type="radio" name = "contacttype" <?php
-                        if (isset($contactType) && $contactType == "Email") {
-                            echo "Email";
-                        }
-                        ?>value="Email">Email<br>
-                        <input id="eitherRadio" type="radio" name="contacttype" <?php
-                        if (isset($contactType) && $contactType == "either") {
-                            echo "Either";
-                        }
-                        ?>value="Either">Either
-                    </div>
-                </div>
-                <div class="control-group" style="visibility:hidden" id="phoneNumber">
-                    <label class="control-label">Phone Number: </label>
-                    <div class="controls">
-                        <input type="text" name="phoneNumber">
+                        <input id="phoneRadio" type="radio" name="contacttype" <?php if (isset($contactType) && $contactType == "Phone") {
+            echo "Phone";
+        } ?>value="Phone">Phone<span class="error">* <?php echo $contactTypeerr; ?></span><br>
+                        <input id="emailRadio" type="radio" name = "contacttype" <?php if (isset($contactType) && $contactType == "Email") {
+            echo "Email";
+        } ?>value="Email">Email<br>
+                        <input id="eitherRadio" type="radio" name="contacttype" <?php if (isset($contactType) && $contactType == "either") {
+            echo "Either";
+        } ?>value="Either">Either
                     </div>
                 </div>
                 <div class="control-group">
