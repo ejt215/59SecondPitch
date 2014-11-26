@@ -50,7 +50,19 @@ $(document).ready(function() {
                 
     });
    
+ function ShowDialog(modal)
+   {
+     
+      $("#dialog").fadeIn(300);
 
+     
+   }
+
+   function HideDialog()
+   {
+      
+      $("#dialog").fadeOut(300);
+   } 
     
 
     //Grab 5 profiles to start
@@ -106,6 +118,23 @@ $(document).on('click','.viewProfile',function() {
         });
        
     });
+    $("#feedback").click(function(){
+       ShowDialog(); 
+    });
+    $("#btnClose").click(function (e)
+      {
+         HideDialog();
+         e.preventDefault();
+      });
+
+      $("#btnSubmit").click(function (e)
+      {
+         //var brand = $("#brands input:radio:checked").val();
+         //$("#output").html("<b>Your favorite mobile brand: </b>" + brand);
+         HideDialog();
+         e.preventDefault();
+      });
+
     $("#nothanks").click(function (){
         var id = $('.coverflow').coverflow("cover").attr('name');
         //var arr = {"businessid":};

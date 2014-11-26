@@ -17,7 +17,9 @@ class FiftyNineDAO {
 
     private function getDBConnection() {
         if (!isset($_mysqli)) {
-            $_mysqli = new mysqli("128.180.177.4:3307", "guest", "pitch", "59secondpitch");
+           // $_mysqli = new mysqli("128.180.177.4:3307", "guest", "pitch", "59secondpitch");
+                   $_mysqli = new mysqli("localhost:3306", "root", "", "59secondpitch");
+
             if ($_mysqli->errno) {
                 printf("Unable to connect: %s", $_mysqli->error);
                 exit();
@@ -31,7 +33,6 @@ class FiftyNineDAO {
         if (!$result = mysqli_query($con, $sql)) {
             die('Error: ' . mysqli_error($con) . "      " . $sql);
         } else {
-
             return $result;
         }
     }
@@ -68,7 +69,7 @@ class FiftyNineDAO {
         }
 
         $row = mysqli_fetch_array($result);
-        //die($row['59profileid'] . $row['password'] . $row['email'] . $row['firstname'] . $row['lastname'] . $row['age'] . $row['almamater'] . $row['city']);
+//die($row['59profileid'] . $row['password'] . $row['email'] . $row['firstname'] . $row['lastname'] . $row['age'] . $row['almamater'] . $row['city']);
         $fiftynineprofile = new FiftyNineProfile($row['59profileid'], $row['password'], $row['email'], $row['firstname'], $row['lastname'], $row['age'], $row['almamater'], $row['city']);
         return $fiftynineprofile;
     }
@@ -97,13 +98,44 @@ class FiftyNineDAO {
         return $investorProfile;
     }
 
+    public function getInvestorContactInfo($fiftynineprofileid) {
+        $con = $this->getDBConnection();
+        $sql = "SELECT contact_type " .
+                "FROM investor " .
+                "WHERE 59profileid = " . $fiftynineprofileid;
+        $result = $this->executeSQL($sql);
+        $row = mysqli_fetch_array($result);
+        if ($row['contact_type'] == "either") {
+            $sql = "SELECT firstname,lastname,contact_type,email, " .
+                    "FROM investor " .
+                    "WHERE 59profileid = " . $fiftynineprofileid;
+            $result = $this->executeSQL($sql);
+            $row = mysqli_fetch_array($result);
+        } elseif ($row['contact_type'] == "email") {
+            
+        } 
+        elseif ($row['contact_type'] == "phone") {
+            
+        } else {
+            die("59DAO::getInvestorContactInfo");
+        }
+        $sql = "SELECT firstname,lastname,contact_type, FROM investor WHERE 59profileid=" . $fiftynineprofileid;
+        if (!($result = mysqli_query($con, $sql))) {
+            die('Error: ' . mysqli_error($con) . "      " . $sql);
+        }
+
+        $row = mysqli_fetch_array($result);
+        $investorProfile = new InvestorProfile($row['59profileid'], $row['class'], $row['contact_type'], $row['contact_preferences']);
+        return $investorProfile;
+    }
+
     public function getEntrepreneurProfiles($fiftynineprofileid) {
         $con = $this->getDBConnection();
         $sql = "SELECT * FROM entrepreneur WHERE 59profileid=" . $fiftynineprofileid;
         if (!($result = mysqli_query($con, $sql))) {
             die('Error: ' . mysqli_error($con) . "      " . $sql);
         }
-        
+
         $profiles = array();
         $index = 1;
         while ($row = mysqli_fetch_array($result)) {
@@ -124,9 +156,10 @@ class FiftyNineDAO {
             die('Error: ' . mysqli_error($con) . "      " . $sql);
         }
     }
-    public function track($profileid,$businessid){
-    $con = $this->getDBConnection();
-        
+
+    public function track($profileid, $businessid) {
+        $con = $this->getDBConnection();
+
         $sql = "INSERT into tracking(59profileid,business_id) values('" . $profileid . "'," . $businessid . ")";
 
         $result = mysqli_query($con, $sql);
@@ -154,6 +187,28 @@ class FiftyNineDAO {
             } else {
                 die("Verify-Rowcount returned more than one record.  Check for primary key conflicts");
             }
+        }
+    }
+
+    public function deleteEntrepreneurIdea($business_id) {
+        $con = $this->getDBConnection();
+
+        $sql = "DELETE FROM entrepreneur WHERE business_id = " . $business_id;
+
+        $result = mysqli_query($con, $sql);
+        if (!$result) {
+            die('Error: ' . mysqli_error($con) . "      " . $sql);
+        }
+    }
+
+    public function insertEntrepreneurIdea($profileID, $workType, $workName, $workDesc) {
+        $con = $this->getDBConnection();
+
+        $sql = "INSERT INTO entrepreneur (59profileid,business_type,business_name,business_description)" .
+                "VALUES (" . $profileID . ",'" . $workType . "','" . $workName . "','" . $workDesc . "')";
+        $result = mysqli_query($con, $sql);
+        if (!$result) {
+            die('Error: ' . mysqli_error($con) . "      " . $sql);
         }
     }
 

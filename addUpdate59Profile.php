@@ -19,7 +19,7 @@ if ($age == "") {
 
 $dao = new FiftyNineDAO();
 
-if (isset($_SESSION['manage']) && $_SESSION['manage']) {
+if (isset($_SESSION['last_visited']) && $_SESSION['last_visited'] == "manage") {
     $sql = "UPDATE 59profile " .
             "SET password = '" . $password . "'," .
             "email = '" . $email . "'," .

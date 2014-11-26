@@ -79,7 +79,7 @@ session_start();
                 $_SESSION['password'] = $password;
                 $_SESSION['almamater'] = $almamater;
                 $_SESSION['city'] = $city;
-                $_SESSION['manage'] = true;
+                $_SESSION['last_visited'] = "manage";
                 //die($firstname . $lastname . $email . $age . $password . $almamater . $city);
                 header('Location: http://localhost/59SecondPitch/addUpdate59Profile.php');
                 exit();
