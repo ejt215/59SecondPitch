@@ -16,6 +16,7 @@ include_once 'FiftyNineDAO.php';
         <link rel="stylesheet" type="text/css" href="CSS/browseStyles.css" />
         <link href="CSS/bootstrap.min.css" rel="stylesheet" media="screen">
         <link href="CSS/jquery-ui.min.css" rel="stylesheet" type="text/css"/>
+        <link href="CSS/feedback.css" rel="stylesheet" type="text/css"/>
 
 
         <script src="http://code.jquery.com/jquery.js"></script>
@@ -87,7 +88,48 @@ include_once 'FiftyNineDAO.php';
         </div>
 
 
-
+<div id="dialog" class="web_dialog">
+   <table style="width: 100%; border: 0px;" cellpadding="3" cellspacing="0">
+      <tr>
+         <td class="web_dialog_title">Feedback</td>
+         <td class="web_dialog_title align_right">
+            <a href="#" id="btnClose">Close</a>
+         </td>
+      </tr>
+      <tr>
+         <td>&nbsp;</td>
+         <td>&nbsp;</td>
+      </tr>
+      <tr>
+         <td colspan="2" style="padding-left: 15px;">
+            <b>Entrepreneurs appreciate your feedback. </b>
+         </td>
+      </tr>
+      <tr>
+         <td>&nbsp;</td>
+         <td>&nbsp;</td>
+      </tr>
+      <tr>
+         <td colspan="2" style="padding-left: 15px;">
+             <form>
+                 <input id="feed1"  type="radio" name ="feedback"  value="interest" checked/> Not interested in product<br>
+                 <input id="feed2" type="radio" name ="feedback"  value="realistic" /> Unrealistic <br>
+                 <input id="feed3"  type="radio" name ="feedback"   value="refine" /> Needs refinement<br>
+                 <input id ="feed4" value = ""  name ="feedback" type="text" /> Other<br>
+              <input id="btnSubmit" style ="text-align: center"type="button"  value="Submit" />
+               </form>
+            
+         </td>
+      </tr>
+      
+    
+      <tr>
+         <td colspan="2" style="text-align: center;">
+            
+         </td>
+      </tr>
+   </table>
+</div>
 
 
     </body>

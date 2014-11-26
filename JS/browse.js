@@ -28,6 +28,19 @@ function displayNewProfiles(data) {
         
     }
 }
+function ShowDialog(modal)
+   {
+     
+      $("#dialog").fadeIn(300);
+ 
+     
+   }
+
+   function HideDialog()
+   {
+      
+      $("#dialog").fadeOut(300);
+   } 
 
 $(document).ready(function() {
     //initialize sidebar
@@ -76,6 +89,15 @@ $(document).ready(function() {
                 displayNewProfiles(data);
             }
         });
+    });
+    $("#feedback").click(function(){
+       ShowDialog(); 
+    });
+    $("#btnClose").click(function(){
+        HideDialog();
+    });
+    $("#btnSubmit").click(function(){
+        HideDialog();
     });
 $(document).on('click','.viewProfile',function() {
         var id = $('.coverflow').coverflow("cover").attr('id');
