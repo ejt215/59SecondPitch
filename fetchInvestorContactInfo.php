@@ -8,6 +8,7 @@ $dao = new FiftyNineDAO();
 
 if (isset($_SESSION['last_visited']) && $_SESSION['last_visited'] == "entrepreneurHome"){
     $profiles = $dao->getInvestorContactInfo($profileID);
+    //die(count($profiles);
     echo json_encode($profiles);
 }
 ?>
