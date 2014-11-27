@@ -54,6 +54,11 @@ session_start();
                 $_SESSION['contactType'] = $contactType;
                 $_SESSION['userType'] = $userType;
                 $_SESSION['contactPref'] = $contactPref;
+                if (empty($_POST["phoneNumber"])) {
+                    $_SESSION['phoneNumber'] = null;
+                } else {
+                    $_SESSION['phoneNumber'] = $_POST['phoneNumber'];
+                }
 
                 header('Location: http://localhost/59SecondPitch/addUpdateInvestorProfile.php');
                 exit();
@@ -79,9 +84,9 @@ session_start();
                         }
                         ?>value="Advisor">Advisor<br>
                         <input id="helpingHandRadio" type="radio" name="usertype" <?php
-                               if (isset($userType) && $userType == "helpingHand") {
-                                   echo "helpingHand";
-                               }
+                        if (isset($userType) && $userType == "helpingHand") {
+                            echo "helpingHand";
+                        }
                         ?>value="helpingHand">Helping Hand
                     </div>
                 </div>

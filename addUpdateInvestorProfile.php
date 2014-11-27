@@ -16,10 +16,9 @@ $_SESSION['profileid'] = $profileID;
 $class = $_SESSION['userType'];
 $contact_type = $_SESSION['contactType'];
 $contact_preferences = $_SESSION['contactPref'];
+$phoneNumber = $_SESSION['phoneNumber'];
 
-$sql = "INSERT INTO investor (59profileid,class,contact_type,contact_preferences)" .
-        "VALUES ('$profileID','$class','$contact_type','$contact_preferences')";
+$dao->insertInvestorProfile($profileID,$class,$contact_type,$contact_preferences,$phoneNumber);
 
-$dao->executeSQL($sql);
 header("Location: investorHome.php");
 ?>

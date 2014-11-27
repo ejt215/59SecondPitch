@@ -237,6 +237,18 @@ class FiftyNineDAO {
         }
     }
 
+    public function insertInvestorProfile($profileID,$class,$contact_type,$contact_preferences,$phoneNumber){
+        $con = $this->getDBConnection();
+        if (!$phoneNumber){
+            $sql = "INSERT INTO investor (59profileid,class,contact_type,contact_preferences)" .
+            "VALUES ('$profileID','$class','$contact_type','$contact_preferences')";
+        } else {
+            $sql = "INSERT INTO investor (59profileid,class,contact_type,contact_preferences,phone)" .
+            "VALUES ('$profileID','$class','$contact_type','$contact_preferences','$phoneNumber')";
+        }
+
+        $this->executeSQL($sql);
+    }
 }
 
 ?>
