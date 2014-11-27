@@ -8,9 +8,7 @@ and open the template in the editor.
     Author     : Smithers
 */
 .cover{
-    
-    //visibility: hidden;
-    
+    visibility: hidden;
     background-color: white;
     height:300px;
     width:250px;
