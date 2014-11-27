@@ -36,14 +36,14 @@
 .web_dialog_title
 {
    border-bottom: solid 2px #336699;
-   background-color: #336699;
+   background-color: #000000;
    padding: 4px;
-   color: White;
+   color: Red;
    font-weight:bold;
 }
 .web_dialog_title a
 {
-   color: White;
+   color: Red;
    text-decoration: none;
 }
 .align_right
