@@ -114,28 +114,29 @@ class FiftyNineDAO {
 
 
         $result = $this->executeSQL($investorSQL);
-        $i = 0;
+        //$i = 0;
 
         while ($row = mysqli_fetch_array($result)) {
             $individualInvestorSQL = "SELECT * " .
                     "FROM investor " .
-                    "WHERE 59profileid = " . $row[$i];
+                    "WHERE 59profileid = " . $row[0];
 
             $individualResult = $this->executeSQL($individualInvestorSQL);
             $individualRow = mysqli_fetch_array($individualResult);
 
             if ($individualRow['contact_type'] == "Either") {
-                die("EITHER");
-                $sql = "SELECT firstname,lastname,contact_type,email, " .
-                        "FROM investor " .
-                        "WHERE 59profileid = " . $individualRow[0];
-                $result = $this->executeSQL($sql);
-                $row = mysqli_fetch_array($result);
+                $eitherContactSQL = "SELECT firstname,lastname,contact_type,phone,email,contact_preferences " .
+                        "FROM investor, 59profile " .
+                        "WHERE investor.59profileid = " . $row[0] . " " .
+                        "AND 59profile.59profileid = " . $row[0];
+                $eitherContactResult = $this->executeSQL($eitherContactSQL);
+                $eitherContactRow = mysqli_fetch_array($eitherContactResult);
+                $investorContacts[] = $eitherContactRow;
             } elseif ($individualRow['contact_type'] == "Email") {
                 $emailContactSQL = "SELECT firstname,lastname,contact_type,email,contact_preferences " .
                         "FROM investor, 59profile " .
-                        "WHERE investor.59profileid = " . $row[$i] . " " .
-                        "AND 59profile.59profileid = " . $row[$i];
+                        "WHERE investor.59profileid = " . $row[0] . " " .
+                        "AND 59profile.59profileid = " . $row[0];
 
                 $emailContactResult = $this->executeSQL($emailContactSQL);
                 $emailContactRow = mysqli_fetch_array($emailContactResult);
@@ -143,11 +144,20 @@ class FiftyNineDAO {
                 $investorContacts[] = $emailContactRow;
                 //echo sizeof($investorContacts);
             } elseif ($individualRow['contact_type'] == "Phone") {
-                
+                $phoneContactSQL = "SELECT firstname,lastname,contact_type,phone,contact_preferences " .
+                        "FROM investor, 59profile " .
+                        "WHERE investor.59profileid = " . $row[0] . " " .
+                        "AND 59profile.59profileid = " . $row[0];
+
+                $phoneContactResult = $this->executeSQL($phoneContactSQL);
+                $phoneContactRow = mysqli_fetch_array($phoneContactResult);
+                // echo $i . " " . $emailContactRow["firstname"] . " " . $emailContactRow["lastname"] . " " . $emailContactRow["contact_type"] . " " . $emailContactRow[3] . " " . $emailContactRow["contact_preferences"];
+                $investorContacts[] = $phoneContactRow;
+                //echo sizeof($investorContacts);               
             } else {
                 die("59DAO::getInvestorContactInfo");
             }
-            $i++;
+            //$i++;
         }
 
         return $investorContacts;

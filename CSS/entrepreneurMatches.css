@@ -10,10 +10,11 @@ and open the template in the editor.
 
 .businessCard{
     width: 200px;
-    height: 100px;
+    height: 300px;
     float: left;
     border: 5px;
     border-style: groove;
+    padding:5px;
 }
 .panel-heading{
     background-color:gray;
