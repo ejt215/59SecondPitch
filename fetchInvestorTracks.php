@@ -12,8 +12,6 @@ $profileID = $_SESSION['profileid'];
 
 $dao = new FiftyNineDAO();
 
-if (isset($_SESSION['last_visited']) && $_SESSION['last_visited'] == "investorHome"){
-    $profiles = $dao->getInvestorContactInfo($profileID);
+    $profiles = $dao->getInvestorTracks($profileID);
     //die(count($profiles);
     echo json_encode($profiles);
-}
