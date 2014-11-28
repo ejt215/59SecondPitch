@@ -108,7 +108,7 @@ $(document).on('click','.viewProfile',function() {
         //var arr = {"businessid":};
         $.post('browseMatching.php', { businessid: id,match: 1}, function(data){
              
-           
+           $("#"+$('.coverflow').coverflow("cover").attr('id')).html("<img src = '"+"IMG/check.png' />");
             alert("Matched!");
              
         }).fail(function() {
@@ -141,7 +141,7 @@ $(document).on('click','.viewProfile',function() {
         //var arr = {"businessid":};
         $.post('browseMatching.php', { businessid: id,match: 0}, function(data){
              
-           
+           $("#"+$('.coverflow').coverflow("cover").attr('id')).html("<img src = '"+"IMG/x.jpeg' />");
             alert("Why not? Provide feedback if you have a minute.");
              
         }).fail(function() {
