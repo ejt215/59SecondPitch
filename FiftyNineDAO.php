@@ -162,6 +162,37 @@ class FiftyNineDAO {
 
         return $investorContacts;
     }
+    
+    public function getInvestorFavorites($fiftynineprofileid){
+    $con = $this->getDBConnection();
+    $sql = "SELECT business_id FROM matching WHERE matched = 1 and 59profileid=" . $fiftynineprofileid;
+    if (!($result = mysqli_query($con, $sql))) {
+            die('Error: ' . mysqli_error($con) . "      " . $sql);
+        }
+        
+        $business_id;
+        $profiles = array();
+        $index = 0;
+        while ($row = mysqli_fetch_array($result)) {
+            $business_id = $row['business_id'];
+        $sql2 = "SELECT * FROM entrepreneur WHERE business_id=" . $business_id;
+        if (!($result2 = mysqli_query($con, $sql2))) {
+            die('Error: ' . mysqli_error($con) . "      " . $sql2);
+        }
+
+        
+        
+       $row2 = mysqli_fetch_array($result2);
+            $profile = new EntrepreneurProfile($row2['business_id'], $row2['59profileid'], $row2['business_type'], $row2['business_name'], $row2['business_description']);
+            $profiles[$index] = $profile;
+            $index++;
+        
+        
+        }
+        return $profiles;
+        
+    
+    }
 
     public function getEntrepreneurProfiles($fiftynineprofileid) {
         $con = $this->getDBConnection();
