@@ -97,7 +97,7 @@ class FiftyNineDAO {
     }
 
     public function getInvestorContactInfo($fiftynineprofileid) {
-        
+
         $investorContacts = array();
         $con = $this->getDBConnection();
 
@@ -161,7 +161,6 @@ class FiftyNineDAO {
         }
 
         return $investorContacts;
-        
     }
 
     public function getEntrepreneurProfiles($fiftynineprofileid) {
@@ -247,18 +246,60 @@ class FiftyNineDAO {
         }
     }
 
-    public function insertInvestorProfile($profileID,$class,$contact_type,$contact_preferences,$phoneNumber){
+    public function insertInvestorProfile($profileID, $class, $contact_type, $contact_preferences, $phoneNumber) {
         $con = $this->getDBConnection();
-        if (!$phoneNumber){
+        if (!$phoneNumber) {
             $sql = "INSERT INTO investor (59profileid,class,contact_type,contact_preferences)" .
-            "VALUES ('$profileID','$class','$contact_type','$contact_preferences')";
+                    "VALUES ('$profileID','$class','$contact_type','$contact_preferences')";
         } else {
             $sql = "INSERT INTO investor (59profileid,class,contact_type,contact_preferences,phone)" .
-            "VALUES ('$profileID','$class','$contact_type','$contact_preferences','$phoneNumber')";
+                    "VALUES ('$profileID','$class','$contact_type','$contact_preferences','$phoneNumber')";
         }
 
         $this->executeSQL($sql);
     }
+
+    public function getStatistics($fiftynineprofileid) {
+        $statistics = array();
+        $con = $this->getDBConnection();
+
+        //Get all the business_id's that the entrepreneur has
+        $business_idSQL = "SELECT business_id " .
+                "FROM entrepreneur " .
+                "WHERE 59profileid = " . $fiftynineprofileid;
+
+        $result = $this->executeSQL($business_idSQL);
+
+        while ($row = mysqli_fetch_array($result)) {
+
+            $nameSQL = "SELECT business_name " .
+                    "FROM entrepreneur " .
+                    "WHERE business_id = " . $row[0];
+            
+            $matchSQL = "SELECT count(*) " .
+                    "FROM matching " .
+                    "WHERE business_id = " . $row[0] . " " .
+                    "AND matched = 1";
+
+            $noMatchSQL = "SELECT count(*) " .
+                    "FROM matching " .
+                    "WHERE business_id = " . $row[0] . " " .
+                    "AND matched = 0";
+
+            $matchResult = $this->executeSQL($matchSQL);
+            $noMatchResult = $this->executeSQL($noMatchSQL);
+            $nameResult = $this->executeSQL($nameSQL);
+            
+            $matchRow = mysqli_fetch_array($matchResult);
+            $noMatchRow = mysqli_fetch_array($noMatchResult);
+            $nameRow = mysqli_fetch_array($nameResult);
+                      
+            $statistics[] = [$nameRow[0],$matchRow[0],$noMatchRow[0]];
+        }
+
+        return $statistics;
+    }
+
 }
 
 ?>

@@ -1,0 +1,22 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Nov 26, 2014, 3:14:03 PM
+    Author     : Smithers
+*/
+
+.businessCard{
+    width: 200px;
+    height: 300px;
+    float: left;
+    border: 5px;
+    border-style: groove;
+    padding:5px;
+}
+.panel-heading{
+    background-color:gray;
+    font-weight: bold;
+}
