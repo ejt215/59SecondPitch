@@ -89,6 +89,47 @@ $(document).ready(function() {
             }
         });
     });
+    $("#feedback").click(function(){
+       ShowDialog(); 
+    });
+    $("#btnClose").click(function(){
+        HideDialog();
+    });
+    $("#btnSubmit").click(function(){
+        var id = $('.coverflow').coverflow("cover").attr('id');
+        var radio;
+        if($('#feed1').is(':checked')) { radio = "Not interested in product."; }
+        else if($('#feed2').is(':checked')) { radio = "Unrealistic"; }
+        else if($('#feed3').is(':checked')) { radio = "Needs Refinement"; }
+        if($("#feed4").val()!== ""){
+            $.post('feedback.php', { businessid: id,radio: radio,other:$("#feed4").val()}, function(data){
+             
+           
+            
+             
+        }).fail(function() {
+         
+            
+            alert( "Posting failed." );
+             
+        });
+        }
+        else{
+            $.post('feedback.php', { businessid: id,radio: radio}, function(data){
+             
+           
+            
+             
+        }).fail(function() {
+         
+            
+            alert( "Posting failed." );
+             
+        });
+        }
+        
+        HideDialog();
+    });
 $(document).on('click','.viewProfile',function() {
         var id = $('.coverflow').coverflow("cover").attr('id');
         $('#profiles').hide();
