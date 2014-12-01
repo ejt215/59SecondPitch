@@ -179,6 +179,13 @@ session_start();
                                 </div>
                                 <div class="control-group">
                                     <div class="controls">
+                                        <span class="btn btn-default btn-file">
+                                            Upload Profile Picture <input type="file">
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <div class="controls">
                                         <input type="radio" name="type" <?php
                                         if (isset($type) && $type == "Entrepreneur") {
                                             echo "Entrepreneur";
