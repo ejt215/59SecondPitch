@@ -1,13 +1,15 @@
 $(document).on('change', '.btn-file :file', function() {
     var input = $(this),
-        numFiles = input.get(0).files ? input.get(0).files.length : 1,
-        label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+            numFiles = input.get(0).files ? input.get(0).files.length : 1,
+            label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
     input.trigger('fileselect', [numFiles, label]);
 });
 
-$(document).ready( function() {
+$(document).ready(function() {
     $('.btn-file :file').on('fileselect', function(event, numFiles, label) {
-        alert(numFiles);
-        alert(label);
+        if (numFiles > 1) {
+            alert("Please select only 1 picture");
+        }
+        $("#profilePictureURL").val(label);
     });
 });

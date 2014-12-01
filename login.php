@@ -12,15 +12,16 @@ session_start();
     <body>
         <script src="http://code.jquery.com/jquery.js"></script>
         <script src="JS/bootstrap.min.js"></script>
+        <script src="JS/login.js"></script>
         <link class="cssdeck" rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/css/bootstrap.min.css">
         <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/css/bootstrap-responsive.min.css" class="cssdeck">
-        
+
 
 
         <?php
         //
         // define variables and set to empty values
-        $firstnameErr = $lastnameErr = $emailErr = $passwordErr = $repasswordErr = $typeErr = "";
+        $firstnameErr = $lastnameErr = $emailErr = $passwordErr = $repasswordErr = $typeErr = $uploadErr = "";
         $name = $email = $password = $lastname = $firstname = $repassword = $age = $almamater = $city = $type = "";
         $valid = true;
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -81,6 +82,56 @@ session_start();
                     $age = $_POST["age"];
                     $almamater = $_POST["almamater"];
                     $city = $_POST["city"];
+
+
+                    //--------------Profile Picture Validation---------------------
+                    $target_dir = "PROFILE_PICTURES/";
+                    $target_file = $target_dir . basename($_FILES["profilePictureUpload"]["name"]);
+                    $uploadOk = 1;
+                    $imageFileType = pathinfo($target_file, PATHINFO_EXTENSION);
+
+                    // Check if image file is a actual image or fake image
+                    $check = getimagesize($_FILES["profilePictureUpload"]["tmp_name"]);
+                    if ($check !== false) {
+                        $uploadErr = "File is an image - " . $check["mime"] . ".";
+                        $uploadOk = 1;
+                    } else {
+                        echo "File is not an image.";
+                        $uploadOk = 0;
+                    }
+
+
+                    // Check if file already exists
+                    if (file_exists($target_file)) {
+                        $uploadErr = "Sorry, file already exists.";
+                        $uploadOk = 0;
+                    }
+
+                    // Check file size
+                    if ($_FILES["fileToUpload"]["size"] > 500000) {
+                        $uploadErr = "Sorry, your file is too large.";
+                        $uploadOk = 0;
+                    }
+
+                    // Allow certain file formats
+                    if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif") {
+                        $uploadErr = "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+                        $uploadOk = 0;
+                    }
+
+                    // Check if $uploadOk is set to 0 by an error
+                    if ($uploadOk == 0) {
+                        $uploadErr = "Sorry, your file was not uploaded.";
+
+                        // if everything is ok, try to upload file
+                    } else {
+                        if (move_uploaded_file($_FILES["profilePictureUpload"]["tmp_name"], $target_file)) {
+                            echo "The file " . basename($_FILES["profilePictureUpload"]["name"]) . " has been uploaded.";
+                        } else {
+                            echo "Sorry, there was an error uploading your file.";
+                        }
+                    }
+
 
                     if ($valid) {
                         $_SESSION['firstname'] = $firstname;
@@ -143,7 +194,7 @@ session_start();
                             </form>  
                         </div>
                         <div class="tab-pane fade" id="create">
-                            <form class="form-horizontal" id="newProfileForm" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
+                            <form class="form-horizontal" id="newProfileForm" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST" enctype="multipart/form-data">
                                 <div class="control-group">
                                     <label class="control-label" for="email">Email:</label>
                                     <div class="controls"><input type="text" id="email" name="email" value = "<?php echo $email; ?>"> <span class="error">* <?php echo $emailErr; ?></span></div>
@@ -179,10 +230,14 @@ session_start();
                                     </div>
                                 </div>
                                 <div class="control-group">
-                                    <div class="controls">
+                                    <!--<div class="control-label">
                                         <span class="btn btn-default btn-file">
                                             Upload Profile Picture <input type="file">
                                         </span>
+                                    </div>-->
+                                    <div class="controls">
+                                        <input type="file" name="profilePictureUpload" id="profilePictureUpload"><span class="error">* <?php echo $uploadErr; ?></span>
+                                        <!--<input id="profilePictureURL" type="text" readonly>--> 
                                     </div>
                                 </div>
                                 <div class="control-group">
