@@ -37,7 +37,7 @@ class FiftyNineDAO {
 
     public function get59ProfileIDFromEmail($email) {
         $con = $this->getDBConnection();
-        $sql = "SELECT 59profileid FROM 59profile WHERE email='" . $email . "'";
+        $sql = "SELECT 59profileid FROM 59profile WHERE email='" . mysqli_real_escape_string($con, $email) . "'";
         if (!($result = mysqli_query($con, $sql))) {
             die('Error: ' . mysqli_error($con) . "      " . $sql);
         }
@@ -61,7 +61,7 @@ class FiftyNineDAO {
 
     public function get59Profile($email) {
         $con = $this->getDBConnection();
-        $sql = "SELECT * FROM 59profile WHERE email='" . $email . "'";
+        $sql = "SELECT * FROM 59profile WHERE email='" . mysqli_real_escape_string($con, $email) . "'";
         if (!($result = mysqli_query($con, $sql))) {
             die('Error: ' . mysqli_error($con) . "      " . $sql);
         }
@@ -265,8 +265,8 @@ class FiftyNineDAO {
         $con = $this->getDBConnection();
         $sql = "SELECT * 
                 FROM 59profile
-                WHERE email = '" . $email . "' 
-                AND password = '" . $pass . "'";
+                WHERE email = '" . mysqli_real_escape_string($con, $email) . "' 
+                AND password = '" . mysqli_real_escape_string($con, $pass) . "'";
 
         $result = mysqli_query($con, $sql);
         if (!$result) {
@@ -298,7 +298,7 @@ class FiftyNineDAO {
         $con = $this->getDBConnection();
 
         $sql = "INSERT INTO entrepreneur (59profileid,business_type,business_name,business_description)" .
-                "VALUES (" . $profileID . ",'" . $workType . "','" . $workName . "','" . $workDesc . "')";
+                "VALUES (" . $profileID . ",'" . $workType . "','" . mysqli_real_escape_string($con, $workName) . "','" . mysqli_real_escape_string($con, $workDesc) . "')";
         $result = mysqli_query($con, $sql);
         if (!$result) {
             die('Error: ' . mysqli_error($con) . "      " . $sql);
@@ -309,10 +309,10 @@ class FiftyNineDAO {
         $con = $this->getDBConnection();
         if (!$phoneNumber) {
             $sql = "INSERT INTO investor (59profileid,class,contact_type,contact_preferences)" .
-                    "VALUES ('$profileID','$class','$contact_type','$contact_preferences')";
+                    "VALUES ('$profileID','$class','$contact_type','" . mysqli_real_escape_string($con, $contact_preferences) . "')";
         } else {
             $sql = "INSERT INTO investor (59profileid,class,contact_type,contact_preferences,phone)" .
-                    "VALUES ('$profileID','$class','$contact_type','$contact_preferences','$phoneNumber')";
+                    "VALUES ('$profileID','$class','$contact_type','" . mysqli_real_escape_string($con, $contact_preferences) . "','$phoneNumber')";
         }
 
         $this->executeSQL($sql);
