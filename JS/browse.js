@@ -96,16 +96,20 @@ $(document).ready(function() {
         HideDialog();
     });
     $("#btnSubmit").click(function(){
-        var id = $('.coverflow').coverflow("cover").attr('id');
+        var id = $('.coverflow').coverflow("cover").attr('name');
         var radio;
         if($('#feed1').is(':checked')) { radio = "Not interested in product."; }
-        else if($('#feed2').is(':checked')) { radio = "Unrealistic"; }
-        else if($('#feed3').is(':checked')) { radio = "Needs Refinement"; }
+        if($('#feed2').is(':checked')) { radio = "Unrealistic"; }
+        if($('#feed3').is(':checked')) { radio = "Needs Refinement"; }
+        
         if($("#feed4").val()!== ""){
             $.post('feedback.php', { businessid: id,radio: radio,other:$("#feed4").val()}, function(data){
-             
+             alert(id);
+             alert(radio);
+             alert($("#feed4").val());
            
             
+             
              
         }).fail(function() {
          
@@ -160,22 +164,7 @@ $(document).on('click','.viewProfile',function() {
         });
        
     });
-       $("#feedback").click(function(){
-       ShowDialog(); 
-    });
-    $("#btnClose").click(function (e)
-      {
-         HideDialog();
-         e.preventDefault();
-      });
-
-      $("#btnSubmit").click(function (e)
-      {
-         //var brand = $("#brands input:radio:checked").val();
-         //$("#output").html("<b>Your favorite mobile brand: </b>" + brand);
-         HideDialog();
-         e.preventDefault();
-      });
+       
 
     $("#nothanks").click(function (){
         var id = $('.coverflow').coverflow("cover").attr('name');

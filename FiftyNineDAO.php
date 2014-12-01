@@ -241,7 +241,7 @@ class FiftyNineDAO {
     public function feedback($businessid,$regular,$other){
         $con = $this->getDBConnection();
         
-        $sql = "INSERT into feedback(business_id,regular,other) values(" . $businessid. ",'" . $regular . "','" . $other . "')";
+        $sql = "INSERT into feedback(business_id,regular,other) values('" . $businessid. "','" . $regular . "','" . $other . "')";
 
         $result = mysqli_query($con, $sql);
         if (!$result) {

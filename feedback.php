@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 require_once 'FiftyNineDAO.php';
 
@@ -13,6 +12,9 @@ if(isset($_POST['other'])){
 else{
     $other =  "";
 }
+echo "DSFDSFDSFDSFSDF".$_POST['businessid'];
+echo "fsdfssafasf".$_POST['radio'];
+
 
 $dao = new FiftyNineDAO();
 $dao->feedback($business_id, $radio,$other);
@@ -20,3 +22,4 @@ $dao->feedback($business_id, $radio,$other);
 //die($email . "        " . $pass . "               " . $dao->verify($email, $pass));
 
 header("Location:  browse.php");
+?>
