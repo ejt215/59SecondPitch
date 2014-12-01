@@ -238,10 +238,10 @@ class FiftyNineDAO {
         }
         return $profiles;
     }
-    public function feedback($businessid,$radio,$other){
+    public function feedback($businessid,$regular,$other){
         $con = $this->getDBConnection();
         
-        $sql = "INSERT into feedback(business_id,radio,other) values('" . $businessid. "','" . $radio . "','" . $other . "')";
+        $sql = "INSERT into feedback(business_id,regular,other) values(" . $businessid. ",'" . $regular . "','" . $other . "')";
 
         $result = mysqli_query($con, $sql);
         if (!$result) {
