@@ -17,7 +17,7 @@ class FiftyNineDAO {
 
     private function getDBConnection() {
         if (!isset($_mysqli)) {
-            $_mysqli = new mysqli("128.180.177.4:3307", "guest", "pitch", "59secondpitch");
+            $_mysqli = new mysqli("localhost:3306", "root", "", "59secondpitch");
             if ($_mysqli->errno) {
                 printf("Unable to connect: %s", $_mysqli->error);
                 exit();
@@ -369,6 +369,8 @@ class FiftyNineDAO {
         return $statistics;
     }
 
+    public function 
 }
+
 
 ?>
