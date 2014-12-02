@@ -9,14 +9,20 @@ function displayNewProfiles(data) {
         $("#" + i).css("visibility", "visible");
         profile = data["" + i];
         $("#" + i).html(
-                "<h1> " + profile["business_name"] + "</h1><br />" +
-                "Business type: " + profile["business_type"] + "<br />" +
-                "Creator: " + profile["firstname"] + " " + profile["lastname"] + " <img class='profilepicture' src=PROFILE_PICTURES/" + profile["profilepicture"] + " alt='No Profile Picture'><br />" +
-                "Alma mater: " + profile['almamater'] + "<br />" +
-                "Location: " + profile['city'] + "<br />" +
-                "Description :" + profile['shortDesc'] + "<br />" +
-                "<button type='button' class='viewProfile' id='b" + i + "'>View Full Profile</button>"
-                );
+                '<div class="col-sm-12">' +
+                            '<div class="col-xs-12 col-sm-8">' +
+                                '<h2>' + profile["firstname"] + " " + profile["lastname"] + '</h2>' +
+                                '<p><strong>Alma mater: </strong>' + profile['almamater'] + '</p>' +
+                                '<p><strong>City: </strong>' + profile['city'] + '</p>' +
+                            '</div>' +              
+                            '<div class="col-xs-12 col-sm-4 text-center">' +
+                                '<figure><img src="PROFILE_PICTURES/' + profile['profilepicture'] + '" alt="Profile Picture missing" class="profilepicture"></figure>' +
+                            '</div>' +
+                        '</div>' +
+                        '<div class="">' + 
+                        '<video class="businessVideos" controls>' +
+                            '<source src="BUSINESS_VIDEOS/testvideo.mp4" type="video/mp4">' + 
+                        '</video></div>');
         $("#" + i).attr("name",profile['business_id']);
         $("#f"+i).html("<h1> " + profile["business_name"] + "</h1><br />" +
                 "Business type: " + profile["business_type"] + "<br />" +

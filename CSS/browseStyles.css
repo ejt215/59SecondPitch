@@ -9,16 +9,20 @@ and open the template in the editor.
 */
 .cover{
     visibility: hidden;
-    background-color: black;
-    color:white;
+    background-color: white;
+    color:black;
     height:500px;
-    width:300px;
+    width:500px;
     word-wrap: break-word
 }
 
-.profilepicture{
-   height:64px;
-   width:64px; 
+.profilepicture{   
+   height:128px;
+   width:128px; 
+}
+.businessVideos{
+    width:100%;
+    height:100%;
 }
 #profileContainer{
     background-color: red;
