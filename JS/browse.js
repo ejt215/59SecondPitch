@@ -5,7 +5,7 @@
  */
 function displayNewProfiles(data) {
     var profile;
-    for (i = 1; i < Object.keys(data).length + 1; i++) {
+    /*for (i = 1; i < Object.keys(data).length + 1; i++) {
         $("#" + i).css("visibility", "visible");
         profile = data["" + i];
         $("#" + i).html(
@@ -26,7 +26,7 @@ function displayNewProfiles(data) {
                 "Description :" + profile['business_description'] + "<br />" +
                 "<button type='button' class='return'>Return to Browse</button>");
         
-    }
+    }*/
 }
 
 $(document).ready(function() {
