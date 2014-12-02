@@ -11,7 +11,7 @@ function displayNewProfiles(data) {
         $("#" + i).html(
                 "<h1> " + profile["business_name"] + "</h1><br />" +
                 "Business type: " + profile["business_type"] + "<br />" +
-                "Creator: " + profile["firstname"] + " " + profile["lastname"] + " <img src=" + profile["profileid"] + ".><br />" +
+                "Creator: " + profile["firstname"] + " " + profile["lastname"] + " <img class='profilepicture' src=PROFILE_PICTURES/" + profile["profilepicture"] + " alt='No Profile Picture'><br />" +
                 "Alma mater: " + profile['almamater'] + "<br />" +
                 "Location: " + profile['city'] + "<br />" +
                 "Description :" + profile['shortDesc'] + "<br />" +
@@ -74,6 +74,9 @@ $(document).ready(function() {
         //Set cover content to the 5 fetched profiles
         success: function(data) {
             displayNewProfiles(data);
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            alert("Error: " + jqXHR.responseText);
         }
     });
 

@@ -9,12 +9,17 @@ and open the template in the editor.
 */
 .cover{
     visibility: hidden;
-    background-color: white;
-    height:300px;
-    width:250px;
+    background-color: black;
+    color:white;
+    height:500px;
+    width:300px;
     word-wrap: break-word
 }
 
+.profilepicture{
+   height:64px;
+   width:64px; 
+}
 #profileContainer{
     background-color: red;
 }
