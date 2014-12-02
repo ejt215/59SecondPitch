@@ -10,11 +10,20 @@ and open the template in the editor.
 .cover{
     visibility: hidden;
     background-color: white;
-    height:300px;
-    width:250px;
+    color:black;
+    height:500px;
+    width:500px;
     word-wrap: break-word
 }
 
+.profilepicture{   
+   height:128px;
+   width:128px; 
+}
+.businessVideos{
+    width:100%;
+    height:100%;
+}
 #profileContainer{
     background-color: red;
 }

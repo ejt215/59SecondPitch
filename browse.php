@@ -17,6 +17,8 @@ include_once 'FiftyNineDAO.php';
         <link rel="stylesheet" type="text/css" href="CSS/feedback.css" />
         <link href="CSS/bootstrap.min.css" rel="stylesheet" media="screen">
         <link href="CSS/jquery-ui.min.css" rel="stylesheet" type="text/css"/>
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+
 
 
         <script src="http://code.jquery.com/jquery.js"></script>
