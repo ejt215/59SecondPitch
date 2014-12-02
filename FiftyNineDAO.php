@@ -368,8 +368,6 @@ class FiftyNineDAO {
 
         return $statistics;
     }
-
-    public function 
 }
 
 

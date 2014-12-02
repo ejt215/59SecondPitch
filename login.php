@@ -129,7 +129,7 @@ session_start();
                         
                         if (move_uploaded_file($_FILES["profilePictureUpload"]["tmp_name"], $target_file)) {
                             echo "The file " . basename($_FILES["profilePictureUpload"]["name"]) . " has been uploaded.";
-                            rename($_FILES["profilePictureUpload"],)
+                            //rename($_FILES["profilePictureUpload"],)
                         } else {
                             echo "Sorry, there was an error uploading your file.";
                         }
