@@ -8,7 +8,7 @@ session_start();
         <title>59SecondPitch Login</title>
         <link href="CSS/bootstrap.min.css" rel="stylesheet" media="screen">
         <link href="CSS/loginStyles.css" rel="stylesheet">
- 
+
     </head>
     <body>
         <script src="http://code.jquery.com/jquery.js"></script>
@@ -123,18 +123,17 @@ session_start();
                     // Check if $uploadOk is set to 0 by an error
                     if ($uploadOk == 0) {
                         //$uploadErr = "Sorry, your file was not uploaded.";
-
                         // if everything is ok, try to upload file
                     } else {
-                        
+
                         if (move_uploaded_file($_FILES["profilePictureUpload"]["tmp_name"], $target_file)) {
                             echo "The file " . basename($_FILES["profilePictureUpload"]["name"]) . " has been uploaded.";
-                            //rename($_FILES["profilePictureUpload"],)
                         } else {
                             echo "Sorry, there was an error uploading your file.";
                         }
                     }
 
+                    
 
                     if ($valid && $uploadOk == 1) {
                         $_SESSION['firstname'] = $firstname;
@@ -145,6 +144,9 @@ session_start();
                         $_SESSION['password'] = $password;
                         $_SESSION['almamater'] = $almamater;
                         $_SESSION['city'] = $city;
+                        $extension = (new SplFileInfo($target_file))->getExtension();
+                        $_SESSION['profilepicture'] = $target_file;
+                        $_SESSION['extension'] = $extension;
                         header('Location: http://localhost/59SecondPitch/addUpdate59Profile.php');
                         exit();
                     }
@@ -152,9 +154,9 @@ session_start();
             }
         }
         ?>
-        
 
-       
+
+
         <div class="" id="loginModal">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
@@ -252,15 +254,15 @@ session_start();
                                 <div class="control-group">
                                     <div class="controls">
                                         <input type="radio" name="type" <?php
-                                        if (isset($type) && $type == "Entrepreneur") {
-                                            echo "Entrepreneur";
-                                        }
-                                        ?>value="Entrepreneur">Entrepreneur<span class="error">* <?php echo $typeErr; ?><br>
+        if (isset($type) && $type == "Entrepreneur") {
+            echo "Entrepreneur";
+        }
+        ?>value="Entrepreneur">Entrepreneur<span class="error">* <?php echo $typeErr; ?><br>
                                             <input type="radio" name = "type" <?php
-                                            if (isset($type) && $type == "Investor") {
-                                                echo "Investor";
-                                            }
-                                            ?>value="Investor">Investor
+                                        if (isset($type) && $type == "Investor") {
+                                            echo "Investor";
+                                        }
+        ?>value="Investor">Investor
                                             </div>
                                             </div>
                                             <div class="control-group">

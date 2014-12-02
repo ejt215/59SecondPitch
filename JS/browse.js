@@ -11,7 +11,7 @@ function displayNewProfiles(data) {
         $("#" + i).html(
                 "<h1> " + profile["business_name"] + "</h1><br />" +
                 "Business type: " + profile["business_type"] + "<br />" +
-                "Creator: " + profile["firstname"] + " " + profile["lastname"] + "<br />" +
+                "Creator: " + profile["firstname"] + " " + profile["lastname"] + " <img src=" + profile["profileid"] + ".><br />" +
                 "Alma mater: " + profile['almamater'] + "<br />" +
                 "Location: " + profile['city'] + "<br />" +
                 "Description :" + profile['shortDesc'] + "<br />" +
