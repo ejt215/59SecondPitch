@@ -25,6 +25,42 @@ $(document).ready(function() {
         }
         $("#profilePictureURL").val(label);
     });
+    /* $.ajax({
+        type: "POST",
+        dataType: "json",
+        url: "fetchAlmamaterCity.php",
+        //Set cover content to the 5 fetched profiles
+        success: function(data) {
+            
+        }
+    });
+    
+     $( "#almamater" ).autocomplete({
+        
+               source: availableTutorials
+            });*/
+           /* $( "#city" ).autocomplete({
+        
+                source: function (request, response) {
+                $.ajax({
+          url: "http://gd.geobytes.com/AutoCompleteCity",
+          dataType: "jsonp",
+          data: {
+            q: request.term
+          },
+          success: function( data ) {
+            response( data );
+          }
+        }); 
+                }
+                
+            
+            
+        });
+        
+       
+        $("#city").autocomplete("option", "delay", 100); */
+            
     
 });
 

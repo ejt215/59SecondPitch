@@ -173,6 +173,9 @@ session_start();
                                     <div id="legend">
                                         <legend class="">Login</legend>
                                     </div>    
+                                    <?php
+                                    
+                                    ?>
                                     <div class="control-group">
                                         <!-- Email -->
                                         <label class="control-label"  for="email">Email</label>

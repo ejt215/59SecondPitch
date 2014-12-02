@@ -1,7 +1,7 @@
 <?php
 
 require_once 'FiftyNineDAO.php';
-
+session_start();
 $dao = new FiftyNineDAO();
 $email = $_POST['email'];
 $pass = $_POST['password'];
@@ -41,6 +41,7 @@ if ($dao->verify($email, $pass)) {
         die("You shouldn't be able to reach this      " . $isEntrepreneur . "        " . $isInvestor);
     }
 } else {
+    $_SESSION['loginError'] = "Invalid username or password.";
     header("Location: login.php");
 }
 ?>
