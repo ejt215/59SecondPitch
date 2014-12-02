@@ -221,6 +221,19 @@ class FiftyNineDAO {
         }
         return $profiles;
     }
+    public function getInvestorAC($fiftynineprofileid){
+        $con = $this->getDBConnection();
+        $sql = "SELECT almamater,city FROM 59Profile WHERE 59profileid=" . $fiftynineprofileid;
+        if (!($result = mysqli_query($con, $sql))) {
+            die('Error: ' . mysqli_error($con) . "      " . $sql);
+        }
+        $row = mysqli_fetch_array($result);
+        $info = array();
+        $info[0]=$row['almamater'];
+        $info[1] = $row['city'];
+        return $info;
+        
+    }
 
     public function getEntrepreneurProfiles($fiftynineprofileid) {
         $con = $this->getDBConnection();
@@ -241,7 +254,7 @@ class FiftyNineDAO {
     public function feedback($businessid,$regular,$other){
         $con = $this->getDBConnection();
         
-        $sql = "INSERT into feedback(business_id,regular,other) values('" . $businessid. "','" . $regular . "','" . $other . "')";
+        $sql = "INSERT into feedback(business_id,regular,other) values('" . $businessid. "','" . mysqli_real_escape_string($con,$regular) . "','" . mysqli_real_escape_string($con,$other) . "')";
 
         $result = mysqli_query($con, $sql);
         if (!$result) {
