@@ -8,6 +8,7 @@ session_start();
         <title>59SecondPitch Login</title>
         <link href="CSS/bootstrap.min.css" rel="stylesheet" media="screen">
         <link href="CSS/loginStyles.css" rel="stylesheet">
+ 
     </head>
     <body>
         <script src="http://code.jquery.com/jquery.js"></script>
@@ -149,6 +150,9 @@ session_start();
             }
         }
         ?>
+        
+
+       
         <div class="" id="loginModal">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
