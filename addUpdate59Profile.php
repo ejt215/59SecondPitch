@@ -12,6 +12,8 @@ $age = $_SESSION['age'];
 $almamater = $_SESSION['almamater'];
 $city = $_SESSION['city'];
 $type = $_SESSION['type'];
+$extension = $_SESSION['extension'];
+$profilepicture = $_SESSION['profilepicture'];
 
 if ($age == "") {
     $age = 0;
@@ -38,10 +40,22 @@ if (isset($_SESSION['last_visited']) && $_SESSION['last_visited'] == "manage") {
         exit();
     }
 } else {
-    $sql = "INSERT INTO 59Profile (password, email, firstname, lastname, age, almamater, city)
-    VALUES ('$password', '$email', '$firstname', '$lastname', '$age', '$almamater', '$city')";
-
+    $sql = "INSERT INTO 59profile (password, email, firstname, lastname, age, almamater, city, profilepicture)
+    VALUES ('$password', '$email', '$firstname', '$lastname', '$age', '$almamater', '$city',NULL)";
+    
     $dao->executeSQL($sql);
+    $fiftynineprofileid = $dao->get59ProfileIDFromEmail($email);
+    $_SESSION['profileid'] = $fiftynineprofileid;
+    if (!rename($profilepicture,"PROFILE_PICTURES/P" . $fiftynineprofileid . "." . $extension)){
+        die("Could not rename profile picture file for filesystem");
+    }else{
+        //die("File renamed");
+    }
+    $sql = "UPDATE 59profile " .
+            "SET profilepicture = 'P" . $fiftynineprofileid . "." . $extension . "' " .
+            "WHERE 59profileid = " . $fiftynineprofileid;
+    $dao->executeSQL($sql);
+   
     if ($type == "Investor") {
         header("Location: http://localhost/59SecondPitch/investorSignup.php");
         exit();
