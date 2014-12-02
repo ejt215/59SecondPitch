@@ -133,7 +133,7 @@ session_start();
                         }
                     }
 
-                    
+
 
                     if ($valid && $uploadOk == 1) {
                         $_SESSION['firstname'] = $firstname;
@@ -177,6 +177,9 @@ session_start();
                                     </div>    
                                     <?php
                                     
+                                    if (isset($_SESSION['loginError']) && !empty($_SESSION['loginError'])) {
+                                        echo "<font color='red'>".$_SESSION['loginError']."</font>";
+                                    }
                                     ?>
                                     <div class="control-group">
                                         <!-- Email -->
@@ -254,15 +257,15 @@ session_start();
                                 <div class="control-group">
                                     <div class="controls">
                                         <input type="radio" name="type" <?php
-        if (isset($type) && $type == "Entrepreneur") {
-            echo "Entrepreneur";
-        }
-        ?>value="Entrepreneur">Entrepreneur<span class="error">* <?php echo $typeErr; ?><br>
+                                    if (isset($type) && $type == "Entrepreneur") {
+                                        echo "Entrepreneur";
+                                    }
+                                    ?>value="Entrepreneur">Entrepreneur<span class="error">* <?php echo $typeErr; ?><br>
                                             <input type="radio" name = "type" <?php
                                         if (isset($type) && $type == "Investor") {
                                             echo "Investor";
                                         }
-        ?>value="Investor">Investor
+                                    ?>value="Investor">Investor
                                             </div>
                                             </div>
                                             <div class="control-group">

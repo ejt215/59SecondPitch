@@ -5,7 +5,7 @@ session_start();
 $dao = new FiftyNineDAO();
 $email = $_POST['email'];
 $pass = $_POST['password'];
-
+$_SESSION['loginError'] ="";
 
 if ($dao->verify($email, $pass)) {
     session_start();
