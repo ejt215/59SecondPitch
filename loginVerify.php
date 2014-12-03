@@ -1,7 +1,7 @@
 <?php
 
 require_once 'FiftyNineDAO.php';
-session_start();
+//session_start();
 $dao = new FiftyNineDAO();
 $email = $_POST['email'];
 $pass = $_POST['password'];

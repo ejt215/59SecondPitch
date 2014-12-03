@@ -52,7 +52,7 @@ session_start();
                 $workDescerr = "Please provide a video URL";
                 $valid = false;
             } else {
-                $workDesc = $_POST["business_video"];
+                $business_video = $_POST["business_video"];
             }
             /* if (!isset($_FILES['userfile']) || !($_FILES['userfile']['error'] == 0)) {
               echo "Please upload a file";
