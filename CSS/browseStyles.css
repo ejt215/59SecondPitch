@@ -25,33 +25,15 @@ and open the template in the editor.
     height:100%;
 }
 #profileContainer{
-    background-color: red;
+    //background-color: #ED5A5A;
+    background-image: url("../IMG/city.jpeg");
+    background-size: cover;
+    background-size: contain;
+    
+    
 }
 
-/*html {
-    -webkit-tap-highlight-color: hsla(0,0,0,0);
-            tap-highlight-color: hsla(0,0,0,0);
-}
-body {
-    background-color: #363636;
-    background-image:         linear-gradient(45deg, hsla(0,0%,0%,.25) 25%, transparent 25%, transparent 75%, hsla(0,0%,0%,.25) 75%, hsla(0,0%,0%,.25)), 
-                              linear-gradient(45deg, hsla(0,0%,0%,.25) 25%, transparent 25%, transparent 75%, hsla(0,0%,0%,.25) 75%, hsla(0,0%,0%,.25));
-    background-position:0 0, 2px 2px;
-    background-size:4px 4px;
-    padding: 100px;
-}*/
-/*button {
-    left: 50%;
-    margin: -40px;
-    position: absolute;
-    top: 50%;
-}
-button:hover,
-button:active {
-    outline: 0;
-}*/
 
-/* 3D Button */
 
 button.depth {
     background: #444;
@@ -222,4 +204,61 @@ button.depth2:active {
                 0 -1px 2px 8px hsla(0,0%,0%,.5);
     line-height: 86px;
 }
+
+.ph-button {
+	
+    border-style: solid;
+    border-width: 0px 0px 3px;
+    box-shadow: 0 -1px 0 rgba(255, 255, 255, 0.1) inset;
+    color: #000000;	   
+    border-radius: 6px;
+    cursor: pointer;
+    display: inline-block;
+    font-style: normal;
+    overflow: hidden;
+    text-align: center;
+    text-decoration: none;
+    text-overflow: ellipsis;
+    transition: all 200ms ease-in-out 0s;
+    white-space: nowrap;	
+    font-family: "Gotham Rounded A","Gotham Rounded B",Helvetica,Arial,sans-serif;
+    font-weight: 700;	
+    padding: 19px 39px 18px;
+    font-size: 18px;
+	
+}
+
+
+
+/*Red
+==========================*/
+.ph-btn-red {
+
+    background-color: #FF0000 !important;
+    border-color: #EA4343 !important;
+
+}
+.ph-btn-red:hover, .ph-btn-red:focus, .ph-btn-red:active {
+    background: none repeat scroll 0 0 #600000 !important;
+    border-color: #E83131 !important;    
+}
+
+.browse-header{
+    background-color:#000000;//ED5A5A
+}
+    .wrap {
+  min-height: 100%;
+  height: auto;
+  /* Negative indent footer by its height */
+  margin: 0 auto -60px;
+  /* Pad bottom by footer height */
+  padding: 0 0 60px;
+}
+
+/* Set the fixed height of the footer here */
+.footer {
+  height: 60px;
+  background-color: #000000;
+}
+
 

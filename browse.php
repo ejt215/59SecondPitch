@@ -33,10 +33,10 @@ include_once 'FiftyNineDAO.php';
         <script src="JS/reflection.js"></script>
         <script src="JS/browse.js"></script>
     </head>
-    <body>
+    <body class =browse-header >
 
         <div class ="page-header ">
-            <div class ="centering text-center" >
+            <div class ="centering text-center " >
                 <img src="IMG/59SecondPitchLogo.png" alt=""/>
             </div>
 
@@ -76,7 +76,7 @@ include_once 'FiftyNineDAO.php';
         </div>
 
         <!--Button Container-->
-        <div class="container-fluid" >
+        <div class="container-fluid" style="background:#000000">
             <div  class="row-fluid">
                 <div  class ="centered text-center" >
                     <!--<button type="button" id ="nothanks" class="depth1">X</button>
@@ -84,7 +84,7 @@ include_once 'FiftyNineDAO.php';
                     <button type="button" id ="track" class="btn btn-info">Track</button>
 
                     <button type="button" id ="match" class="depth">&#10004;</button>-->
-                    <button type="button" id ="next" class="btn btn-info">Next</button>
+                    <button type="button" id ="next" class="ph-button ph-btn-red">Next</button>
                 </div>
             </div>
         </div>
@@ -133,7 +133,12 @@ include_once 'FiftyNineDAO.php';
         </div>
 
 
+<div class ="footer wrap " >
+            <div class ="centering text-center " >
+                
+            </div>
 
+        </div>
 
 
     </body>
