@@ -18,7 +18,8 @@ if (isset($_POST['delete']) && $_POST['delete'] == "delete") {
     $dao->deleteEntrepreneurIdea(substr($_POST['business_id'], 2));
 }
 elseif (isset($_SESSION['last_visited']) && $_SESSION['last_visited'] == "editEntrepreneurProfile") {
-    $workType = $_SESSION['workType'];
+    $dao->updateEntrepreneurIdea($profileID,$_SESSION['business_id'],$_SESSION['workType'],$_SESSION['workName'],$_SESSION['workDesc'], $_SESSION['business_video']);
+    /*$workType = $_SESSION['workType'];
     $workName = $_SESSION['workName'];
     $workDesc = $_SESSION['workDesc'];
     $business_id = $_SESSION['business_id'];
@@ -26,14 +27,15 @@ elseif (isset($_SESSION['last_visited']) && $_SESSION['last_visited'] == "editEn
     $sql = "UPDATE entrepreneur " .
             "SET business_type = '" . $workType . "'," .
             "business_name = '" . $workName . "'," .
-            "business_description = '" . $workDesc . "' " .
+            "business_description = '" . $workDesc . "'," . 
+            "business_video = '" . $business_video . "' " .
             "WHERE 59profileid = " . $profileID . " " .
             "AND business_id = " . $business_id;
-    $dao->executeSQL($sql);
+    $dao->executeSQL($sql);*/
     header("Location: entrepreneurIdeas.php"); 
 } elseif (isset($_SESSION['last_visited']) && $_SESSION['last_visited'] == "entrepreneurSignup") {
     
-    $dao->insertEntrepreneurIdea($profileID,$_SESSION['workType'],$_SESSION['workName'],$_SESSION['workDesc']);
+    $dao->insertEntrepreneurIdea($profileID,$_SESSION['workType'],$_SESSION['workName'],$_SESSION['workDesc'], $_SESSION['business_video']);
     header("Location: entrepreneurHome.php");
 } else {
     die("addUpdateDeleteEntrepreneurProfile");

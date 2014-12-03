@@ -317,17 +317,30 @@ class FiftyNineDAO {
         }
     }
 
-    public function insertEntrepreneurIdea($profileID, $workType, $workName, $workDesc) {
+    public function insertEntrepreneurIdea($profileID, $workType, $workName, $workDesc, $business_video) {
         $con = $this->getDBConnection();
 
-        $sql = "INSERT INTO entrepreneur (59profileid,business_type,business_name,business_description)" .
-                "VALUES (" . $profileID . ",'" . $workType . "','" . mysqli_real_escape_string($con, $workName) . "','" . mysqli_real_escape_string($con, $workDesc) . "')";
+        $sql = "INSERT INTO entrepreneur (59profileid,business_type,business_name,business_description, business_video)" .
+                "VALUES (" . $profileID . ",'" . $workType . "','" . mysqli_real_escape_string($con, $workName) . "','" . mysqli_real_escape_string($con, $workDesc) . "','" . mysqli_real_escape_string($con, $business_video) . "')";
         $result = mysqli_query($con, $sql);
         if (!$result) {
             die('Error: ' . mysqli_error($con) . "      " . $sql);
         }
     }
 
+    public function updateEntrepreneurIdea($profileID, $business_id, $workType, $workName, $workDesc, $business_video) {
+        $con = $this->getDBConnection();
+
+        $sql = "UPDATE entrepreneur " .
+            "SET business_type = '" . mysqli_real_escape_string($con, $workType) . "'," .
+            "business_name = '" . mysqli_real_escape_string($con, $workName) . "'," .
+            "business_description = '" . mysqli_real_escape_string($con, $workDesc) . "'," . 
+            "business_video = '" . mysqli_real_escape_string($con, $business_video) . "' " .
+            "WHERE 59profileid = " . $profileID . " " .
+            "AND business_id = " . $business_id;
+        $this->executeSQL($sql);
+    }
+    
     public function insertInvestorProfile($profileID, $class, $contact_type, $contact_preferences, $phoneNumber) {
         $con = $this->getDBConnection();
         if (!$phoneNumber) {

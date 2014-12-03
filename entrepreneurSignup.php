@@ -21,8 +21,8 @@ session_start();
         <script src="JS/myScript.js"></script>
 
         <?php
-        $workType = $workName = $workDesc = "";
-        $workTypeerr = $workNameerr = $workDescerr = "";
+        $workType = $workName = $workDesc = $business_video = "";
+        $workTypeerr = $workNameerr = $workDescerr = $business_videoerr = "";
         $valid = true;
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if (empty($_POST["workType"])) {
@@ -48,6 +48,12 @@ session_start();
             } else {
                 $workDesc = $_POST["workDesc"];
             }
+            if (empty($_POST["business_video"])) {
+                $workDescerr = "Please provide a video URL";
+                $valid = false;
+            } else {
+                $workDesc = $_POST["business_video"];
+            }
             /* if (!isset($_FILES['userfile']) || !($_FILES['userfile']['error'] == 0)) {
               echo "Please upload a file";
               $valid = false;
@@ -57,6 +63,7 @@ session_start();
                 $_SESSION['workType'] = $workType;
                 $_SESSION['workName'] = $workName;
                 $_SESSION['workDesc'] = $workDesc;
+                $_SESSION['business_video'] = $business_video;
                 $_SESSION['last_visited'] = "entrepreneurSignup";
                 /* try {
                   $target_dir = "entImages/";
@@ -97,6 +104,10 @@ session_start();
                 <div class="control-group">
                     <label class="control-label">Description of your work:</label>
                     <div class="controls"><textarea rows="4" cols="50" name ="workDesc"><?php echo $workDesc; ?></textarea><span class="error">* <?php echo $workDescerr; ?></span></div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Pitch Video URL:</label>
+                    <input type="text" id="business_video" name="business_video" value ="<?php echo $businessVideo; ?>"> <span class="error">* <?php echo $businessVideoerr; ?></span>
                 </div>
                 <!--<div class="control-group">
                    <div class="controls">

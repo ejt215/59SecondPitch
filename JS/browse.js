@@ -20,8 +20,10 @@ function displayNewProfiles(data) {
                             '</div>' +
                         '</div>' +
                         '<div class="">' + 
+                        //'<iframe src="http://vimeo.com/91110672" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></div>'
+                        
                         '<video class="businessVideos" controls>' +
-                            '<source src="BUSINESS_VIDEOS/testvideo.mp4" type="video/mp4">' + 
+                            '<source src="http://vimeo.com/91110672">' + 
                         '</video></div>');
         $("#" + i).attr("name",profile['business_id']);
         $("#f"+i).html("<h1> " + profile["business_name"] + "</h1><br />" +
