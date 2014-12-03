@@ -35,7 +35,7 @@ include_once 'FiftyNineDAO.php';
     </head>
     <body class =browse-header >
 
-        <div class ="page-header ">
+        <div class ="page-header " style='background-color: black'>
             <div class ="centering text-center " >
                 <img src="IMG/59SecondPitchLogo.png" alt=""/>
             </div>
