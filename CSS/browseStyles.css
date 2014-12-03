@@ -29,6 +29,7 @@ and open the template in the editor.
     background-image: url("../IMG/city.jpeg");
     background-size: cover;
     background-size: contain;
+    height: 100%;
     
     
 }
