@@ -59,7 +59,7 @@ include_once 'fiftynineDAO.php';
                     </div><!-- /.col-lg-4 -->
                     <div class="span4 col-lg-4">
                         <img class="img-circle" src="IMG/Brain.gif" alt="Generic placeholder image" style="width: 140px; height: 140px;">
-                        <h2>Ideas</h2>
+                        <h2>Ventures</h2>
                         <p>You're a genius and we both know it.  Let's show the world what you're made of.</p>
                         <p><a class="btn btn-default" href="/59SecondPitch/entrepreneurIdeas.php" role="button">View Ideas »</a></p>
                     </div><!-- /.col-lg-4 -->

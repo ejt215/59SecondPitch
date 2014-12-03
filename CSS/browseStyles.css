@@ -25,13 +25,21 @@ and open the template in the editor.
     height:100%;
 }
 #profileContainer{
+    position: relative;
+    overflow: hidden;
     //background-color: #ED5A5A;
-    background-image: url("../IMG/city.jpeg");
-    background-size: cover;
-    background-size: contain;
-    height: 100%;
-    
-    
+    //background-image: url("../IMG/city3.jpg");
+    //background-repeat: no-repeat;
+   // background-size:100% 100%;
+}
+#profileContainer img{
+    position: absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:auto;
+    opacity:.5;
+    z-index:-1;
 }
 
 
