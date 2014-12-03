@@ -80,7 +80,7 @@ class FiftyNineDAO {
         }
 
         $row = mysqli_fetch_array($result);
-        $entrepreneurProfile = new EntrepreneurProfile($row['business_id'], $row['fiftynineprofileid'], $row['business_name'], $row['business_type'], $row['business_description']);
+        $entrepreneurProfile = new EntrepreneurProfile($row['business_id'], $row['fiftynineprofileid'], $row['business_name'], $row['business_type'], $row['business_description'],$row['business_video']);
         return $entrepreneurProfile;
     }
 
@@ -92,7 +92,7 @@ class FiftyNineDAO {
         }
 
         $row = mysqli_fetch_array($result);
-        $investorProfile = new InvestorProfile($row['59profileid'], $row['class'], $row['contact_type'], $row['contact_preferences']);
+        $investorProfile = new InvestorProfile($row['59profileid'], $row['class'], $row['contact_type'], $row['contact_preferences'],$row['business_video']);
         return $investorProfile;
     }
 
@@ -183,7 +183,7 @@ class FiftyNineDAO {
         
         
        $row2 = mysqli_fetch_array($result2);
-            $profile = new EntrepreneurProfile($row2['business_id'], $row2['59profileid'], $row2['business_type'], $row2['business_name'], $row2['business_description']);
+            $profile = new EntrepreneurProfile($row2['business_id'], $row2['59profileid'], $row2['business_type'], $row2['business_name'], $row2['business_description'],$row2['business_video']);
             $profiles[$index] = $profile;
             $index++;
         
@@ -213,7 +213,7 @@ class FiftyNineDAO {
         
         
        $row2 = mysqli_fetch_array($result2);
-            $profile = new EntrepreneurProfile($row2['business_id'], $row2['59profileid'], $row2['business_type'], $row2['business_name'], $row2['business_description']);
+            $profile = new EntrepreneurProfile($row2['business_id'], $row2['59profileid'], $row2['business_type'], $row2['business_name'], $row2['business_description'],$row2['business_description']);
             $profiles[$index] = $profile;
             $index++;
         
@@ -245,7 +245,7 @@ class FiftyNineDAO {
         $profiles = array();
         $index = 1;
         while ($row = mysqli_fetch_array($result)) {
-            $profile = new EntrepreneurProfile($row['business_id'], $row['59profileid'], $row['business_type'], $row['business_name'], $row['business_description']);
+            $profile = new EntrepreneurProfile($row['business_id'], $row['59profileid'], $row['business_type'], $row['business_name'], $row['business_description'],$row['business_video']);
             $profiles[$index] = $profile;
             $index++;
         }

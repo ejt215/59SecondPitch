@@ -27,9 +27,9 @@ function displayNewProfiles(data) {
                             '<source src="BUSINESS_VIDEOS/testvideo.mp4" type="video/mp4">' + 
                         '</video></div>'+*/
                         '<div  class ="" >'+
-                    '<button type="button" id ="nothanks" style = "float:left" class="depth1">X</button>'+
-                    '<button type="button" id ="feedback" class="centered text-center depth2">?</button>'+
-                    '<button type="button" id ="match" class="depth">&#10004;</button>'+
+                    '<button type="button" id ="nothanks" style = "float:left" class="nothanks depth1">X</button>'+
+                    '<button type="button" id ="maybe" class="maybe centered text-center depth2">?</button>'+
+                    '<button type="button" id ="match" class="match depth">&#10004;</button>'+
                     
                 '</div>');
         $("#" + i).attr("name",profile['business_id']);
@@ -96,7 +96,7 @@ $(document).ready(function() {
     });
 
     //Next fetches 5 random profiles to display 
-    $("#next").click(function() {
+    $("#next").on('click',function() {
         $.ajax({
             type: "POST",
             dataType: "json",
@@ -107,9 +107,9 @@ $(document).ready(function() {
             }
         });
     });
-    $("#feedback").click(function(){
+    /*$("#feedback").click(function(){
        ShowDialog(); 
-    });
+    });*/
     $("#btnClose").click(function(){
         HideDialog();
     });
@@ -166,7 +166,7 @@ $(document).on('click','.viewProfile',function() {
         $('#fullProfile').css("display","none");
         $('#profiles').show();
     });
-    $("#match").click(function() {
+    $(document).on('click','.match',function() {
         var id = $('.coverflow').coverflow("cover").attr('name');
         //var arr = {"businessid":};
         $.post('browseMatching.php', { businessid: id,match: 1}, function(data){
@@ -184,13 +184,14 @@ $(document).on('click','.viewProfile',function() {
     });
        
 
-    $("#nothanks").click(function (){
+    $(document).on('click','.nothanks',function (){
         var id = $('.coverflow').coverflow("cover").attr('name');
         //var arr = {"businessid":};
+        
         $.post('browseMatching.php', { businessid: id,match: 0}, function(data){
              
            $("#"+$('.coverflow').coverflow("cover").attr('id')).html("<img src = '"+"IMG/x.jpeg' />");
-            alert("Why not? Provide feedback if you have a minute.");
+            ShowDialog();
              
         }).fail(function() {
          
@@ -199,7 +200,7 @@ $(document).on('click','.viewProfile',function() {
              
         });
     });
-    $("#track").click(function (){
+    $(document).on('click','.maybe',function (){
         var id = $('.coverflow').coverflow("cover").attr('name');
         //var arr = {"businessid":};
         $.post('browseTracking.php', { businessid: id}, function(data){

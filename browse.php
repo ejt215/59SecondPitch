@@ -45,9 +45,9 @@ include_once 'FiftyNineDAO.php';
         <!-- Sidebar -->
         <ul id="demo_menu1" >
             <li><a href="/" >Manage profile</a></li>
-            <li><a href="/plugins/" >Favorites</a></li>
-            <li><a href="/works/" >Tracking</a></li>
-            <li><a href="/about/" >Logout</a></li>
+            <li><a href="59SecondPitch/investorFavorites.php/" >Favorites</a></li>
+            <li><a href="59SecondPitch/investorTracking.php/" >Tracking</a></li>
+            <li><a href="59SecondPitch/login.php/" >Logout</a></li>
         </ul>
 
 
