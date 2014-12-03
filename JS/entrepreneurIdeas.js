@@ -9,7 +9,7 @@ function displayIdeas(data) {
         $("#" + i).css("visibility", "visible");
         profile = data["" + i];
         $("#" + i).html(
-                "<form action='entrepreneurEditProfile.php' method='POST'> " +
+               /* "<form action='entrepreneurEditProfile.php' method='POST'> " +
                 "<h1>" + profile["business_name"] + "</h1><br />" +
                 "<b>Business type</b>: " + profile["business_type"] + "<br />" +
                 "<b>Description</b> :" + profile['business_description'] + "<br />" +
@@ -18,7 +18,21 @@ function displayIdeas(data) {
                 "<input type='hidden' name='business_type' value='" + profile["business_type"] + "'>" +
                 "<input type='hidden' id='bi" + profile["business_id"] + "' name='business_id' value='" + profile["business_id"] + "'>" +
                 "<input type='hidden' name='business_description' value='" + profile["business_description"] + "'>" +
-                "</form>"
+                "</form>"*/
+                "<form action='entrepreneurEditProfile.php' method='POST'> " +
+                 '<div class="col-sm-12">' +
+                            '<div class="col-xs-12 col-sm-8">' +
+                                '<h2><font color="white">' + profile["business_name"] +  '</font></h2>' +
+                                '<h2><font color="white"> Type: ' + profile['business_type'] + '</font><h2>' +
+                                
+                            '</div>' +              
+                            
+                        '</div>' +
+                        '<div class="">' + 
+                        '<iframe width="500" height="275" src="' + profile['business_video'] + '" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></div>' +
+                        "<button type='submit' class='editProfile ph-button ph-btn-red' id='b" + i + "'>Edit</button>" +
+                        "</form>"
+                
                 );
         $("#" + i).attr("name", profile['business_id']);
 

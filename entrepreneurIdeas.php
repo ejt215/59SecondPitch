@@ -69,8 +69,8 @@ include_once 'FiftyNineDAO.php';
         <div class="container-fluid" >
             <div  class="row-fluid">
                 <div  class ="centered text-center" >
-                    <button type="button" id ="newIdea" class="btn btn-success">New Idea</button>
-                    <button type="button" id ="deleteIdea" class="btn btn-danger">Delete Idea</button>
+                    <button type="button" id ="newIdea" class="ph-button ph-btn-red">New Idea</button>
+                    <button type="button" id ="deleteIdea" class="ph-button ph-btn-red">Delete Idea</button>
                 </div>
             </div>
         </div>
