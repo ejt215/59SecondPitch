@@ -12,9 +12,9 @@ function displayNewProfiles(data) {
         $("#" + i).html(
                 '<div class="col-sm-12">' +
                             '<div class="col-xs-12 col-sm-8">' +
-                                '<h2><font color="red">' + profile["firstname"] + " " + profile["lastname"] + '</font></h2>' +
-                                '<p><strong><font color="red">Alma mater: </font></strong><font color="red">' + profile['almamater'] + '</font></p>' +
-                                '<p><strong><font color="red">City: </font></strong><font color="red">' + profile['city'] + '</font></p>' +
+                                '<h2><font color="white">' + profile["firstname"] + " " + profile["lastname"] + '</font></h2>' +
+                                '<p><strong><font color="red">Alma mater: </font></strong><font color="white">' + profile['almamater'] + '</font></p>' +
+                                '<p><strong><font color="red">City: </font></strong><font color="white">' + profile['city'] + '</font></p>' +
                             '</div>' +              
                             '<div class="col-xs-12 col-sm-4 text-center">' +
                                 '<figure><img src="PROFILE_PICTURES/' + profile['profilepicture'] + '" alt="Profile Picture missing" class="profilepicture"></figure>' +
