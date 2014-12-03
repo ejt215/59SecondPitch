@@ -11,9 +11,9 @@ function displayNewProfiles(data) {
         $("#" + i).html(
                 '<div class="col-sm-12">' +
                             '<div class="col-xs-12 col-sm-8">' +
-                                '<h2>' + profile["firstname"] + " " + profile["lastname"] + '</h2>' +
-                                '<p><strong>Alma mater: </strong>' + profile['almamater'] + '</p>' +
-                                '<p><strong>City: </strong>' + profile['city'] + '</p>' +
+                                '<h2><font color="red">' + profile["firstname"] + " " + profile["lastname"] + '</font></h2>' +
+                                '<p><strong><font color="red">Alma mater: </font></strong><font color="red">' + profile['almamater'] + '</font></p>' +
+                                '<p><strong><font color="red">City: </font></strong><font color="red">' + profile['city'] + '</font></p>' +
                             '</div>' +              
                             '<div class="col-xs-12 col-sm-4 text-center">' +
                                 '<figure><img src="PROFILE_PICTURES/' + profile['profilepicture'] + '" alt="Profile Picture missing" class="profilepicture"></figure>' +
@@ -23,8 +23,14 @@ function displayNewProfiles(data) {
                         //'<iframe src="http://vimeo.com/91110672" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></div>'
                         
                         '<video class="businessVideos" controls>' +
-                            '<source src="http://vimeo.com/91110672">' + 
-                        '</video></div>');
+                            '<source src="BUSINESS_VIDEOS/testvideo.mp4" type="video/mp4">' + 
+                        '</video></div>'+
+                        '<div  class ="" >'+
+                    '<button type="button" id ="nothanks" style = "float:left" class="depth1">X</button>'+
+                    '<button type="button" id ="feedback" class="centered text-center depth2">?</button>'+
+                    '<button type="button" id ="match" class="depth">&#10004;</button>'+
+                    
+                '</div>');
         $("#" + i).attr("name",profile['business_id']);
         $("#f"+i).html("<h1> " + profile["business_name"] + "</h1><br />" +
                 "Business type: " + profile["business_type"] + "<br />" +
