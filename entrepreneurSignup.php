@@ -22,7 +22,7 @@ session_start();
 
         <?php
         $workType = $workName = $workDesc = $business_video = "";
-        $workTypeerr = $workNameerr = $workDescerr = $business_videoerr = "";
+        $workTypeerr = $workNameerr = $workDescerr = $businessVideoerr = "";
         $valid = true;
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if (empty($_POST["workType"])) {
@@ -106,8 +106,8 @@ session_start();
                     <div class="controls"><textarea rows="4" cols="50" name ="workDesc"><?php echo $workDesc; ?></textarea><span class="error">* <?php echo $workDescerr; ?></span></div>
                 </div>
                 <div class="control-group">
-                    <label class="control-label">Pitch Video URL:</label>
-                    <input type="text" id="business_video" name="business_video" value ="<?php echo $businessVideo; ?>"> <span class="error">* <?php echo $businessVideoerr; ?></span>
+                    <label class="control-label">Pitch Video Embed URL:</label>
+                    <input type="text" id="business_video" name="business_video" value ="<?php echo $business_video; ?>"> <span class="error">* <?php echo $businessVideoerr; ?></span>
                 </div>
                 <!--<div class="control-group">
                    <div class="controls">

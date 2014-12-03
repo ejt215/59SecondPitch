@@ -8,6 +8,7 @@ function displayNewProfiles(data) {
     for (i = 1; i < Object.keys(data).length + 1; i++) {
         $("#" + i).css("visibility", "visible");
         profile = data["" + i];
+        //alert(profile['business_video']);
         $("#" + i).html(
                 '<div class="col-sm-12">' +
                             '<div class="col-xs-12 col-sm-8">' +
@@ -20,11 +21,11 @@ function displayNewProfiles(data) {
                             '</div>' +
                         '</div>' +
                         '<div class="">' + 
-                        //'<iframe src="http://vimeo.com/91110672" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></div>'
+                        '<iframe width="500" height="275" src="' + profile['business_video'] + '" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></div>' +
                         
-                        '<video class="businessVideos" controls>' +
+                        /*'<video class="businessVideos" controls>' +
                             '<source src="BUSINESS_VIDEOS/testvideo.mp4" type="video/mp4">' + 
-                        '</video></div>'+
+                        '</video></div>'+*/
                         '<div  class ="" >'+
                     '<button type="button" id ="nothanks" style = "float:left" class="depth1">X</button>'+
                     '<button type="button" id ="feedback" class="centered text-center depth2">?</button>'+
