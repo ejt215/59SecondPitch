@@ -55,6 +55,7 @@ $(document).ready(function() {
     $.ajax({
         type: "POST",
         dataType: "json",
+        async: false,
         url: "fetchEntrepreneurProfiles.php",
         //Set cover content to the 5 fetched profiles
         success: function(data) {
