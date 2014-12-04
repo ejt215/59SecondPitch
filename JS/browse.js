@@ -172,7 +172,7 @@ $(document).on('click','.viewProfile',function() {
         $.post('browseMatching.php', { businessid: id,match: 1}, function(data){
              
            $("#"+$('.coverflow').coverflow("cover").attr('id')).html("<img src = '"+"IMG/check.png' />");
-            alert("Matched!");
+            
              
         }).fail(function() {
          

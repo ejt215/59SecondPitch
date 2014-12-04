@@ -6,31 +6,103 @@
 
 function displayIdeas(data) {
     var profile;
+    var pic;
     for (i = 0; i < Object.keys(data).length; i++) {
         profile = data["" + i];
-        if (Object.keys(profile).length == 10) {
-            $("body").append("<div class='panel panel-default businessCard'>" +
+      
+        if(profile["profilepicture"]===null){
+            pic="IMG/default.png";
+        }
+        else{
+            pic = "PROFILE_PICTURES/"+profile["profilepicture"];
+        }
+        if (profile["contact_type"]==="Phone") {
+            /*$("body").append("<div class='panel panel-default businessCard'>" +
                     "<div class='panel-heading'>" +
                     "<h3 class='panel-title'>" + profile["firstname"] + " " + profile["lastname"] + "</h3>" +
                     "</div>" +
                     "<div class='panel-body'>" + profile["contact_type"] + ": " + profile[3] + "<br />" +
                     "Contact Preferences: " + profile["contact_preferences"] +
                     "</div>" +
-                    "</div>");
-        } else if (Object.keys(profile).length == 12) {
-            $("body").append("<div class='panel panel-default businessCard'>" +
+                    "</div>");*/
+             $("body").append('<div class="flip-container">'+
+        '<div class="flipper">'+
+            '<div class="front">'+
+                '<img src="'+pic+'" alt="Error"/>'+
+                '<p>'+profile["firstname"]+' '+profile["lastname"]+'/p>'+
+                '<div class="sub">'+
+                    '<p>'+profile["class"]+'</p>'+
+                '</div>'+
+            '</div>'+
+            '<div class="back">'+
+                '<p id="titulo">'+profile["firstname"]+' '+profile["lastname"]+'</p>'+
+                '<p>'+profile["class"]+'</p>'+
+                '<p>Location: '+profile["city"]+'</p>'+
+                '<p>Age:'+profile["age"]+'</p>'+
+                
+                '<p>'+profile["phone"]+'</p>'+
+                '<p>Contact Preferences:'+profile["contact_preferences"]+'</p>'+
+            '</div>'+
+        '</div>'+
+    '</div>');
+            
+        } else if(profile["contact_type"]==="Email"){
+            $("body").append('<div class="flip-container">'+
+        '<div class="flipper">'+
+            '<div class="front">'+
+                '<img src="'+pic+'" alt="IMG/default.png"/>'+
+                '<p>'+profile["firstname"]+' '+profile["lastname"]+'</p>'+
+                '<div class="sub">'+
+                    '<p>'+profile["class"]+'</p>'+
+                '</div>'+
+            '</div>'+
+            '<div class="back">'+
+                '<p id="titulo">'+profile["firstname"]+' '+profile["lastname"]+'</p>'+
+                '<p>'+profile["class"]+'</p>'+
+                '<p>Location: '+profile["city"]+'</p>'+
+                '<p>Age:'+profile["age"]+'</p>'+
+                '<p>'+profile["email"]+'</p>'+
+                
+                '<p>Contact Preferences:'+profile["contact_preferences"]+'</p>'+
+            '</div>'+
+        '</div>'+
+    '</div>');
+        }
+        else  {
+            /*$("body").append("<div class='panel panel-default businessCard'>" +
                     "<div class='panel-heading'>" +
                     "<h3 class='panel-title'>" + profile["firstname"] + " " + profile["lastname"] + "</h3>" +
                     "</div>" +
                     "<div class='panel-body'>Phone: " + profile['phone'] + "<br>Email: " + profile['email'] + "<br />" +
                     "Contact Preferences: " + profile["contact_preferences"] +
                     "</div>" +
-                    "</div>");
+                    "</div>");*/
+            
+            $("body").append('<div class="flip-container">'+
+        '<div class="flipper">'+
+            '<div class="front">'+
+                '<img src="'+pic+'"/>'+
+                '<p>'+profile["firstname"]+' '+profile["lastname"]+'</p>'+
+                '<div class="sub">'+
+                    '<p>'+profile["class"]+'</p>'+
+                '</div>'+
+            '</div>'+
+            '<div class="back">'+
+                '<p id="titulo">'+profile["firstname"]+' '+profile["lastname"]+'</p>'+
+                '<p>'+profile["class"]+'</p>'+
+                '<p>Location: '+profile["city"]+'</p>'+
+                '<p>Age:'+profile["age"]+'</p>'+
+                '<p>'+profile["email"]+'</p>'+
+                '<p>'+profile["phone"]+'</p>'+
+                '<p>Contact Preferences:'+profile["contact_preferences"]+'</p>'+
+            '</div>'+
+        '</div>'+
+    '</div>');
         }
-        else{
+        /*else{
             alert("entrepreneurMatches::profile length incorrect.  Length: " + Object.keys(profile).length);
             alert(JSON.stringify(profile));
-        }
+        }*/
     }
 }
 

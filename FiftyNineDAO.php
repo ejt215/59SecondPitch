@@ -125,7 +125,7 @@ class FiftyNineDAO {
             $individualRow = mysqli_fetch_array($individualResult);
 
             if ($individualRow['contact_type'] == "Either") {
-                $eitherContactSQL = "SELECT firstname,lastname,contact_type,phone,email,contact_preferences " .
+                $eitherContactSQL = "SELECT firstname,lastname,class,age,almamater,city,contact_type,phone,email,contact_preferences,profilepicture " .
                         "FROM investor, 59profile " .
                         "WHERE investor.59profileid = " . $row[0] . " " .
                         "AND 59profile.59profileid = " . $row[0];
@@ -133,7 +133,7 @@ class FiftyNineDAO {
                 $eitherContactRow = mysqli_fetch_array($eitherContactResult);
                 $investorContacts[] = $eitherContactRow;
             } elseif ($individualRow['contact_type'] == "Email") {
-                $emailContactSQL = "SELECT firstname,lastname,contact_type,email,contact_preferences " .
+                $emailContactSQL = "SELECT firstname,lastname,class,age,almamater,city,contact_type,email,contact_preferences,profilepicture " .
                         "FROM investor, 59profile " .
                         "WHERE investor.59profileid = " . $row[0] . " " .
                         "AND 59profile.59profileid = " . $row[0];
@@ -144,7 +144,7 @@ class FiftyNineDAO {
                 $investorContacts[] = $emailContactRow;
                 //echo sizeof($investorContacts);
             } elseif ($individualRow['contact_type'] == "Phone") {
-                $phoneContactSQL = "SELECT firstname,lastname,contact_type,phone,contact_preferences " .
+                $phoneContactSQL = "SELECT firstname,lastname,class,age,almamater,city,contact_type,phone,contact_preferences,profilepicture " .
                         "FROM investor, 59profile " .
                         "WHERE investor.59profileid = " . $row[0] . " " .
                         "AND 59profile.59profileid = " . $row[0];
