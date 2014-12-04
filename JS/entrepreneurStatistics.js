@@ -8,7 +8,10 @@ function displayStatistics(data) {
                 "<h3 class='panel-title'>" + profile[0] + "</h3>" +
                 "</div>" +
                 "<div class='panel-body'>Matches: " + profile[1] + "<br />" +
-                "No's: " + profile[2] +
+                "No's: " + profile[2] +"<br />"+
+                "Feedback: "+"<br />"+
+                profile[3]+"<br />"+
+                profile[4]+"<br />"+
                 "</div>" +
                 "</div>");
     }

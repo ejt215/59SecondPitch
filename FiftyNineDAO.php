@@ -380,16 +380,21 @@ class FiftyNineDAO {
                     "FROM matching " .
                     "WHERE business_id = " . $row[0] . " " .
                     "AND matched = 0";
+            $feedbackSQL = "SELECT regular,other " .
+                    "FROM feedback " .
+                    "WHERE business_id = " . $row[0];
 
             $matchResult = $this->executeSQL($matchSQL);
             $noMatchResult = $this->executeSQL($noMatchSQL);
             $nameResult = $this->executeSQL($nameSQL);
+            $feedbackResult = $this->executeSQL($feedbackSQL);
             
             $matchRow = mysqli_fetch_array($matchResult);
             $noMatchRow = mysqli_fetch_array($noMatchResult);
             $nameRow = mysqli_fetch_array($nameResult);
+            $feedbackRow = mysqli_fetch_array($feedbackResult);
                       
-            $statistics[] = [$nameRow[0],$matchRow[0],$noMatchRow[0]];
+            $statistics[] = [$nameRow[0],$matchRow[0],$noMatchRow[0],$feedbackRow['regular'],$feedbackRow['other']];
         }
 
         return $statistics;
