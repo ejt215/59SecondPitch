@@ -28,7 +28,7 @@ function displayIdeas(data) {
              $("body").append('<div class="flip-container">'+
         '<div class="flipper">'+
             '<div class="front">'+
-                '<img src="'+pic+'" alt="Error"/>'+
+                '<img src="'+pic+'" />'+
                 '<p>'+profile["firstname"]+' '+profile["lastname"]+'/p>'+
                 '<div class="sub">'+
                     '<p>'+profile["class"]+'</p>'+
@@ -39,7 +39,7 @@ function displayIdeas(data) {
                 '<p>'+profile["class"]+'</p>'+
                 '<p>Location: '+profile["city"]+'</p>'+
                 '<p>Age:'+profile["age"]+'</p>'+
-                
+                '<p>Alma Mater:'+profile["almamter"]+'</p>'+
                 '<p>'+profile["phone"]+'</p>'+
                 '<p>Contact Preferences:'+profile["contact_preferences"]+'</p>'+
             '</div>'+
@@ -50,7 +50,7 @@ function displayIdeas(data) {
             $("body").append('<div class="flip-container">'+
         '<div class="flipper">'+
             '<div class="front">'+
-                '<img src="'+pic+'" alt="IMG/default.png"/>'+
+                '<img src="'+pic+'" />'+
                 '<p>'+profile["firstname"]+' '+profile["lastname"]+'</p>'+
                 '<div class="sub">'+
                     '<p>'+profile["class"]+'</p>'+

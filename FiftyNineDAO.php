@@ -175,7 +175,7 @@ class FiftyNineDAO {
         $index = 0;
         while ($row = mysqli_fetch_array($result)) {
             $business_id = $row['business_id'];
-        $sql2 = "SELECT * FROM entrepreneur WHERE business_id=" . $business_id;
+        $sql2 = "SELECT * FROM 59secondpitch.59profile inner join entrepreneur on 59profile.59profileid=entrepreneur.59profileid WHERE entrepreneur.business_id=" . $business_id;
         if (!($result2 = mysqli_query($con, $sql2))) {
             die('Error: ' . mysqli_error($con) . "      " . $sql2);
         }
@@ -183,8 +183,9 @@ class FiftyNineDAO {
         
         
        $row2 = mysqli_fetch_array($result2);
-            $profile = new EntrepreneurProfile($row2['business_id'], $row2['59profileid'], $row2['business_type'], $row2['business_name'], $row2['business_description'],$row2['business_video']);
-            $profiles[$index] = $profile;
+            //$profile = new EntrepreneurProfile($row2['business_id'], $row2['59profileid'], $row2['business_type'], $row2['business_name'], $row2['business_description'],$row2['business_video']);
+            $profile=$row2;
+       $profiles[$index] = $profile;
             $index++;
         
         
@@ -205,7 +206,7 @@ class FiftyNineDAO {
         $index = 0;
         while ($row = mysqli_fetch_array($result)) {
             $business_id = $row['business_id'];
-        $sql2 = "SELECT * FROM entrepreneur WHERE business_id=" . $business_id;
+        $sql2 = "SELECT * FROM 59secondpitch.59profile inner join entrepreneur on 59profile.59profileid=entrepreneur.59profileid WHERE entrepreneur.business_id=" . $business_id;
         if (!($result2 = mysqli_query($con, $sql2))) {
             die('Error: ' . mysqli_error($con) . "      " . $sql2);
         }
@@ -213,7 +214,7 @@ class FiftyNineDAO {
         
         
        $row2 = mysqli_fetch_array($result2);
-            $profile = new EntrepreneurProfile($row2['business_id'], $row2['59profileid'], $row2['business_type'], $row2['business_name'], $row2['business_description'],$row2['business_description']);
+            $profile = $row2;
             $profiles[$index] = $profile;
             $index++;
         
