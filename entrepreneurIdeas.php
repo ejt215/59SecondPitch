@@ -15,7 +15,7 @@ include_once 'FiftyNineDAO.php';
         <meta charset="UTF-8">
         <title></title>
         <link rel="stylesheet" type="text/css" href="CSS/dark-glass/sidebar.css" />
-        <link rel="stylesheet" type="text/css" href="CSS/browseStyles.css" />
+        <link rel="stylesheet" type="text/css" href="CSS/entrepreneurIdeas.css" />
         <link href="CSS/bootstrap.min.css" rel="stylesheet" media="screen">
         <link href="CSS/jquery-ui.min.css" rel="stylesheet" type="text/css"/>
 
@@ -32,9 +32,9 @@ include_once 'FiftyNineDAO.php';
         <script src="JS/reflection.js"></script>
         <script src="JS/entrepreneurIdeas.js"></script>
     </head>
-    <body>
+    <body class="browse-header">
 
-        <div class ="page-header ">
+        <div class ="page-header " style='background-color: black'>
             <div class ="centering text-center" >
                 <img src="IMG/59SecondPitchLogo.png" alt=""/>
             </div>
@@ -54,13 +54,9 @@ include_once 'FiftyNineDAO.php';
 
         <!--Profile Container-->
         <div id="profileContainer" class="container-fluid1">
+            <img src="IMG/city3.jpg">;
             <div  class="row-fluid">
                 <div id ="profile" class ="coverflow  text-center"   >
-                    <div class ="cover " name ="" id ="1" style ="border: 2px solid;"></div>
-                    <div class ="cover " name ="" id ="2" style ="border: 2px solid;"></div>
-                    <div class ="cover " name ="" id ="3" style ="border: 2px solid;"></div>
-                    <div class ="cover " name ="" id ="4" style ="border: 2px solid;"></div>
-                    <div class ="cover " name ="" id ="5" style ="border: 2px solid;"></div>
                 </div>
             </div>
         </div>

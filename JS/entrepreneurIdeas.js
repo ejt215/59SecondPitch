@@ -5,8 +5,15 @@
  */
 function displayIdeas(data) {
     var profile;
+    alert(Object.keys(data).length + 1);//JSON.stringify(data));
     for (i = 1; i < Object.keys(data).length + 1; i++) {
-        $("#" + i).css("visibility", "visible");
+        $("#profile").append('<div class ="cover " name ="" id ="' + i + '" style ="border: 2px solid;"></div>');
+                    
+                   /* <div class ="cover " name ="" id ="2" style ="border: 2px solid;"></div>
+                    <div class ="cover " name ="" id ="3" style ="border: 2px solid;"></div>
+                    <div class ="cover " name ="" id ="4" style ="border: 2px solid;"></div>
+                    <div class ="cover " name ="" id ="5" style ="border: 2px solid;"></div>*/
+        //$("#" + i).css("visibility", "visible");
         profile = data["" + i];
         $("#" + i).html(
                /* "<form action='entrepreneurEditProfile.php' method='POST'> " +
