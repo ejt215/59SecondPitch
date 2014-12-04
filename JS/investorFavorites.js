@@ -9,7 +9,7 @@ function displayIdeas(data) {
     for (i = 0; i < Object.keys(data).length+1; i++) {
         profile = data["" + i];
         
-            $("body").append("<div class='panel panel-default businessCard'>" +
+            /*$("body").append("<div class='panel panel-default businessCard'>" +
                     "<div class='panel-heading'>" +
                     "<h3 class='panel-title'>" + profile["business_name"] + "</h3>" +
                     "</div>" +
@@ -20,7 +20,31 @@ function displayIdeas(data) {
                         '<div class="centered text-center">' + 
                         '<iframe width="150" height="150" src="' + profile['business_video'] + '" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></div>'+
                     "</div>" +
-                    "</div>");
+                    "</div>");*/
+        $("body").append('<div class="flip-container">'+
+        '<div class="flipper">'+
+            '<div class="front" style"padding-top:0px;">'+
+            
+                '<p id="titulo">'+profile["business_name"]+'</p>'+
+                '<p>'+profile["business_type"]+'</p>'+
+                '<p>Creator: '+profile["firstname"]+' '+profile["lastname"]+'</p>'+
+                '<p>Location: '+profile["city"]+'</p>'+
+                '<p>Age:'+profile["age"]+'</p>'+
+                '<p>Alma Mater:'+profile["almamater"]+'</p>'+
+                
+            '</div>'+
+            '<div class="back" style="background:#000000;">'+
+                
+                '<div class="centered text-center">' + 
+                        '<iframe width="200" height="250" src="' + profile['business_video'] + '" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></div>'+
+                /*'<div class="sub">'+
+                    
+                '</div>'+*/
+                
+                
+            '</div>'+
+        '</div>'+
+    '</div>');
         
     }
 }

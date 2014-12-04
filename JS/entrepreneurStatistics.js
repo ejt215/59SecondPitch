@@ -3,7 +3,31 @@ function displayStatistics(data) {
     var profile;
     for (i = 0; i < Object.keys(data).length; i++) {
         profile = data["" + i];
-        $("body").append("<div class='panel panel-default businessCard'>" +
+       
+        $("body").append('<div class="flip-container">'+
+        '<div class="flipper">'+
+            '<div class="front">'+
+                
+                '<p><h1>'+profile[0]+'</h1></p>'+
+                '<div class="sub">'+
+                    
+                '</div>'+
+            '</div>'+
+            '<div class="back">'+
+                
+                '<p>Matches: '+profile[1]+'</p>'+
+                "<p>No's: "+profile[2]+'</p>'+
+                "<h3>Feedback: </h3>"+"<br />"+
+                '<p>'+profile[3]+'</p>'+
+                '<p>'+profile[4]+'</p>'+
+                
+                
+            '</div>'+
+        '</div>'+
+    '</div>');
+    }
+}
+ /*$("body").append("<div class='panel panel-default businessCard'>" +
                 "<div class='panel-heading'>" +
                 "<h3 class='panel-title'>" + profile[0] + "</h3>" +
                 "</div>" +
@@ -13,9 +37,7 @@ function displayStatistics(data) {
                 profile[3]+"<br />"+
                 profile[4]+"<br />"+
                 "</div>" +
-                "</div>");
-    }
-}
+                "</div>");*/
 
 $(document).ready(function () {
     //initialize sidebar
