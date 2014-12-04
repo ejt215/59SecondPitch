@@ -5,7 +5,6 @@
  */
 function displayIdeas(data) {
     var profile;
-    alert(Object.keys(data).length + 1);//JSON.stringify(data));
     for (i = 1; i < Object.keys(data).length + 1; i++) {
         $("#profile").append('<div class ="cover " name ="" id ="' + i + '" style ="border: 2px solid;"></div>');
                     
