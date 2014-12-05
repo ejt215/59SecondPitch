@@ -41,10 +41,11 @@ include_once 'fiftynineDAO.php';
 
             <div id="sidebarDiv">
                 <ul id="sidebar" >
-                    
-                    <li><a style='color:#FFFFFF' href="/59SecondPitch/entrepreneurHome.php">Home</a></li>
+
+                    <li><a style='color:#FFFFFF' href="/59SecondPitch/investorHome.php">Home</a></li>
                     <li><a style='color:#FFFFFF' href="/59SecondPitch/manageProfile.php">Manage Profile</a></li>
-                    
+                    <li><a style='color:#FFFFFF' href="/59SecondPitch/login.php">Logout</a></li>
+
                 </ul>
             </div>
 
