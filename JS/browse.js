@@ -31,13 +31,13 @@ function displayNewProfiles(data) {
                             '<button type="button" id ="match" class="match depth">&#10004;</button>'+             
                         '</div>');
         $("#" + i).attr("name",profile['business_id']);
-        $("#f"+i).html("<h1> " + profile["business_name"] + "</h1><br />" +
+        /*$("#f"+i).html("<h1> " + profile["business_name"] + "</h1><br />" +
                 "Business type: " + profile["business_type"] + "<br />" +
                 "Creator: " + profile["firstname"] + " " + profile["lastname"] + "<br />" +
                 "Alma mater: " + profile['almamater'] + "<br />" +
                 "Location: " + profile['city'] + "<br />" +
                 "Description :" + profile['business_description'] + "<br />" +
-                "<button type='button' class='return'>Return to Browse</button>");
+                "<button type='button' class='return'>Return to Browse</button>");*/
         
     }
 }
