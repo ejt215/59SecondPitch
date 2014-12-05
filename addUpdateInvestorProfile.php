@@ -19,6 +19,10 @@ $phoneNumber = $_SESSION['phoneNumber'];
 
 if (isset($_SESSION['last_visited']) && $_SESSION['last_visited'] == "investorEditProfile") {
     $dao->updateInvestorProfile($profileID,$class,$contact_type,$contact_preferences,$phoneNumber);
+    $_SESSION['class'] = $class;
+    $_SESSION['contact_type'] = $contact_type;
+    $_SESSION['contact_preferences'] = $contact_preferences;
+    $_SESSION['phone'] = $phoneNumber;
     header("Location: investorHome.php"); 
 } elseif (isset($_SESSION['last_visited']) && $_SESSION['last_visited'] == "investorSignup") { 
     $dao->insertInvestorProfile($profileID,$class,$contact_type,$contact_preferences,$phoneNumber);
