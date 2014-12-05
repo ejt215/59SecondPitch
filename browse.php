@@ -44,10 +44,11 @@ include_once 'FiftyNineDAO.php';
 
         <!-- Sidebar -->
         <ul id="demo_menu1" >
-            <li><a href="/" >Manage profile</a></li>
-            <li><a style='color:#FFFFFF'href="59SecondPitch/investorFavorites.php/" >Favorites</a></li>
-            <li><a style='color:#FFFFFF'href="59SecondPitch/investorTracking.php/" >Tracking</a></li>
-            <li><a style='color:#FFFFFF'href="59SecondPitch/login.php/" >Logout</a></li>
+            <li><a href="../59SecondPitch/investorHome.php" >Home</a></li>
+            <li><a href="../59SecondPitch/manageProfile.php" >Manage profile</a></li>
+            <li><a style='color:#FFFFFF'href="../59SecondPitch/investorFavorites.php" >Favorites</a></li>
+            <li><a style='color:#FFFFFF'href="../59SecondPitch/investorTracking.php" >Tracking</a></li>
+            <li><a style='color:#FFFFFF'href="../59SecondPitch/login.php" >Logout</a></li>
         </ul>
 
 

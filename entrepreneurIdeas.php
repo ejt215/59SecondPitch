@@ -46,6 +46,9 @@ include_once 'FiftyNineDAO.php';
             <ul id="sidebar" >
                 <li><a href="/59SecondPitch/entrepreneurHome.php">Home</a></li>
                 <li><a href="/59SecondPitch/manageProfile.php">Manage Profile</a></li>
+                <li><a href="/59SecondPitch/entrepreneurMatches.php">Matches</a></li>
+                <li><a href="/59SecondPitch/entrepreneurStatistics.php">Statistics</a></li>
+                <li><a href="/59SecondPitch/login.php">Logout</a></li>
             </ul>
         </div>
 

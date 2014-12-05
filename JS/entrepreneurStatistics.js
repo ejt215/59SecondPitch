@@ -1,9 +1,12 @@
 
 function displayStatistics(data) {
     var profile;
+    var feedback1="";
+    var feedback2="";
+    
     for (i = 0; i < Object.keys(data).length; i++) {
         profile = data["" + i];
-       
+        
         $("body").append('<div class="flip-container">'+
         '<div class="flipper">'+
             '<div class="front">'+

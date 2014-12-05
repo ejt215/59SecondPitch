@@ -45,6 +45,7 @@ include_once 'fiftynineDAO.php';
                     <li><a style='color:#FFFFFF' href="/59SecondPitch/investorHome.php">Home</a></li>
                     <li><a style='color:#FFFFFF' href="/59SecondPitch/manageProfile.php">Manage Profile</a></li>
                     <li><a style='color:#FFFFFF' href="/59SecondPitch/investorEditProfile.php">Update Contact Info</a></li>
+                    <li><a style='color:#FFFFFF' href="/59SecondPitch/login.php">Logout</a></li>
                 </ul>
             </div>
 
