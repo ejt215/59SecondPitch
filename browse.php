@@ -56,7 +56,7 @@ include_once 'FiftyNineDAO.php';
 
         <!--Profile Container-->
         <div id="profileContainer" class="container-fluid1">
-            <img src="IMG/city3.jpg">;
+            <img id="browseBackground" src="IMG/city3.jpg">;
             <div  id = "profiles"class="row-fluid">
                 <div id ="profile" class ="coverflow  text-center"   >
                     

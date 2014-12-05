@@ -18,7 +18,8 @@ and open the template in the editor.
 
 .profilepicture{   
    height:128px;
-   width:128px; 
+   width:128px;
+   margin-bottom:5px;
 }
 .businessVideos{
     width:100%;
@@ -33,7 +34,7 @@ and open the template in the editor.
     //background-repeat: no-repeat;
    // background-size:100% 100%;
 }
-#profileContainer img{
+#profileContainer > img {
     position: absolute;
     top:0;
     left:0;
@@ -42,8 +43,6 @@ and open the template in the editor.
     opacity:.5;
     z-index:-1;
 }
-
-
 
 button.depth {
     background: #444;
@@ -273,4 +272,6 @@ button.depth2:active {
   background-color: #000000;
 }
 
+figure{
+}
 
