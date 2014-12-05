@@ -15,8 +15,8 @@ function displayStatistics(data) {
             '</div>'+
             '<div class="back">'+
                 
-                '<p>Matches: '+profile[1]+'</p>'+
-                "<p>No's: "+profile[2]+'</p>'+
+                '<p><span style="color:green; font-weight:bold;">Matches:   </span>'+ profile[1]+'</p>'+
+                "<p><span style='color:red; font-weight:bold;'>No's:   </span>" + profile[2] + '</p><br><br>'+ 
                 "<h3>Feedback: </h3>"+"<br />"+
                 '<p>'+profile[3]+'</p>'+
                 '<p>'+profile[4]+'</p>'+
