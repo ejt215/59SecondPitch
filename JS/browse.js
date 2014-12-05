@@ -5,10 +5,10 @@
  */
 function displayNewProfiles(data) {
     var profile;
+    alert(JSON.stringify(data));
     for (i = 1; i < Object.keys(data).length + 1; i++) {
-        $("#" + i).css("visibility", "visible");
+        $("#profile").append('<div class ="cover " name ="" id ="' + i + '" style ="border: 2px solid;"></div>');
         profile = data["" + i];
-        //alert(profile['business_video']);
         $("#" + i).html(
                 '<div class="col-sm-12">' +
                             '<div class="col-xs-12 col-sm-8">' +
@@ -22,16 +22,11 @@ function displayNewProfiles(data) {
                         '</div>' +
                         '<div class="">' + 
                         '<iframe width="500" height="275" src="' + profile['business_video'] + '" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></div>' +
-                        
-                        /*'<video class="businessVideos" controls>' +
-                            '<source src="BUSINESS_VIDEOS/testvideo.mp4" type="video/mp4">' + 
-                        '</video></div>'+*/
                         '<div  class ="" >'+
-                    '<button type="button" id ="nothanks" style = "float:left" class="nothanks depth1">X</button>'+
-                    '<button type="button" id ="maybe" class="maybe centered text-center depth2">?</button>'+
-                    '<button type="button" id ="match" class="match depth">&#10004;</button>'+
-                    
-                '</div>');
+                            '<button type="button" id ="nothanks" style = "float:left" class="nothanks depth1">X</button>'+
+                            '<button type="button" id ="maybe" class="maybe centered text-center depth2">?</button>'+
+                            '<button type="button" id ="match" class="match depth">&#10004;</button>'+             
+                        '</div>');
         $("#" + i).attr("name",profile['business_id']);
         $("#f"+i).html("<h1> " + profile["business_name"] + "</h1><br />" +
                 "Business type: " + profile["business_type"] + "<br />" +
@@ -48,22 +43,27 @@ $(document).ready(function() {
     //initialize sidebar
     $("ul#demo_menu1").sidebar({});
 
+    //Grab 5 profiles to start
+    $.ajax({
+        type: "POST",
+        dataType: "json",
+        async: false,
+        url: "fetchProfile.php",
+        //Set cover content to the 5 fetched profiles
+        success: function(data) {
+            displayNewProfiles(data);
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            alert("Error: " + jqXHR.responseText);
+        }
+    });
+    
     //initialize coverflow
     $('.coverflow').coverflow({
         index: 3,
         density: 2,
         innerOffset: 50,
-        innerScale: .7
-        /*animateStep: function(event, cover, offset, isVisible, isMiddle, sin, cos) {
-            if (isVisible && isMiddle) {
-                alert($(cover).index());
-            }
-        },*/
-        /*change: function(cover, index){
-            alert($(cover).html());
-        }*/
-        
-                
+        innerScale: .7         
     });
    
    function ShowDialog(modal)
@@ -79,21 +79,6 @@ $(document).ready(function() {
       
       $("#dialog").fadeOut(300);
    } 
-    
-
-    //Grab 5 profiles to start
-    $.ajax({
-        type: "POST",
-        dataType: "json",
-        url: "fetchProfile.php",
-        //Set cover content to the 5 fetched profiles
-        success: function(data) {
-            displayNewProfiles(data);
-        },
-        error: function(jqXHR, textStatus, errorThrown) {
-            alert("Error: " + jqXHR.responseText);
-        }
-    });
 
     //Next fetches 5 random profiles to display 
     $("#next").on('click',function() {
@@ -104,6 +89,12 @@ $(document).ready(function() {
             //Set cover content to the 5 fetched profiles
             success: function(data) {
                 displayNewProfiles(data);
+                $('.coverflow').coverflow({
+                    index: 3,
+                    density: 2,
+                    innerOffset: 50,
+                    innerScale: .7       
+                });    
             }
         });
     });

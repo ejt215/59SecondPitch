@@ -7,24 +7,8 @@ function displayIdeas(data) {
     var profile;
     for (i = 1; i < Object.keys(data).length + 1; i++) {
         $("#profile").append('<div class ="cover " name ="" id ="' + i + '" style ="border: 2px solid;"></div>');
-                    
-                   /* <div class ="cover " name ="" id ="2" style ="border: 2px solid;"></div>
-                    <div class ="cover " name ="" id ="3" style ="border: 2px solid;"></div>
-                    <div class ="cover " name ="" id ="4" style ="border: 2px solid;"></div>
-                    <div class ="cover " name ="" id ="5" style ="border: 2px solid;"></div>*/
-        //$("#" + i).css("visibility", "visible");
         profile = data["" + i];
         $("#" + i).html(
-               /* "<form action='entrepreneurEditProfile.php' method='POST'> " +
-                "<h1>" + profile["business_name"] + "</h1><br />" +
-                "<b>Business type</b>: " + profile["business_type"] + "<br />" +
-                "<b>Description</b> :" + profile['business_description'] + "<br />" +
-                "<button type='submit' class='editProfile' id='b" + i + "'>Edit</button>" +
-                "<input type='hidden' name='business_name' value='" + profile["business_name"] + "'>" +
-                "<input type='hidden' name='business_type' value='" + profile["business_type"] + "'>" +
-                "<input type='hidden' id='bi" + profile["business_id"] + "' name='business_id' value='" + profile["business_id"] + "'>" +
-                "<input type='hidden' name='business_description' value='" + profile["business_description"] + "'>" +
-                "</form>"*/
                 "<form action='entrepreneurEditProfile.php' method='POST'> " +
                  '<div class="col-sm-12">' +
                             '<div class="col-xs-12 col-sm-8">' +

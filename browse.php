@@ -58,11 +58,6 @@ include_once 'FiftyNineDAO.php';
             <img src="IMG/city3.jpg">;
             <div  id = "profiles"class="row-fluid">
                 <div id ="profile" class ="coverflow  text-center"   >
-                    <div class ="cover " name ="" id ="1" style ="border: 2px solid;text-overflow: ellipsis;" ></div>
-                    <div class ="cover " name ="" id ="2" style ="border: 2px solid;text-overflow: ellipsis;"></div>
-                    <div class ="cover " name ="" id ="3" style ="border: 2px solid;text-overflow: ellipsis;"></div>
-                    <div class ="cover " name ="" id ="4" style ="border: 2px solid;text-overflow: ellipsis;"></div>
-                    <div class ="cover " name ="" id ="5" style ="border: 2px solid;text-overflow: ellipsis;"></div>
                 </div>
             </div>
             <div id ="fullProfile" class ="row-fluid" style="display: none;">
