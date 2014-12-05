@@ -21,10 +21,12 @@ if (isset($_POST['business_id'])) {
         <script src="http://code.jquery.com/jquery.js"></script>
         <script src="JS/bootstrap.min.js"></script>
         <script src="JS/myScript.js"></script>
+        <link class="cssdeck" rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/css/bootstrap-responsive.min.css" class="cssdeck">
 
         <?php
-        $workType = $workName = $workDesc = "";
-        $workTypeerr = $workNameerr = $workDescerr = "";
+        $workType = $workName = $business_video = "";
+        $workTypeerr = $workNameerr = $businessVideoerr = "";
         $valid = true;
 
         //Make sure to only do the validation if the page is coming from itself
@@ -42,13 +44,6 @@ if (isset($_POST['business_id'])) {
             } else {
                 $workName = $_POST["workName"];
             }
-
-            if (empty($_POST["workDesc"])) {
-                $workDescerr = "Please provide a description.";
-                $valid = false;
-            } else {
-                $workDesc = $_POST["workDesc"];
-            }
             /* if (!isset($_FILES['userfile']) || !($_FILES['userfile']['error'] == 0)) {
               echo "Please upload a file";
               $valid = false;
@@ -56,7 +51,7 @@ if (isset($_POST['business_id'])) {
             if ($valid) {
                 $_SESSION['workType'] = $workType;
                 $_SESSION['workName'] = $workName;
-                $_SESSION['workDesc'] = $workDesc;
+                $_SESSION['business_video'] = $business_video;
                 $_SESSION['editEntrepreneurProfile'] = true;
                 header('Location: http://localhost/59SecondPitch/addUpdateDeleteEntrepreneurProfile.php');
                 exit();
@@ -66,46 +61,24 @@ if (isset($_POST['business_id'])) {
 
         <div class="container">
             <!--form setup taken from tutorial for twitter bootstrap-->
-            <form id="entrepreneurForm" class="form-horizontal" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-                <div class="control-group">
-                    <label class="control-label">How would you classify your work?</label>
-                    <div class="controls">
-
-                        <input id="ideaRadio" type="radio" name="workType" value="idea">Idea<span class="error">* <?php echo $workTypeerr; ?></span><br>
-                        <input id="projectRadio" type="radio" name = "workType" value="project">Project<br>
-                        <input id="startupRadio" type="radio" name="workType" value="startup">Startup<br>
-                        <input id="companyRadio" type="radio" name="workType" value="company">Company
-                    </div>
-                </div>
-                <div class="control-group">
-                    <label class="control-label">What is the name of your work?</label>
-                    <div class="controls">
-                        <input type="text" id="workName" name="workName" value = "<?php if (isset($_POST['business_name'])) {
-            echo $_POST['business_name'];
-        } else if (isset($_POST['workName'])) {
-            echo $_POST['workName'];
-        } ?>"> <span class="error">* <?php echo $workNameerr; ?></span>
-                    </div>
-                </div>
-                <div class="control-group">
-                    <label class="control-label">Description of your work:</label>
-                    <div class="controls"><textarea rows="4" cols="50" name ="workDesc"><?php if (isset($_POST['business_description'])) {
-            echo $_POST['business_description'];
-        } else if (isset($_POST['workDesc'])) {
-            echo $_POST['workDesc'];
-        } ?></textarea><span class="error">* <?php echo $workDescerr; ?></span></div>
-                </div>
-                <!--<div class="control-group">
-                   <div class="controls">
-                       <label class="control-label">Upload an image.</label>
-                       <input type="hidden" name="MAX_FILE_SIZE" value="99999999" />
-                       <input name="userfile" type="file" accept="image/jpeg,image/gif,image/png,image/jpg"  />
-                   </div>
-
-               </div>-->
-                <div class="control-group">
-                    <div class="controls"><button type="submit" class="btn">Submit</button></div>
-                </div>
+            <form id="entrepreneurForm" class="form-horizontal" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" enctype="multipart/form-data">
+                <label>How would you classify your work?</label>
+                <input id="ideaRadio" type="radio" name="workType" value="idea" checked="<?php if ($_POST['business_type'] == "idea"){echo "true";}  ?>">Idea<span class="error">* <?php echo $workTypeerr; ?></span><br>
+                <input id="projectRadio" type="radio" name = "workType" value="project" checked="<?php if ($_POST['business_type'] == "project"){echo "true";}  ?>">Project<br>
+                <input id="startupRadio" type="radio" name="workType" value="startup" checked="<?php if ($_POST['business_type'] == "startup"){echo "true";}  ?>">Startup<br>
+                <input id="companyRadio" type="radio" name="workType" value="company" checked="<?php if ($_POST['business_type'] == "company"){echo "true";}  ?>">Company<br>
+                
+                <br><label>What is the name of your work?</label>
+                <input type="text" id="workName" name="workName" value = "<?php
+                if (isset($_POST['business_name'])) {
+                    echo $_POST['business_name'];
+                } else if (isset($_POST['workName'])) {
+                    echo $_POST['workName'];
+                }
+                ?>"> <span class="error">* <?php echo $workNameerr; ?></span><br>
+                <br><label>Pitch Video Vimeo ID:</label>
+                <input type="text" id="business_video" name="business_video" value ="<?php echo $_POST['business_video']; ?>"> <span class="error">* <?php echo $businessVideoerr; ?></span><br>
+                <br><button type="submit" class="btn">Submit</button>
             </form>
         </div>
     </body>

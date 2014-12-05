@@ -27,6 +27,7 @@ and open the template in the editor.
 #profileContainer{
     position: relative;
     overflow: hidden;
+    height:550px;
     //background-color: #ED5A5A;
     //background-image: url("../IMG/city3.jpg");
     //background-repeat: no-repeat;
@@ -234,6 +235,7 @@ button.depth2:active {
     font-weight: 700;	
     padding: 19px 39px 18px;
     font-size: 18px;
+    margin-top:20px;
 	
 }
 

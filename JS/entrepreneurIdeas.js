@@ -10,6 +10,9 @@ function displayIdeas(data) {
         profile = data["" + i];
         $("#" + i).html(
                 "<form action='entrepreneurEditProfile.php' method='POST'> " +
+                '<input type="hidden" name="business_video" value="' + profile['business_video'] + '">' +
+                '<input type="hidden" name="business_name" value="' + profile['business_name'] + '">' +
+                '<input type="hidden" name="business_type" value="' + profile['business_type'] + '">' +
                  '<div class="col-sm-12">' +
                             '<div class="">' +
                                 '<h2><span style="color:white;">' + profile["business_name"] +  '</span></h2><br>' +
@@ -19,7 +22,7 @@ function displayIdeas(data) {
                             
                         '</div>' +
                         '<div class="">' + 
-                        '<iframe width="500" height="275" src="' + profile['business_video'] + '" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></div>' +
+                        '<iframe name="business_video" value = "' + profile['business_video'] + '" width="500" height="275" src="' + profile['business_video'] + '" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></div>' +
                         "<br><br><button type='submit' class='editProfile ph-button ph-btn-red' id='b" + i + "'>Edit</button>" +
                         "</form>"
                 
