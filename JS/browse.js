@@ -5,9 +5,12 @@
  */
 function displayNewProfiles(data) {
     var profile;
-    alert(JSON.stringify(data));
+    //alert(JSON.stringify(data));
     for (i = 1; i < Object.keys(data).length + 1; i++) {
-        $("#profile").append('<div class ="cover " name ="" id ="' + i + '" style ="border: 2px solid;"></div>');
+        if (!$('#'+i).length){
+                $("#profile").append('<div class ="cover " name ="" id ="' + i + '" style ="border: 2px solid;"></div>');
+
+    }
         profile = data["" + i];
         $("#" + i).html(
                 '<div class="col-sm-12">' +
@@ -85,16 +88,13 @@ $(document).ready(function() {
         $.ajax({
             type: "POST",
             dataType: "json",
+            async: false,
             url: "fetchProfile.php",
+            
             //Set cover content to the 5 fetched profiles
             success: function(data) {
                 displayNewProfiles(data);
-                $('.coverflow').coverflow({
-                    index: 3,
-                    density: 2,
-                    innerOffset: 50,
-                    innerScale: .7       
-                });    
+                
             }
         });
     });
@@ -113,9 +113,7 @@ $(document).ready(function() {
         
         if($("#feed4").val()!== ""){
             $.post('feedback.php', { businessid: id,radio: radio,other:$("#feed4").val()}, function(data){
-             alert(id);
-             alert(radio);
-             alert($("#feed4").val());
+             
            
             
              

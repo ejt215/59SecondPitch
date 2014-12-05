@@ -58,6 +58,7 @@ include_once 'FiftyNineDAO.php';
             <img src="IMG/city3.jpg">;
             <div  id = "profiles"class="row-fluid">
                 <div id ="profile" class ="coverflow  text-center"   >
+                    
                 </div>
             </div>
             <div id ="fullProfile" class ="row-fluid" style="display: none;">
