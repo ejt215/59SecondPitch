@@ -36,6 +36,11 @@ if ($dao->verify($email, $pass)) {
     } elseif ($isEntrepreneur) {
         header("Location:  entrepreneurHome.php");
     } elseif ($isInvestor) {
+        $investorProf = $dao->getInvestorProfile($_SESSION['profileid']);
+        $_SESSION['class'] = $investorProf->class;
+        $_SESSION['contact_type'] = $investorProf->contact_type;
+        $_SESSION['contact_preferences'] = $investorProf->contact_preferences;
+        $_SESSION['phone'] = $investorProf->phone;
         header("Location:  investorHome.php");
     } else {
         die("You shouldn't be able to reach this      " . $isEntrepreneur . "        " . $isInvestor);

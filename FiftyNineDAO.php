@@ -2,6 +2,7 @@
 
 include_once "FiftyNineProfile.php";
 include_once "EntrepreneurProfile.php";
+include_once "InvestorProfile.php";
 
 class FiftyNineDAO {
 
@@ -85,14 +86,11 @@ class FiftyNineDAO {
     }
 
     public function getInvestorProfile($fiftynineprofileid) {
-        $con = $this->getDBConnection();
         $sql = "SELECT * FROM investor WHERE 59profileid=" . $fiftynineprofileid;
-        if (!($result = mysqli_query($con, $sql))) {
-            die('Error: ' . mysqli_error($con) . "      " . $sql);
-        }
+        $result = $this->executeSQL($sql);
 
         $row = mysqli_fetch_array($result);
-        $investorProfile = new InvestorProfile($row['59profileid'], $row['class'], $row['contact_type'], $row['contact_preferences'],$row['business_video']);
+        $investorProfile = new InvestorProfile($row['59profileid'], $row['class'], $row['contact_type'], $row['contact_preferences'], $row['phone']);
         return $investorProfile;
     }
 
@@ -346,6 +344,27 @@ class FiftyNineDAO {
         } else {
             $sql = "INSERT INTO investor (59profileid,class,contact_type,contact_preferences,phone)" .
                     "VALUES ('$profileID','$class','$contact_type','" . mysqli_real_escape_string($con, $contact_preferences) . "','$phoneNumber')";
+        }
+
+        $this->executeSQL($sql);
+    }
+    public function updateInvestorProfile($profileID, $class, $contact_type, $contact_preferences, $phoneNumber) {
+        $con = $this->getDBConnection();
+        if (!$phoneNumber) {
+            $sql = "UPDATE investor " .
+                    "SET 59profileid = '$profileID'," .
+                    "class = '$class'," .
+                    "contact_type = '$contact_type'," .
+                    "contact_preferences = '" . mysqli_real_escape_string($con, $contact_preferences) . "' " .
+                    "WHERE 59profileid = $profileID";
+        } else {
+            $sql = "UPDATE investor " .
+                    "SET 59profileid = '$profileID'," .
+                    "class = '$class'," .
+                    "contact_type = '$contact_type'," .
+                    "contact_preferences = '" . mysqli_real_escape_string($con, $contact_preferences) . "'," .
+                    "phone = '$phoneNumber' " .
+                    "WHERE 59profileid = $profileID";
         }
 
         $this->executeSQL($sql);

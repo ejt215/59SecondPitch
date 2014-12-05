@@ -8,7 +8,6 @@ require_once 'FiftyNineDAO.php';
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 $dao = new FiftyNineDAO();
 $email = $_SESSION['email'];
 $profileID = $dao->get59ProfileIDFromEmail($email);
@@ -17,6 +16,18 @@ $class = $_SESSION['userType'];
 $contact_type = $_SESSION['contactType'];
 $contact_preferences = $_SESSION['contactPref'];
 $phoneNumber = $_SESSION['phoneNumber'];
+
+if (isset($_SESSION['last_visited']) && $_SESSION['last_visited'] == "investorEditProfile") {
+    $dao->updateInvestorProfile($profileID,$class,$contact_type,$contact_preferences,$phoneNumber);
+    header("Location: investorHome.php"); 
+} elseif (isset($_SESSION['last_visited']) && $_SESSION['last_visited'] == "investorSignup") { 
+    $dao->insertInvestorProfile($profileID,$class,$contact_type,$contact_preferences,$phoneNumber);
+    header("Location: investorHome.php");
+} else {
+    die("addUpdateInvestorProfile");
+}
+
+
 
 $dao->insertInvestorProfile($profileID,$class,$contact_type,$contact_preferences,$phoneNumber);
 
