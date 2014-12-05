@@ -62,7 +62,7 @@ include_once 'FiftyNineDAO.php';
         </div>
 
         <!--Button Container-->
-        <div class="container-fluid" >
+        <div class="container-fluid buttonContainer" >
             <div  class="row-fluid">
                 <div  class ="centered text-center" >
                     <button type="button" id ="newIdea" class="ph-button ph-btn-red">New Idea</button>

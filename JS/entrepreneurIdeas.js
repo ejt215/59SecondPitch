@@ -11,16 +11,16 @@ function displayIdeas(data) {
         $("#" + i).html(
                 "<form action='entrepreneurEditProfile.php' method='POST'> " +
                  '<div class="col-sm-12">' +
-                            '<div class="col-xs-12 col-sm-8">' +
-                                '<h2><font color="white">' + profile["business_name"] +  '</font></h2>' +
-                                '<h2><font color="white"> Type: ' + profile['business_type'] + '</font><h2>' +
+                            '<div class="">' +
+                                '<h2><span style="color:white;">' + profile["business_name"] +  '</span></h2><br>' +
+                                //'<h2><font color="white"> Type: ' + profile['business_type'] + '</font><h2>' +
                                 
                             '</div>' +              
                             
                         '</div>' +
                         '<div class="">' + 
                         '<iframe width="500" height="275" src="' + profile['business_video'] + '" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></div>' +
-                        "<button type='submit' class='editProfile ph-button ph-btn-red' id='b" + i + "'>Edit</button>" +
+                        "<br><br><button type='submit' class='editProfile ph-button ph-btn-red' id='b" + i + "'>Edit</button>" +
                         "</form>"
                 
                 );

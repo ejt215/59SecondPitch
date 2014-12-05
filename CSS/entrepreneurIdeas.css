@@ -229,7 +229,10 @@ button.depth2:active {
     font-weight: 700;	
     padding: 19px 39px 18px;
     font-size: 18px;
-	
+}
+
+#newIdea, #deleteIdea{
+    margin-top:20px;	
 }
 
 
