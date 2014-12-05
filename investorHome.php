@@ -59,15 +59,15 @@ include_once 'fiftynineDAO.php';
                         <p><a id="browseBtn" class="btn btn-default" href="/59SecondPitch/browse.php" role="button">Go Browsing »</a></p>
                     </div><!-- /.col-lg-4 -->
                     <div class="span4 col-lg-4">
-                        <img class="img-circle" src="IMG/tracking.png" alt="Generic placeholder image" style="width: 140px; height: 140px;">
-                        <h2>Tracked Profiles</h2>
-                        <p>Review profiles that you have matched with while browsing.</p>
+                        <img class="img-circle" src="IMG/questionmark.jpg" alt="Generic placeholder image" style="width: 140px; height: 140px;">
+                        <h2>Maybe</h2>
+                        <p>Review profiles that you didn't want to commit to but found worth saving.</p>
                         <p><a id="trackingBtn" class="btn btn-default" href="/59SecondPitch/investorTracking.php" role="button">View Tracked Profiles »</a></p>
                     </div><!-- /.col-lg-4 -->
                     <div class="span4 col-lg-4">
-                        <img class="img-circle" src="IMG/star.jpg" alt="Generic placeholder image" style="width: 140px; height: 140px;">
-                        <h2>Favorites</h2>
-                        <p>Review the profiles that you like the best</p>
+                        <img class="img-circle" src="IMG/check.jpeg" alt="Generic placeholder image" style="width: 140px; height: 140px;">
+                        <h2>Yes</h2>
+                        <p>Review the profiles that you gave your contact information to.</p>
                         <p><a id="favoritesButton" class="btn btn-default" href="/59SecondPitch/investorFavorites.php" role="button">View Favorite Profiles »</a></p>
                     </div><!-- /.col-lg-4 -->
                 </div><!-- /.row -->

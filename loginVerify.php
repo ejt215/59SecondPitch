@@ -13,11 +13,11 @@ if ($dao->verify($email, $pass)) {
     $_SESSION['profileid'] = $dao->get59ProfileIDFromEmail($email);
 
     
-    $entrepreneurSQL = "SELECT * FROM entrepreneur WHERE 59profileid = " . $dao->get59ProfileIDFromEmail($email);
+    $entrepreneurSQL = "SELECT * FROM entrepreneur WHERE 59profileid = " . $_SESSION['profileid'];
     $entrepreneurResult = $dao->executeSQL($entrepreneurSQL);
     $isEntrepreneur = $entrepreneurResult->num_rows;
 
-    $investorSQL = "SELECT * FROM investor WHERE 59profileid = " . $dao->get59ProfileIDFromEmail($email);
+    $investorSQL = "SELECT * FROM investor WHERE 59profileid = " . $_SESSION['profileid'];
     $investorResult = $dao->executeSQL($investorSQL);
     $isInvestor = $investorResult->num_rows;
 
