@@ -13,6 +13,7 @@ function displayIdeas(data) {
                 '<input type="hidden" name="business_video" value="' + profile['business_video'] + '">' +
                 '<input type="hidden" name="business_name" value="' + profile['business_name'] + '">' +
                 '<input type="hidden" name="business_type" value="' + profile['business_type'] + '">' +
+                '<input type="hidden" name="business_id" value="' + profile['business_id'] + '">' +
                  '<div class="col-sm-12">' +
                             '<div class="">' +
                                 '<h2><span style="color:white;">' + profile["business_name"] +  '</span></h2><br>' +

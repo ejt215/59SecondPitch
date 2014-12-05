@@ -246,7 +246,7 @@ class FiftyNineDAO {
         $profiles = array();
         $index = 1;
         while ($row = mysqli_fetch_array($result)) {
-            $profile = new EntrepreneurProfile($row['business_id'], $row['59profileid'], $row['business_type'], $row['business_name'], $row['business_description'],$row['business_video']);
+            $profile = new EntrepreneurProfile($row['business_id'], $row['59profileid'], $row['business_type'], $row['business_name'],$row['business_video']);
             $profiles[$index] = $profile;
             $index++;
         }
@@ -318,25 +318,21 @@ class FiftyNineDAO {
         }
     }
 
-    public function insertEntrepreneurIdea($profileID, $workType, $workName, $workDesc, $business_video) {
+    public function insertEntrepreneurIdea($profileID, $workType, $workName, $business_video) {
         $con = $this->getDBConnection();
 
-        $sql = "INSERT INTO entrepreneur (59profileid,business_type,business_name,business_description, business_video)" .
-                "VALUES (" . $profileID . ",'" . $workType . "','" . mysqli_real_escape_string($con, $workName) . "','" . mysqli_real_escape_string($con, $workDesc) . "','" . mysqli_real_escape_string($con, $business_video) . "')";
-        $result = mysqli_query($con, $sql);
-        if (!$result) {
-            die('Error: ' . mysqli_error($con) . "      " . $sql);
-        }
+        $sql = "INSERT INTO entrepreneur (59profileid,business_type,business_name, business_video)" .
+                "VALUES (" . $profileID . ",'" . $workType . "','" . mysqli_real_escape_string($con, $workName) . "','//player.vimeo.com/video/" . $business_video . "')";
+        $this->executeSQL($sql);
     }
 
-    public function updateEntrepreneurIdea($profileID, $business_id, $workType, $workName, $workDesc, $business_video) {
+    public function updateEntrepreneurIdea($profileID, $business_id, $workType, $workName, $business_video) {
         $con = $this->getDBConnection();
 
         $sql = "UPDATE entrepreneur " .
             "SET business_type = '" . mysqli_real_escape_string($con, $workType) . "'," .
-            "business_name = '" . mysqli_real_escape_string($con, $workName) . "'," .
-            "business_description = '" . mysqli_real_escape_string($con, $workDesc) . "'," . 
-            "business_video = '" . mysqli_real_escape_string($con, $business_video) . "' " .
+            "business_name = '" . mysqli_real_escape_string($con, $workName) . "'," . 
+            "business_video = '//player.vimeo.com/video/" . $business_video . "' " .
             "WHERE 59profileid = " . $profileID . " " .
             "AND business_id = " . $business_id;
         $this->executeSQL($sql);
