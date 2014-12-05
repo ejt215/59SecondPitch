@@ -389,9 +389,17 @@ class FiftyNineDAO {
             $matchRow = mysqli_fetch_array($matchResult);
             $noMatchRow = mysqli_fetch_array($noMatchResult);
             $nameRow = mysqli_fetch_array($nameResult);
+            
             $feedbackRow = mysqli_fetch_array($feedbackResult);
-                      
-            $statistics[] = [$nameRow[0],$matchRow[0],$noMatchRow[0],$feedbackRow['regular'],$feedbackRow['other']];
+            $feedback1="";
+            $feedback2="";
+            if($feedbackRow['regular']!=null){
+                 $feedback1=$feedbackRow['regular'];
+             }       
+             if($feedbackRow['other']!=null){
+                 $feedback2=$feedbackRow['other'];;
+             }
+            $statistics[] = [$nameRow[0],$matchRow[0],$noMatchRow[0],$feedback1,$feedback2];
         }
 
         return $statistics;
