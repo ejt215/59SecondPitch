@@ -1,5 +1,8 @@
 <?php
-
+/*Name: addUpdateInvestorProfile
+ * Authors: Maxwell Smith & Eric Thornton
+ * Description:  Adds or Updates an investor profile depending on which page redirected to this one
+ */
 session_start();
 
 require_once 'FiftyNineDAO.php';
@@ -17,6 +20,7 @@ $contact_type = $_SESSION['contactType'];
 $contact_preferences = $_SESSION['contactPref'];
 $phoneNumber = $_SESSION['phoneNumber'];
 
+//If coming from investorEditProfile.php
 if (isset($_SESSION['last_visited']) && $_SESSION['last_visited'] == "investorEditProfile") {
     $dao->updateInvestorProfile($profileID,$class,$contact_type,$contact_preferences,$phoneNumber);
     $_SESSION['class'] = $class;
@@ -24,10 +28,14 @@ if (isset($_SESSION['last_visited']) && $_SESSION['last_visited'] == "investorEd
     $_SESSION['contact_preferences'] = $contact_preferences;
     $_SESSION['phone'] = $phoneNumber;
     header("Location: investorHome.php"); 
-} elseif (isset($_SESSION['last_visited']) && $_SESSION['last_visited'] == "investorSignup") { 
+} 
+//If coming from investorSignup.php
+elseif (isset($_SESSION['last_visited']) && $_SESSION['last_visited'] == "investorSignup") { 
     $dao->insertInvestorProfile($profileID,$class,$contact_type,$contact_preferences,$phoneNumber);
     header("Location: investorHome.php");
-} else {
+}
+//You shouldn't be able to access this page through a way other than the 2 above options
+else {
     die("addUpdateInvestorProfile");
 }
 

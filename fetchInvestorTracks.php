@@ -1,11 +1,8 @@
 <?php
-
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/* Name: fetchInvestorTracks
+ * Authors: Maxwell Smith & Eric Thornton
+ * Description: Returns all entrepreneur ventures that an investor has maybe'd
  */
-
 include_once 'FiftyNineDAO.php';
 session_start();
 $profileID = $_SESSION['profileid'];

@@ -1,4 +1,8 @@
 <?php
+/* Name: FiftyNineProfile
+ * Authors: Maxwell Smith & Eric Thornton
+ * Description:  Acts as a php object for a 59 profile row in the database
+ */
 class FiftyNineProfile {
     public $fiftynineprofileid;
     public $password;

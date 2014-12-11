@@ -1,5 +1,8 @@
 <?php
-
+/* Name: fetchEntrepreneurStatistics
+ * Authors: Maxwell Smith & Eric Thornton
+ * Description: Returns statistics information for all of an entrepreneur's ventures
+ */
 include_once 'FiftyNineDAO.php';
 session_start();
 $profileID = $_SESSION['profileid'];

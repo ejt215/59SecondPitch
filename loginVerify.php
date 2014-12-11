@@ -1,5 +1,8 @@
 <?php
-
+/* Name: loginVerify
+ * Authors: Maxwell Smith & Eric Thornton
+ * Description: Verifies login credentials and redirects client to the appropriate page
+ */
 require_once 'FiftyNineDAO.php';
 //session_start();
 $dao = new FiftyNineDAO();

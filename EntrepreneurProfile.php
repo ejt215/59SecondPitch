@@ -1,10 +1,15 @@
 <?php
+/* Name: EntrepreneurProfile
+ * Authors: Maxwell Smith & Eric Thornton
+ * Description:  Acts as a php object for an entrepreneur profile row in the database
+ */
 class EntrepreneurProfile {
     public $business_id;
     public $fiftynineprofileid;
     public $business_type;
     public $business_name;
     public $business_video;
+    
     function __construct($business_id, $fiftynineprofileid, $business_type, $business_name, $business_video) {
         $this->business_id = $business_id;
         $this->fiftynineprofileid = $fiftynineprofileid;

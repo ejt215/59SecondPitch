@@ -1,5 +1,9 @@
 <!DOCTYPE html>
 <?php
+/* Name: login
+ * Authors: Maxwell Smith & Eric Thornton
+ * Description: This is the landing page for the app that allows logging in or account creation
+ */
 session_start();
 ?>
 <html>
@@ -7,21 +11,22 @@ session_start();
         <meta charset="UTF-8">
         <title>59SecondPitch Login</title>
         <link href="CSS/bootstrap.min.css" rel="stylesheet" media="screen">
+        
+        <!-- custom css -->
         <link href="CSS/loginStyles.css" rel="stylesheet">
 
     </head>
     <body>
         <script src="http://code.jquery.com/jquery.js"></script>
-        <script src="JS/bootstrap.min.js"></script>
-        <script src="JS/login.js"></script>
+        <script src="JS/bootstrap.min.js"></script>       
         <link class="cssdeck" rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/css/bootstrap.min.css">
         <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/css/bootstrap-responsive.min.css" class="cssdeck">
-
-
+        
+        <!-- custom js -->
+        <script src="JS/login.js"></script>
 
         <?php
-        //
-        // define variables and set to empty values
+        // Perform validation on all fields
         $firstnameErr = $lastnameErr = $emailErr = $passwordErr = $repasswordErr = $typeErr = $uploadErr = "";
         $name = $email = $password = $lastname = $firstname = $repassword = $age = $almamater = $city = $type = "";
         $valid = true;
@@ -245,14 +250,8 @@ session_start();
                                     </div>
                                 </div>
                                 <div class="control-group">
-                                    <!--<div class="control-label">
-                                        <span class="btn btn-default btn-file">
-                                            Upload Profile Picture <input type="file">
-                                        </span>
-                                    </div>-->
                                     <div class="controls">
                                         <input type="file" name="profilePictureUpload" id="profilePictureUpload"><span class="error">* <?php echo $uploadErr; ?></span>
-                                        <!--<input id="profilePictureURL" type="text" readonly>--> 
                                     </div>
                                 </div>
                                 <div class="control-group">

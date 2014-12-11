@@ -1,11 +1,9 @@
-
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <?php
+/* Name: entrepreneurSignup
+ * Authors: Maxwell Smith & Eric Thornton
+ * Description:  Allows entrepreneurs to add a venture at signup
+ */
 session_start();
 ?>
 <html>
@@ -13,14 +11,18 @@ session_start();
         <meta charset="UTF-8">
         <title>59SecondPitch</title>
         <link href="CSS/bootstrap.min.css" rel="stylesheet" media="screen">
+        
+        <!-- custom css -->
         <link href="CSS/newProfileStyles.css" rel="stylesheet">
     </head>
     <body>
         <script src="http://code.jquery.com/jquery.js"></script>
         <script src="JS/bootstrap.min.js"></script>
-        <script src="JS/myScript.js"></script>
 
+        
+        
         <?php
+        //Perform validation on fields
         $workType = $workName = $workDesc = $business_video = "";
         $workTypeerr = $workNameerr = $workDescerr = $businessVideoerr = "";
         $valid = true;
@@ -58,7 +60,6 @@ session_start();
         ?>
 
         <div class="container">
-            <!--form setup taken from tutorial for twitter bootstrap-->
             <form id="entrepreneurForm" class="form-horizontal" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" enctype="multipart/form-data">
                 <label>How would you classify your work?</label><br>
                 <input id="ideaRadio" type="radio" name="workType" value="idea" checked="<?php if ($_POST['business_type'] == "idea"){echo "true";}  ?>">Idea<span class="error">* <?php echo $workTypeerr; ?></span><br>

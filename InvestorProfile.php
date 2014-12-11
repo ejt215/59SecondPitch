@@ -1,4 +1,8 @@
 <?php
+/* Name: InvestorProfile
+ * Authors: Maxwell Smith & Eric Thornton
+ * Description:  Acts as a php object for an investor profile in the database
+ */
 class InvestorProfile {
     public $fiftynineprofileid;
     public $class;

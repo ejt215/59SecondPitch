@@ -1,5 +1,9 @@
 <!DOCTYPE html>
 <?php
+/* Name: manageProfile
+ * Authors: Maxwell Smith & Eric Thornton
+ * Description: Allows users to change their 59 account profile
+ */
 session_start();
 ?>
 <html>
@@ -7,6 +11,8 @@ session_start();
         <meta charset="UTF-8">
         <title>59SecondPitch Login</title>
         <link href="CSS/bootstrap.min.css" rel="stylesheet" media="screen">
+        
+        <!-- custom css -->
         <link href="CSS/loginStyles.css" rel="stylesheet">
     </head>
     <body>
@@ -17,8 +23,7 @@ session_start();
 
 
         <?php
-        //
-        // define variables and set to empty values
+        //Perform validation on fields
         $firstnameErr = $lastnameErr = $emailErr = $passwordErr = $repasswordErr = $typeErr = "";
         $name = $email = $password = $lastname = $firstname = $repassword = $age = $almamater = $city = $type = "";
         $valid = true;

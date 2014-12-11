@@ -1,5 +1,8 @@
 <?php
-
+/* Name: addUpdate59Profile
+ * Authors: Maxwell Smith & Eric Thornton
+ * Description:  Adds or Updates a 59 profile depending on which page redirected to this one
+ */
 session_start();
 include_once 'FiftyNineDAO.php';
 
@@ -21,6 +24,7 @@ if ($age == "") {
 
 $dao = new FiftyNineDAO();
 
+//If coming from manageProfile.php
 if (isset($_SESSION['last_visited']) && $_SESSION['last_visited'] == "manage") {
     $sql = "UPDATE 59profile " .
             "SET password = '" . $password . "'," .
@@ -39,7 +43,9 @@ if (isset($_SESSION['last_visited']) && $_SESSION['last_visited'] == "manage") {
         header("Location: http://localhost/59SecondPitch/entrepreneurHome.php");
         exit();
     }
-} else {
+} 
+//If coming from login.php
+else {
     $sql = "INSERT INTO 59profile (password, email, firstname, lastname, age, almamater, city, profilepicture)
     VALUES ('$password', '$email', '$firstname', '$lastname', '$age', '$almamater', '$city',NULL)";
     

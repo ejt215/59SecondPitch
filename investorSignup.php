@@ -1,11 +1,9 @@
-
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <?php
+/* Name: investorSignup
+ * Authors: Maxwell Smith & Eric Thornton
+ * Description:  Allows investors to add contact preferences at signup
+ */
 session_start();
 ?>
 <html>
@@ -22,6 +20,7 @@ session_start();
         <script src="JS/investorSignup.js"></script>
 
         <?php
+        //Perform validation on fields
         $userTypeerr = $contactTypeerr = $contactPreferr = "";
         $userType = $contactType = $contactPref = "";
         $valid = true;
@@ -68,7 +67,6 @@ session_start();
 
 
         <div class="container">
-            <!--form setup taken from tutorial for twitter bootstrap-->
             <form id="investorForm" class="form-horizontal" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
                 <div class="control-group">
                     <label class="control-label">How would you classify yourself?</label>

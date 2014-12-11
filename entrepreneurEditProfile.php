@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <?php
+/* Name: entrepreneurEditProfile
+ * Authors: Maxwell Smith & Eric Thornton
+ * Description:  Allows the entrepreneur to edit an idea
+ */
 session_start();
+//Determine which idea to edit
 if (isset($_POST['business_id'])) {
     $_SESSION['business_id'] = $_POST['business_id'];
 }
@@ -15,14 +15,16 @@ if (isset($_POST['business_id'])) {
         <meta charset="UTF-8">
         <title>59SecondPitch</title>
         <link href="CSS/bootstrap.min.css" rel="stylesheet" media="screen">
+        
+        <!-- custom css -->
         <link href="CSS/newProfileStyles.css" rel="stylesheet">
-    </head>
-    <body>
+        
         <script src="http://code.jquery.com/jquery.js"></script>
         <script src="JS/bootstrap.min.js"></script>
         <link class="cssdeck" rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/css/bootstrap.min.css">
         <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/css/bootstrap-responsive.min.css" class="cssdeck">
-
+    </head>
+    <body>
         <?php
         $workType = $workName = $business_video = "";
         $workTypeerr = $workNameerr = $businessVideoerr = "";
@@ -50,10 +52,8 @@ if (isset($_POST['business_id'])) {
             } else {
                 $business_video = $_POST["business_video"];
             }
-            /* if (!isset($_FILES['userfile']) || !($_FILES['userfile']['error'] == 0)) {
-              echo "Please upload a file";
-              $valid = false;
-              } */
+            
+            //Redirect only if all fields are valid
             if ($valid) {
                 $_SESSION['workType'] = $workType;
                 $_SESSION['workName'] = $workName;

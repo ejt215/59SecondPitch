@@ -1,11 +1,9 @@
-
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <?php
+/* Name: investorHome
+ * Authors: Maxwell Smith & Eric Thornton
+ * Description: Investor home page
+ */
 session_start();
 include_once 'fiftynineDAO.php';
 ?>
@@ -17,6 +15,8 @@ include_once 'fiftynineDAO.php';
         <link rel="stylesheet" type="text/css" href="CSS/browseStyles.css" />
         <link href="CSS/bootstrap.min.css" rel="stylesheet" media="screen">
         <link href="CSS/jquery-ui.min.css" rel="stylesheet" type="text/css"/>
+        
+        <!-- custom css -->
         <link href="CSS/carousel.css" rel="stylesheet">
 
         <script src="http://code.jquery.com/jquery.js"></script>
@@ -29,12 +29,14 @@ include_once 'fiftynineDAO.php';
         <script src="JS/jquery.mousewheel.js"></script>
         <script src="JS/jquery.touchSwipe.min.js"></script>
         <script src="JS/reflection.js"></script>
+        
+        <!-- custom js -->
         <script src="JS/investorHome.js"></script>
 
     </head>
     <body>
         <?php   $_SESSION['type'] = "Investor"; 
-                $_SESSION['last_visited'] = "entrepreneurHome";?>
+                $_SESSION['last_visited'] = "investorHome";?>
         <div class="container">
             <div id="legendDiv" class="row">
                 <legend id="legend">Investor Home</legend>

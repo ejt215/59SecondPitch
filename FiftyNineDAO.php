@@ -1,5 +1,9 @@
 <?php
-
+/* Name: FiftyNineDAO 
+ * Authors: Maxwell Smith & Eric Thornton
+ * Description:  This object should handle all interactions with the database including securing a connection, updating, and fetching results
+ * Notes: Entrepreneur profile,idea,and business are used interchangeably.  Investor profile refers to their contact information
+ */
 include_once "FiftyNineProfile.php";
 include_once "EntrepreneurProfile.php";
 include_once "InvestorProfile.php";
@@ -16,6 +20,7 @@ class FiftyNineDAO {
         
     }
 
+    //Applies the Singleton pattern to the DB connection
     private function getDBConnection() {
         if (!isset($_mysqli)) {
             $_mysqli = new mysqli("128.180.177.4:3307", "guest", "pitch", "59secondpitch");
@@ -27,6 +32,7 @@ class FiftyNineDAO {
         return $_mysqli;
     }
 
+    //Executes any valid sql statement and returns the results of any records fetched
     public function executeSQL($sql) {
         $con = $this->getDBConnection();
         if (!$result = mysqli_query($con, $sql)) {
@@ -36,55 +42,49 @@ class FiftyNineDAO {
         }
     }
 
+    //Returns someones 59 profile id when given their email as an argument
     public function get59ProfileIDFromEmail($email) {
         $con = $this->getDBConnection();
         $sql = "SELECT 59profileid FROM 59profile WHERE email='" . mysqli_real_escape_string($con, $email) . "'";
-        if (!($result = mysqli_query($con, $sql))) {
-            die('Error: ' . mysqli_error($con) . "      " . $sql);
-        }
+        $result = $this->executeSQL($sql);
 
         $row = mysqli_fetch_array($result);
         $fiftynineprofileid = $row['59profileid'];
         return $fiftynineprofileid;
     }
 
+    //Returns someones 59 profile id when given their email as an argument
     public function get59ProfileIDFromBusinessID($business_id) {
-        $con = $this->getDBConnection();
         $sql = "SELECT 59profileid FROM entrepreneur WHERE business_id=" . $business_id;
-        if (!($result = mysqli_query($con, $sql))) {
-            die('Error: ' . mysqli_error($con) . "      " . $sql);
-        }
+        $result = $this->executeSQL($sql);
 
         $row = mysqli_fetch_array($result);
         $fiftynineprofileid = $row['59profileid'];
         return $fiftynineprofileid;
     }
 
+    //Returns someones 59 profile when given their email as an argument
     public function get59Profile($email) {
         $con = $this->getDBConnection();
         $sql = "SELECT * FROM 59profile WHERE email='" . mysqli_real_escape_string($con, $email) . "'";
-        if (!($result = mysqli_query($con, $sql))) {
-            die('Error: ' . mysqli_error($con) . "      " . $sql);
-        }
+        $result = $this->executeSQL($sql);
 
         $row = mysqli_fetch_array($result);
-//die($row['59profileid'] . $row['password'] . $row['email'] . $row['firstname'] . $row['lastname'] . $row['age'] . $row['almamater'] . $row['city']);
         $fiftynineprofile = new FiftyNineProfile($row['59profileid'], $row['password'], $row['email'], $row['firstname'], $row['lastname'], $row['age'], $row['almamater'], $row['city']);
         return $fiftynineprofile;
     }
 
+    //Returns someones full entrepreneur idea when given their business id as an argument
     public function getEntrepreneurProfileFromBusinessID($business_id) {
-        $con = $this->getDBConnection();
         $sql = "SELECT * FROM entrepreneur WHERE business_id=" . $business_id;
-        if (!($result = mysqli_query($con, $sql))) {
-            die('Error: ' . mysqli_error($con) . "      " . $sql);
-        }
+        $result = $this->executeSQL($sql);
 
         $row = mysqli_fetch_array($result);
-        $entrepreneurProfile = new EntrepreneurProfile($row['business_id'], $row['fiftynineprofileid'], $row['business_name'], $row['business_type'], $row['business_description'],$row['business_video']);
+        $entrepreneurProfile = new EntrepreneurProfile($row['business_id'], $row['fiftynineprofileid'], $row['business_name'], $row['business_type'], $row['business_description'], $row['business_video']);
         return $entrepreneurProfile;
     }
 
+    //Returns someones full investor profile when given their 59 profile id as an argument
     public function getInvestorProfile($fiftynineprofileid) {
         $sql = "SELECT * FROM investor WHERE 59profileid=" . $fiftynineprofileid;
         $result = $this->executeSQL($sql);
@@ -94,10 +94,10 @@ class FiftyNineDAO {
         return $investorProfile;
     }
 
+    //Returns the investor contact information for all investors that have matched with the entrepreneur whose 59 profile id is the argument
     public function getInvestorContactInfo($fiftynineprofileid) {
 
         $investorContacts = array();
-        $con = $this->getDBConnection();
 
         //Get all the business_id's that the entrepreneur has
         $business_idSQL = "SELECT business_id " .
@@ -160,129 +160,106 @@ class FiftyNineDAO {
 
         return $investorContacts;
     }
-    
-    public function getInvestorFavorites($fiftynineprofileid){
-    $con = $this->getDBConnection();
-    $sql = "SELECT business_id FROM matching WHERE matched = 1 and 59profileid=" . $fiftynineprofileid;
-    if (!($result = mysqli_query($con, $sql))) {
-            die('Error: ' . mysqli_error($con) . "      " . $sql);
-        }
-        
+
+    //Returns all of the entrepreneur matches for the investor whose 59 profile id is the argument
+    public function getInvestorFavorites($fiftynineprofileid) {
+        $sql = "SELECT business_id FROM matching WHERE matched = 1 and 59profileid=" . $fiftynineprofileid;
+        $result = $this->executeSQL($sql);
+
         $business_id;
         $profiles = array();
         $index = 0;
         while ($row = mysqli_fetch_array($result)) {
             $business_id = $row['business_id'];
-        $sql2 = "SELECT * FROM 59secondpitch.59profile inner join entrepreneur on 59profile.59profileid=entrepreneur.59profileid WHERE entrepreneur.business_id=" . $business_id;
-        if (!($result2 = mysqli_query($con, $sql2))) {
-            die('Error: ' . mysqli_error($con) . "      " . $sql2);
-        }
+            $sql2 = "SELECT * FROM 59secondpitch.59profile inner join entrepreneur on 59profile.59profileid=entrepreneur.59profileid WHERE entrepreneur.business_id=" . $business_id;
+            $result2 = $this->executeSQL($sql2);
 
-        
-        
-       $row2 = mysqli_fetch_array($result2);
+
+
+            $row2 = mysqli_fetch_array($result2);
             //$profile = new EntrepreneurProfile($row2['business_id'], $row2['59profileid'], $row2['business_type'], $row2['business_name'], $row2['business_description'],$row2['business_video']);
-            $profile=$row2;
-       $profiles[$index] = $profile;
-            $index++;
-        
-        
-        }
-        return $profiles;
-        
-    
-    }
-    public function getInvestorTracks($fiftynineprofileid){
-        $con = $this->getDBConnection();
-    $sql = "SELECT business_id FROM tracking WHERE 59profileid=" . $fiftynineprofileid;
-    if (!($result = mysqli_query($con, $sql))) {
-            die('Error: ' . mysqli_error($con) . "      " . $sql);
-        }
-        
-        $business_id;
-        $profiles = array();
-        $index = 0;
-        while ($row = mysqli_fetch_array($result)) {
-            $business_id = $row['business_id'];
-        $sql2 = "SELECT * FROM 59secondpitch.59profile inner join entrepreneur on 59profile.59profileid=entrepreneur.59profileid WHERE entrepreneur.business_id=" . $business_id;
-        if (!($result2 = mysqli_query($con, $sql2))) {
-            die('Error: ' . mysqli_error($con) . "      " . $sql2);
-        }
-
-        
-        
-       $row2 = mysqli_fetch_array($result2);
             $profile = $row2;
             $profiles[$index] = $profile;
             $index++;
-        
-        
         }
         return $profiles;
     }
-    public function getInvestorAC($fiftynineprofileid){
-        $con = $this->getDBConnection();
-        $sql = "SELECT almamater,city FROM 59Profile WHERE 59profileid=" . $fiftynineprofileid;
-        if (!($result = mysqli_query($con, $sql))) {
-            die('Error: ' . mysqli_error($con) . "      " . $sql);
+
+    //Returns all of the entrepreneur maybes for the investor whose 59 profile id is the argument
+    public function getInvestorTracks($fiftynineprofileid) {
+        $sql = "SELECT business_id FROM tracking WHERE 59profileid=" . $fiftynineprofileid;
+        $result = $this->executeSQL($sql);
+
+        $business_id;
+        $profiles = array();
+        $index = 0;
+        while ($row = mysqli_fetch_array($result)) {
+            $business_id = $row['business_id'];
+            $sql2 = "SELECT * FROM 59secondpitch.59profile inner join entrepreneur on 59profile.59profileid=entrepreneur.59profileid WHERE entrepreneur.business_id=" . $business_id;
+            $result2 = $this->executeSQL($sql2);
+
+
+
+            $row2 = mysqli_fetch_array($result2);
+            $profile = $row2;
+            $profiles[$index] = $profile;
+            $index++;
         }
-        $row = mysqli_fetch_array($result);
-        $info = array();
-        $info[0]=$row['almamater'];
-        $info[1] = $row['city'];
-        return $info;
-        
+        return $profiles;
     }
 
+    //Returns an investor's alma mater and city when given their 59 profile id as an argument
+    public function getInvestorAC($fiftynineprofileid) {
+        $sql = "SELECT almamater,city FROM 59Profile WHERE 59profileid=" . $fiftynineprofileid;
+        
+        $result = $this->executeSQL($sql);
+        $row = mysqli_fetch_array($result);
+        
+        $info = array();
+        $info[0] = $row['almamater'];
+        $info[1] = $row['city'];
+        return $info;
+    }
+
+    //Returns all of the entrepreneur ideas for the entrepreneur whose 59 profile id is the argument
     public function getEntrepreneurProfiles($fiftynineprofileid) {
-        $con = $this->getDBConnection();
         $sql = "SELECT * FROM entrepreneur WHERE 59profileid=" . $fiftynineprofileid;
-        if (!($result = mysqli_query($con, $sql))) {
-            die('Error: ' . mysqli_error($con) . "      " . $sql);
-        }
+        $result = $this->executeSQL($sql);
 
         $profiles = array();
         $index = 1;
         while ($row = mysqli_fetch_array($result)) {
-            $profile = new EntrepreneurProfile($row['business_id'], $row['59profileid'], $row['business_type'], $row['business_name'],$row['business_video']);
+            $profile = new EntrepreneurProfile($row['business_id'], $row['59profileid'], $row['business_type'], $row['business_name'], $row['business_video']);
             $profiles[$index] = $profile;
             $index++;
         }
         return $profiles;
     }
-    public function feedback($businessid,$regular,$other){
-        $con = $this->getDBConnection();
-        
-        $sql = "INSERT into feedback(business_id,regular,other) values('" . $businessid. "','" . mysqli_real_escape_string($con,$regular) . "','" . mysqli_real_escape_string($con,$other) . "')";
 
-        $result = mysqli_query($con, $sql);
-        if (!$result) {
-            die('Error: ' . mysqli_error($con) . "      " . $sql);
-        }
+    //Inserts investor feedback for an entrepreneur idea whose business id is the argument
+    public function feedback($businessid, $regular, $other) {
+        $con = $this->getDBConnection();
+
+        $sql = "INSERT into feedback(business_id,regular,other) values('" . $businessid . "','" . mysqli_real_escape_string($con, $regular) . "','" . mysqli_real_escape_string($con, $other) . "')";
+
+        $this->executeSQL($sql);
     }
 
+    //Inserts a record in the match table for an investor and an entrepreneur idea
     public function match($profileid, $businessid, $match) {
-        $con = $this->getDBConnection();
         $var = $match;
         $sql = "INSERT into matching(59profileid,business_id,matched) values('" . $profileid . "','" . $businessid . "'," . $var . ")";
 
-        $result = mysqli_query($con, $sql);
-        if (!$result) {
-            die('Error: ' . mysqli_error($con) . "      " . $sql);
-        }
+        $this->executeSQL($sql);
     }
 
+    //Inserts a record into the track table for an investor and an entrepreneur idea
     public function track($profileid, $businessid) {
-        $con = $this->getDBConnection();
-
         $sql = "INSERT into tracking(59profileid,business_id) values('" . $profileid . "'," . $businessid . ")";
-
-        $result = mysqli_query($con, $sql);
-        if (!$result) {
-            die('Error: ' . mysqli_error($con) . "      " . $sql);
-        }
+        $this->executeSQL($sql);
     }
 
+    //Verifies that a given email and password are in the database
     public function verify($email, $pass) {
         $con = $this->getDBConnection();
         $sql = "SELECT * 
@@ -305,17 +282,13 @@ class FiftyNineDAO {
         }
     }
 
+    //Removes an entrepreneur idea from the database
     public function deleteEntrepreneurIdea($business_id) {
-        $con = $this->getDBConnection();
-
         $sql = "DELETE FROM entrepreneur WHERE business_id = " . $business_id;
-
-        $result = mysqli_query($con, $sql);
-        if (!$result) {
-            die('Error: ' . mysqli_error($con) . "      " . $sql);
-        }
+        $this->executeSQL($sql);
     }
 
+    //Inserts a new entrepreneur record into the database
     public function insertEntrepreneurIdea($profileID, $workType, $workName, $business_video) {
         $con = $this->getDBConnection();
 
@@ -324,18 +297,20 @@ class FiftyNineDAO {
         $this->executeSQL($sql);
     }
 
+    //Updates an entrepreneur record in the database
     public function updateEntrepreneurIdea($profileID, $business_id, $workType, $workName, $business_video) {
         $con = $this->getDBConnection();
 
         $sql = "UPDATE entrepreneur " .
-            "SET business_type = '" . mysqli_real_escape_string($con, $workType) . "'," .
-            "business_name = '" . mysqli_real_escape_string($con, $workName) . "'," . 
-            "business_video = '//player.vimeo.com/video/" . $business_video . "' " .
-            "WHERE 59profileid = " . $profileID . " " .
-            "AND business_id = " . $business_id;
+                "SET business_type = '" . mysqli_real_escape_string($con, $workType) . "'," .
+                "business_name = '" . mysqli_real_escape_string($con, $workName) . "'," .
+                "business_video = '//player.vimeo.com/video/" . $business_video . "' " .
+                "WHERE 59profileid = " . $profileID . " " .
+                "AND business_id = " . $business_id;
         $this->executeSQL($sql);
     }
-    
+
+    //Inserts a new investor record into the database
     public function insertInvestorProfile($profileID, $class, $contact_type, $contact_preferences, $phoneNumber) {
         $con = $this->getDBConnection();
         if (!$phoneNumber) {
@@ -348,6 +323,8 @@ class FiftyNineDAO {
 
         $this->executeSQL($sql);
     }
+
+    //Updates an investor record in the database
     public function updateInvestorProfile($profileID, $class, $contact_type, $contact_preferences, $phoneNumber) {
         $con = $this->getDBConnection();
         if (!$phoneNumber) {
@@ -370,9 +347,9 @@ class FiftyNineDAO {
         $this->executeSQL($sql);
     }
 
+    //Returns the count of yes/no's and feedback for all entrepreneur ideas for the entrepreneur whose 59 profile id is the argument
     public function getStatistics($fiftynineprofileid) {
         $statistics = array();
-        $con = $this->getDBConnection();
 
         //Get all the business_id's that the entrepreneur has
         $business_idSQL = "SELECT business_id " .
@@ -386,7 +363,7 @@ class FiftyNineDAO {
             $nameSQL = "SELECT business_name " .
                     "FROM entrepreneur " .
                     "WHERE business_id = " . $row[0];
-            
+
             $matchSQL = "SELECT count(*) " .
                     "FROM matching " .
                     "WHERE business_id = " . $row[0] . " " .
@@ -404,26 +381,24 @@ class FiftyNineDAO {
             $noMatchResult = $this->executeSQL($noMatchSQL);
             $nameResult = $this->executeSQL($nameSQL);
             $feedbackResult = $this->executeSQL($feedbackSQL);
-            
+
             $matchRow = mysqli_fetch_array($matchResult);
             $noMatchRow = mysqli_fetch_array($noMatchResult);
             $nameRow = mysqli_fetch_array($nameResult);
-            
+
             $feedbackRow = mysqli_fetch_array($feedbackResult);
-            $feedback1="";
-            $feedback2="";
-            if($feedbackRow['regular']!=null){
-                 $feedback1=$feedbackRow['regular'];
-             }       
-             if($feedbackRow['other']!=null){
-                 $feedback2=$feedbackRow['other'];;
-             }
-            $statistics[] = [$nameRow[0],$matchRow[0],$noMatchRow[0],$feedback1,$feedback2];
+            $feedback1 = "";
+            $feedback2 = "";
+            if ($feedbackRow['regular'] != null) {
+                $feedback1 = $feedbackRow['regular'];
+            }
+            if ($feedbackRow['other'] != null) {
+                $feedback2 = $feedbackRow['other'];
+            }
+            $statistics[] = [$nameRow[0], $matchRow[0], $noMatchRow[0], $feedback1, $feedback2];
         }
 
         return $statistics;
     }
 }
-
-
 ?>

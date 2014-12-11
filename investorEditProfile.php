@@ -1,30 +1,33 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <?php
+/* Name: investorEditProfile
+ * Authors: Maxwell Smith & Eric Thornton
+ * Description: Allows an investor to change his/her contact preferences
+ */
 session_start();
-if (isset($_POST['business_id'])) {
-    $_SESSION['business_id'] = $_POST['business_id'];
-}
 ?>
 <html>
     <head>
         <meta charset="UTF-8">
         <title>59SecondPitch</title>
         <link href="CSS/bootstrap.min.css" rel="stylesheet" media="screen">
+        <link class="cssdeck" rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/css/bootstrap-responsive.min.css" class="cssdeck">
+        
+        <!-- custom css -->
         <link href="CSS/newProfileStyles.css" rel="stylesheet">
+        
     </head>
     <body>
         <script src="http://code.jquery.com/jquery.js"></script>
         <script src="JS/bootstrap.min.js"></script>
+        
+        <!-- custom js -->
         <script src="JS/investorEditProfile.js"></script>
-        <link class="cssdeck" rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/css/bootstrap.min.css">
-        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/css/bootstrap-responsive.min.css" class="cssdeck">
+        
 
         <?php
+        //Validate fields
         $userTypeerr = $contactTypeerr = $contactPreferr = "";
         $userType = $contactType = $contactPref = "";
         $valid = true;
