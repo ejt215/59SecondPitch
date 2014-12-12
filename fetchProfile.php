@@ -10,7 +10,7 @@ $profileID = $_SESSION['profileid'];
 $dao = new FiftyNineDAO();
 
 $info = $dao->getInvestorAC($profileID);
-
+//Select profiles whose alma mater or location is same as investor
 $sql1 = "SELECT  59profileid,business_id 
 from entrepreneur 
 where 59profileid in(select 59profileid from 59profile where almamater = '" . $info[0] . "' or city = '" . $info[1] . "') 
@@ -35,7 +35,7 @@ while ($row = mysqli_fetch_array($result)) {
     $row2 = mysqli_fetch_array($result2);
     $list['' . $count] = array('profileid' => $profileid, 'business_id' => $business_id, 'business_name' => $row2{'business_name'}, 'business_type' => $row2{'business_type'}, 'firstname' => $row2{'firstname'}, 'lastname' => $row2{'lastname'}, 'almamater' => $row2{'almamater'}, 'city' => $row2{'city'}, 'profilepicture' => $row2{'profilepicture'}, 'business_video' => $row2{'business_video'});
     $count ++;
-}
+}//if there are less than 5 profiles with same info as investor
 if ($count < 5) {
 
     $newsql = "SELECT  59profileid,business_id from entrepreneur where business_id not in(select business_id from matching where 59profileid=" . $profileID . ")"

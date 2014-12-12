@@ -13,6 +13,7 @@ function displayNewProfiles(data) {
 
     }
         profile = data["" + i];
+        //put profiles in coverflow (each coverflow has an id from 1-6)
         $("#" + i).html(
                 '<div class="col-sm-12">' +
                             '<div class="col-xs-12 col-sm-8">' +
