@@ -1,7 +1,6 @@
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/* Name: entrepreneurMatches
+ * Authors: Maxwell Smith & Eric Thornton
+ * Description:  Allows entrepreneurs to view contact information of investors that matched with one of their ventures
  */
 
 function displayIdeas(data) {
@@ -16,15 +15,8 @@ function displayIdeas(data) {
         else{
             pic = "PROFILE_PICTURES/"+profile["profilepicture"];
         }
+        //Display investor contact information based on their preferences
         if (profile["contact_type"]==="Phone") {
-            /*$("body").append("<div class='panel panel-default businessCard'>" +
-                    "<div class='panel-heading'>" +
-                    "<h3 class='panel-title'>" + profile["firstname"] + " " + profile["lastname"] + "</h3>" +
-                    "</div>" +
-                    "<div class='panel-body'>" + profile["contact_type"] + ": " + profile[3] + "<br />" +
-                    "Contact Preferences: " + profile["contact_preferences"] +
-                    "</div>" +
-                    "</div>");*/
              $("body").append('<div class="flip-container">'+
         '<div class="flipper">'+
             '<div class="front">'+
@@ -69,15 +61,6 @@ function displayIdeas(data) {
     '</div>');
         }
         else  {
-            /*$("body").append("<div class='panel panel-default businessCard'>" +
-                    "<div class='panel-heading'>" +
-                    "<h3 class='panel-title'>" + profile["firstname"] + " " + profile["lastname"] + "</h3>" +
-                    "</div>" +
-                    "<div class='panel-body'>Phone: " + profile['phone'] + "<br>Email: " + profile['email'] + "<br />" +
-                    "Contact Preferences: " + profile["contact_preferences"] +
-                    "</div>" +
-                    "</div>");*/
-            
             $("body").append('<div class="flip-container">'+
         '<div class="flipper">'+
             '<div class="front">'+
@@ -99,10 +82,6 @@ function displayIdeas(data) {
         '</div>'+
     '</div>');
         }
-        /*else{
-            alert("entrepreneurMatches::profile length incorrect.  Length: " + Object.keys(profile).length);
-            alert(JSON.stringify(profile));
-        }*/
     }
 }
 

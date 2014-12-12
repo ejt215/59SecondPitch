@@ -1,8 +1,8 @@
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/* Name: entrepreneurIdeas
+ * Authors: Maxwell Smith & Eric Thornton
+ * Description:  Allows entrepreneurs to view,add,edit, and delete ventures
  */
+
 function displayIdeas(data) {
     var profile;
     for (i = 1; i < Object.keys(data).length + 1; i++) {

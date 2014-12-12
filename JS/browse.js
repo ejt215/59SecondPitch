@@ -1,8 +1,9 @@
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/* Name: browse
+ * Authors: Maxwell Smith & Eric Thornton
+ * Description:  This page allows investors to see entrepreneur ideas
  */
+
+//Displays up to 5 profiles
 function displayNewProfiles(data) {
     var profile;
     //alert(JSON.stringify(data));
@@ -31,14 +32,6 @@ function displayNewProfiles(data) {
                             '<button type="button" id ="match" class="match depth">&#10004;</button>'+             
                         '</div>');
         $("#" + i).attr("name",profile['business_id']);
-        /*$("#f"+i).html("<h1> " + profile["business_name"] + "</h1><br />" +
-                "Business type: " + profile["business_type"] + "<br />" +
-                "Creator: " + profile["firstname"] + " " + profile["lastname"] + "<br />" +
-                "Alma mater: " + profile['almamater'] + "<br />" +
-                "Location: " + profile['city'] + "<br />" +
-                "Description :" + profile['business_description'] + "<br />" +
-                "<button type='button' class='return'>Return to Browse</button>");*/
-        
     }
 }
 
@@ -71,15 +64,11 @@ $(document).ready(function() {
    
    function ShowDialog(modal)
    {
-     
       $("#dialog").fadeIn(300);
-
-     
    }
 
    function HideDialog()
-   {
-      
+   { 
       $("#dialog").fadeOut(300);
    } 
 
@@ -94,13 +83,9 @@ $(document).ready(function() {
             //Set cover content to the 5 fetched profiles
             success: function(data) {
                 displayNewProfiles(data);
-                
             }
         });
     });
-    /*$("#feedback").click(function(){
-       ShowDialog(); 
-    });*/
     $("#btnClose").click(function(){
         HideDialog();
     });
@@ -112,35 +97,28 @@ $(document).ready(function() {
         if($('#feed3').is(':checked')) { radio = "Needs Refinement"; }
         
         if($("#feed4").val()!== ""){
-            $.post('feedback.php', { businessid: id,radio: radio,other:$("#feed4").val()}, function(data){
-             
-           
-            
-             
-             
-        }).fail(function() {
-         
-            
+            $.post('feedback.php', 
+            { 
+                businessid: id,
+                radio: radio,
+                other:$("#feed4").val()
+            }, 
+            function(data){}).fail(function() {
             alert( "Posting failed." );
-             
-        });
+            });
         }
         else{
-            $.post('feedback.php', { businessid: id,radio: radio}, function(data){
-             
-           
-            
-             
-        }).fail(function() {
-         
-            
-            alert( "Posting failed." );
-             
-        });
-        }
-        
+            $.post('feedback.php', 
+            {   businessid: id,
+                radio: radio
+            }, function(data){
+               }).fail(function() {
+                            alert( "Posting failed." );   
+                        });
+            }
         HideDialog();
     });
+    
 $(document).on('click','.viewProfile',function() {
         var id = $('.coverflow').coverflow("cover").attr('id');
         $('#profiles').hide();

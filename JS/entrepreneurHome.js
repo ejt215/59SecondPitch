@@ -1,6 +1,11 @@
+/* Name: entrepreneurHome
+ * Authors: Maxwell Smith & Eric Thornton
+ * Description:  Entrepreneur home page
+ */
 $(document).ready(function() {
     $("ul#sidebar").sidebar({});
     
+    //Redirects to different page depending on button clicked
     $("#matchesBtn").click(function() {
         $(this).closest("form").attr("action", "browse.php");
     });

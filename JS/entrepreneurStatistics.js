@@ -1,3 +1,8 @@
+ /*Name: entrepreneurStatistics
+ * Authors: Maxwell Smith & Eric Thornton
+ * Description:  Displays statistics for all of an entrepreneur's ventures
+ */
+
 
 function displayStatistics(data) {
     var profile;
@@ -30,29 +35,17 @@ function displayStatistics(data) {
     '</div>');
     }
 }
- /*$("body").append("<div class='panel panel-default businessCard'>" +
-                "<div class='panel-heading'>" +
-                "<h3 class='panel-title'>" + profile[0] + "</h3>" +
-                "</div>" +
-                "<div class='panel-body'>Matches: " + profile[1] + "<br />" +
-                "No's: " + profile[2] +"<br />"+
-                "Feedback: "+"<br />"+
-                profile[3]+"<br />"+
-                profile[4]+"<br />"+
-                "</div>" +
-                "</div>");*/
 
 $(document).ready(function () {
     //initialize sidebar
     $("ul#sidebar").sidebar({});
 
-    //Grab investor contact info
+    //Grab statistics from database
     $.ajax({
         type: "POST",
         dataType: "json",
         async: false,
         url: "fetchEntrepreneurStatistics.php",
-        //Set cover content to the 5 fetched profiles
         success: function (data) {
             displayStatistics(data);
         },
